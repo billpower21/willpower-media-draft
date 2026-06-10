@@ -23,14 +23,19 @@ site and publishes it.
 
 ## Live preview
 
-Every push to `main` auto-publishes here (shareable with anyone):
+The page is live here (share this link with anyone):
 
-> **[ preview URL — added once the site is connected to Netlify ]**
+> **https://willpower-media-draft.netlify.app**
 
 You can also preview locally without deploying — just open the file:
 ```bash
 open index.html
 ```
+
+### How your edits go live
+Once this repo is connected to Netlify (Site settings → Build & deploy → Link
+repository), **every push to `main` auto-publishes** to the URL above within ~30 seconds.
+Until then, a maintainer (Bill) publishes by running `./publish.sh`.
 
 ## How to edit it with Claude Code
 
