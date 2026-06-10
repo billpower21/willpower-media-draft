@@ -10,6 +10,9 @@ Before drafting or editing any words on the page (session titles, takeaways, ins
 breakdowns, pull-quotes, CTAs), **read `voice/about-bill.md` and follow it.** It is the
 source of truth for Willpower's writing voice.
 
+> `voice/about-bill.md` is synced from the `willpower-team-context` repo. Don't edit it
+> here — edit it there and re-run sync, so every project stays consistent.
+
 Quick rules (the file has the full version):
 - Anchor every takeaway to a **named speaker + a specific number, tactic, or moment.**
   No vague generalities.
