@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- DRAFT: noindex while we iterate. Remove this line + add to nav when ready to launch. -->
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Media · Willpower</title>
+  <meta name="description" content="Panel recordings and the insights behind them, from Willpower events. The conversations consumer, wellness, and performance brand leaders are having, in full." />
+  <meta property="og:title" content="Media · Willpower" />
+  <meta property="og:description" content="Panel recordings and the insights behind them, from Willpower events." />
+  <meta property="og:image" content="https://starlit-crostata-9f186f.netlify.app/assets/photos/wh26-greg-power-of-brand.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Media · Willpower" />
+  <meta name="twitter:description" content="Panel recordings and the insights behind them." />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://starlit-crostata-9f186f.netlify.app/assets/favicon-32.png?v=2" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://starlit-crostata-9f186f.netlify.app/assets/apple-touch-icon.png?v=2" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://starlit-crostata-9f186f.netlify.app/assets/favicon.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://starlit-crostata-9f186f.netlify.app/assets/subpage.css" />
+  <style>
+    /* ── Media-page-specific extras (built on subpage.css tokens) ── */
+
+    /* Responsive 16:9 video frame */
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+    .video-frame iframe,
+    .video-frame video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+    /* Placeholder shown until a real embed is dropped in */
+    .video-frame .placeholder {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.75rem; text-align: center; padding: 2rem;
+      background:
+        radial-gradient(ellipse at center, rgba(123,170,212,0.10), transparent 70%),
+        var(--card);
+      color: var(--muted);
+    }
+    .video-frame .placeholder .play {
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 1px solid rgba(123,170,212,0.5);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+    }
+    .video-frame .placeholder .play svg { width: 22px; height: 22px; margin-left: 3px; }
+    .video-frame .placeholder code {
+      font-family: 'Space Mono', monospace; font-size: 0.72rem;
+      color: var(--blue); letter-spacing: 0.02em;
+    }
+
+    /* Featured session: video + insight side by side */
+    .session-feature {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-top: 2rem;
+    }
+    .session-feature .insight-head {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .session-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .session-feature h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 400; line-height: 1.15; color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .session-feature h3 em { font-style: italic; color: var(--blue); }
+    .speaker-line {
+      font-size: 0.92rem; color: rgba(255,255,255,0.7);
+      margin-bottom: 1.1rem;
+    }
+    .speaker-line strong { color: var(--white); font-weight: 600; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 2px solid var(--blue);
+      padding: 0.4rem 0 0.4rem 1.25rem;
+      margin: 1.5rem 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.3rem; line-height: 1.4; color: rgba(255,255,255,0.9);
+    }
+    .pull-quote cite {
+      display: block; margin-top: 0.6rem;
+      font-family: 'Space Mono', monospace; font-style: normal;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--blue);
+    }
+
+    /* Session grid (the archive) */
+    .session-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .session-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; transition: all var(--t);
+      display: flex; flex-direction: column;
+    }
+    .session-card:hover { border-color: rgba(123,170,212,0.35); transform: translateY(-2px); }
+    .session-card .thumb {
+      position: relative; aspect-ratio: 16 / 9; background: var(--card2);
+      overflow: hidden;
+    }
+    .session-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .session-card .thumb .play-badge {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(8,9,14,0.35); transition: background var(--t);
+    }
+    .session-card:hover .thumb .play-badge { background: rgba(8,9,14,0.15); }
+    .session-card .thumb .play-badge span {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: rgba(8,9,14,0.6); border: 1px solid rgba(123,170,212,0.6);
+      display: flex; align-items: center; justify-content: center; color: var(--blue);
+    }
+    .session-card .body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+    .session-card .body .session-meta { margin-bottom: 0.6rem; }
+    .session-card .body h4 {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+      font-weight: 400; line-height: 1.2; color: var(--white); margin-bottom: 0.5rem;
+    }
+    .session-card .body p {
+      font-size: 0.92rem; color: rgba(255,255,255,0.68); margin-bottom: 1.1rem;
+    }
+    .session-card .body .card-link {
+      margin-top: auto;
+      font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue);
+      display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+
+    @media (max-width: 820px) {
+      .session-feature { grid-template-columns: 1fr; gap: 1.75rem; }
+      .session-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="sp-header">
+    <a href="/" class="brand" aria-label="Willpower home">
+      <img src="https://starlit-crostata-9f186f.netlify.app/assets/logos/willpower-logo-white.png" alt="" loading="eager" />
+    </a>
+    <nav class="sp-nav">
+      <a href="/">Home</a>
+      <a href="/events">Events</a>
+      <a href="/past-events">Past Events</a>
+      <a href="/partners">Partners</a>
+      <a href="/careers">Careers</a>
+      <a href="/apply" class="sp-cta">Request Invite</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="sp-hero">
+    <div class="wrap">
+      <p class="eyebrow">Media</p>
+      <h1 class="headline">The conversations, in full. <em>And what they mean.</em></h1>
+      <p class="body-lg">Every Willpower panel, recorded and unpacked. Watch the room, then read the takeaways the operators actually wrote down. The strategy behind building a $10M to $1B+ consumer, wellness, and performance brand, straight from the people doing it.</p>
+    </div>
+  </section>
+
+  <!-- FEATURED SESSION -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Latest Session</p>
+      <h2 class="section-title">Featured <em>panel.</em></h2>
+
+      <div class="session-feature">
+        <!-- LEFT: video -->
+        <div>
+          <div class="video-frame">
+            <!-- EDIT ME ▸ Replace this placeholder with the real embed, e.g.:
+                 <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Panel title"
+                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                         allowfullscreen loading="lazy"></iframe>
+            -->
+            <div class="placeholder">
+              <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+              <div>Drop the panel recording here</div>
+              <code>&lt;iframe src="youtube.com/embed/…"&gt;</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: the insight -->
+        <div>
+          <div class="insight-head">
+            <span class="pill">Insights</span>
+            <span class="session-meta">Wellness House 2026 · Austin</span>
+          </div>
+          <h3>The Power of <em>Brand</em> in a Crowded Category</h3>
+          <p class="speaker-line"><strong>SPEAKER NAME</strong>, Title @ Brand &nbsp;·&nbsp; <strong>SPEAKER NAME</strong>, Title @ Brand &nbsp;·&nbsp; moderated by Bill Murphy</p>
+
+          <p style="color:rgba(255,255,255,0.8); line-height:1.7;">One-paragraph setup of what this panel was really about. What question were they wrestling with? Why does it matter to a brand leader watching this. <em>(Edit this — placeholder copy.)</em></p>
+
+          <ul class="bullets" style="margin-top:1.25rem;">
+            <li>Key takeaway one. The sharp, quotable insight an operator can act on.</li>
+            <li>Key takeaway two. A number, a tactic, or a hard-won lesson.</li>
+            <li>Key takeaway three. The contrarian point that made the room lean in.</li>
+          </ul>
+
+          <blockquote class="pull-quote">
+            "The single best line from the panel goes here. The one you'd put on a slide."
+            <cite>— Speaker Name, Brand</cite>
+          </blockquote>
+
+          <div class="btn-row">
+            <a href="#" class="btn btn-outline">Read the full breakdown</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SESSION ARCHIVE -->
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">The Archive</p>
+      <h2 class="section-title">Every <em>session.</em></h2>
+      <p class="lead" style="margin-top:0.5rem;">Browse the full library of panels and fireside conversations from Willpower events.</p>
+
+      <div class="session-grid">
+
+        <!-- SESSION CARD ▸ duplicate this block per recording -->
+        <article class="session-card">
+          <a href="#" class="thumb" aria-label="Watch session">
+            <!-- EDIT ME ▸ swap in the YouTube thumbnail or an event photo -->
+            <div class="play-badge"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </a>
+          <div class="body">
+            <span class="session-meta">Catalyst NYC · May 2026</span>
+            <h4>Session title goes here</h4>
+            <p>One or two lines on the insight a viewer walks away with. Edit this teaser.</p>
+            <a href="#" class="card-link">Watch + Read →</a>
+          </div>
+        </article>
+
+        <article class="session-card">
+          <a href="#" class="thumb" aria-label="Watch session">
+            <div class="play-badge"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </a>
+          <div class="body">
+            <span class="session-meta">The Wellness Lounge · 2026</span>
+            <h4>Session title goes here</h4>
+            <p>One or two lines on the insight a viewer walks away with. Edit this teaser.</p>
+            <a href="#" class="card-link">Watch + Read →</a>
+          </div>
+        </article>
+
+        <article class="session-card">
+          <a href="#" class="thumb" aria-label="Watch session">
+            <div class="play-badge"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </a>
+          <div class="body">
+            <span class="session-meta">World of Sports · 2026</span>
+            <h4>Session title goes here</h4>
+            <p>One or two lines on the insight a viewer walks away with. Edit this teaser.</p>
+            <a href="#" class="card-link">Watch + Read →</a>
+          </div>
+        </article>
+
+        <article class="session-card">
+          <a href="#" class="thumb" aria-label="Watch session">
+            <div class="play-badge"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
+          </a>
+          <div class="body">
+            <span class="session-meta">Catalyst NYC · August 2026</span>
+            <h4>Session title goes here</h4>
+            <p>One or two lines on the insight a viewer walks away with. Edit this teaser.</p>
+            <a href="#" class="card-link">Watch + Read →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="wrap">
+      <h2>Get the next one <em>in your inbox.</em></h2>
+      <p>New panels and breakdowns drop after every event. Join the leaders who get them first.</p>
+      <div class="btn-row">
+        <a href="/newsletter" class="btn btn-primary">Subscribe</a>
+        <a href="/apply" class="btn btn-outline">Request an Invite</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sp-footer">
+    <div class="wrap">
+      <a href="/" class="fl">
+        <img src="https://starlit-crostata-9f186f.netlify.app/assets/logos/willpower-logo-white.png" alt="" loading="lazy" />
+      </a>
+      <nav class="f-nav">
+        <a href="/">Home</a>
+        <a href="/events">Events</a>
+        <a href="/past-events">Past Events</a>
+        <a href="/partners">Partners</a>
+        <a href="/careers">Careers</a>
+        <a href="/apply">Request Invite</a>
+        <a href="mailto:bill@willpowerhq.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
