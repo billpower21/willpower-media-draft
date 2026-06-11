@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media · Willpower</title>
+  <meta name="description" content="Panel recordings and the insights behind them, from Willpower events. Watch and read the conversations that consumer, wellness, and performance brand leaders are having." />
+  <meta property="og:title" content="Media · Willpower" />
+  <meta property="og:description" content="Watch and read every Willpower panel. Brand, community, performance, and commerce — in full." />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://starlit-crostata-9f186f.netlify.app/assets/favicon-32.png?v=2" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://starlit-crostata-9f186f.netlify.app/assets/apple-touch-icon.png?v=2" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://starlit-crostata-9f186f.netlify.app/assets/subpage.css" />
+
+  <style>
+    /* ─── Series color tokens ──────────────────────────────── */
+    :root {
+      --wh:     #7baad4;
+      --cat:    #d4956a;
+      --lounge: #72b89a;
+      --wos:    #a87dc4;
+      --hps:    #c47a7a;
+    }
+
+    /* ─── Page shell ───────────────────────────────────────── */
+    body { overflow-x: hidden; }
+    .page-wrap {
+      max-width: 1200px; margin: 0 auto;
+      padding: 48px 40px 120px;
+    }
+
+    /* ─── Page title ───────────────────────────────────────── */
+    .media-head {
+      margin-bottom: 36px;
+    }
+    .media-head h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 300; line-height: 1.1;
+      color: var(--white); margin-bottom: 10px;
+    }
+    .media-head h1 em { font-style: italic; }
+    .media-head p {
+      font-size: 15px; color: var(--muted);
+      max-width: 520px; line-height: 1.6;
+    }
+
+    /* ─── Filter bar ───────────────────────────────────────── */
+    .filter-bar {
+      display: flex; align-items: center;
+      gap: 8px; flex-wrap: wrap;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .filter-pill {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 7px 14px; border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--muted); background: none;
+      cursor: pointer; transition: all .15s;
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .filter-pill:hover { color: var(--white); border-color: rgba(255,255,255,.2); }
+    .filter-pill.active { color: var(--white); border-color: rgba(255,255,255,.25); background: var(--card2); }
+    .filter-pill .dot {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ─── Video grid ───────────────────────────────────────── */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* ─── Card ─────────────────────────────────────────────── */
+    .media-card {
+      border-radius: 10px; overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color .2s, transform .2s;
+      display: flex; flex-direction: column;
+    }
+    .media-card:hover { border-color: rgba(255,255,255,.18); transform: translateY(-2px); }
+    .media-card[data-available="false"] { opacity: .45; cursor: default; pointer-events: none; }
+
+    /* Thumbnail */
+    .card-thumb {
+      aspect-ratio: 16/9;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; flex-shrink: 0;
+    }
+    .card-thumb svg.bird-bg {
+      width: 52px; height: auto;
+      opacity: .18;
+    }
+    .card-thumb .play-ring {
+      position: absolute;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.25);
+      background: rgba(0,0,0,.35);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .2s;
+    }
+    .card-thumb .play-ring svg { margin-left: 3px; }
+    .media-card:hover .play-ring { opacity: 1; }
+
+    /* Series color stripe on thumb */
+    .card-thumb::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.4) 100%);
+    }
+
+    /* Type badge on thumb */
+    .card-type {
+      position: absolute; top: 10px; left: 10px; z-index: 1;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 9px; border-radius: 4px;
+      background: rgba(0,0,0,.55); color: rgba(255,255,255,.8);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Series bird badge on thumb — bottom right */
+    .card-series-bird {
+      position: absolute; bottom: 10px; right: 10px; z-index: 1;
+    }
+    .card-series-bird svg { width: 20px; height: auto; opacity: .9; }
+
+    /* Card body */
+    .card-body { padding: 16px 18px 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+
+    .card-meta {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-series-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .card-series-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted);
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px; font-weight: 400; line-height: 1.3;
+      color: var(--white); flex: 1;
+    }
+    .card-title em { font-style: italic; }
+
+    .card-brands { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 4px; padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .card-cta {
+      font-size: 12px; color: var(--muted);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .card-cta svg { flex-shrink: 0; }
+    .media-card:hover .card-cta { color: var(--white); }
+    .card-coming {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--muted); opacity: .5;
+    }
+
+    /* ─── Section divider ──────────────────────────────────── */
+    .section-label {
+      grid-column: 1 / -1;
+      display: flex; align-items: center; gap: 16px;
+      padding-top: 16px;
+    }
+    .section-label__text {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted);
+      white-space: nowrap;
+    }
+    .section-label__line { flex: 1; height: 1px; background: var(--border); }
+
+    /* ─── Drawer ────────────────────────────────────────────── */
+    .drawer-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0); pointer-events: none;
+      transition: background .3s;
+    }
+    .drawer-overlay.open { background: rgba(0,0,0,.75); pointer-events: all; }
+
+    .drawer {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(740px, 100vw); z-index: 201;
+      background: var(--bg, #08090e);
+      border-left: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+    .drawer.open { transform: translateX(0); }
+
+    .drawer__bar {
+      flex-shrink: 0; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; border-bottom: 1px solid var(--border);
+      background: var(--card);
+    }
+    .drawer__bar-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .drawer__label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); white-space: nowrap; flex-shrink: 0;
+    }
+    .drawer__title-short {
+      font-size: 13px; color: var(--white);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .drawer__bar-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .drawer__full-link {
+      font-size: 12px; color: var(--muted);
+      padding: 6px 14px; border-radius: 6px;
+      border: 1px solid var(--border);
+      transition: color .15s, border-color .15s; white-space: nowrap;
+    }
+    .drawer__full-link:hover { color: var(--white); border-color: rgba(255,255,255,.2); }
+    .drawer__close {
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      border-radius: 6px; cursor: pointer; border: 1px solid var(--border);
+      color: var(--muted); background: none;
+      transition: color .15s, border-color .15s, background .15s;
+      font-size: 16px; line-height: 1;
+    }
+    .drawer__close:hover { color: var(--white); border-color: rgba(255,255,255,.2); background: var(--card2); }
+
+    .drawer__content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .drawer__content::-webkit-scrollbar { width: 4px; }
+    .drawer__content::-webkit-scrollbar-track { background: transparent; }
+    .drawer__content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .drawer-loading {
+      display: flex; align-items: center; justify-content: center;
+      height: 300px; color: var(--muted); font-size: 13px; gap: 12px;
+    }
+    .drawer-spinner {
+      width: 18px; height: 18px;
+      border: 1.5px solid var(--border); border-top-color: var(--blue);
+      border-radius: 50%; animation: dspin .7s linear infinite;
+    }
+    @keyframes dspin { to { transform: rotate(360deg); } }
+
+    /* ─── Responsive ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .page-wrap { padding: 32px 20px 80px; }
+      .drawer { width: 100vw; }
+      .media-grid { grid-template-columns: 1fr; gap: 14px; }
+    }
+    @media (max-width: 480px) {
+      .media-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Drawer ─────────────────────────────────────────────────── -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true">
+  <div class="drawer__bar">
+    <div class="drawer__bar-left">
+      <span class="drawer__label">Now playing</span>
+      <span class="drawer__title-short" id="drawerTitleShort"></span>
+    </div>
+    <div class="drawer__bar-right">
+      <a href="#" id="drawerFullLink" class="drawer__full-link" target="_blank">Open full page →</a>
+      <button class="drawer__close" onclick="closeDrawer()" aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="drawer__content" id="drawerContent">
+    <div class="drawer-loading"><div class="drawer-spinner"></div><span>Loading…</span></div>
+  </div>
+</div>
+
+<!-- ── Header ─────────────────────────────────────────────────── -->
+<header class="sp-header">
+  <a href="/" class="brand" aria-label="Willpower home">
+    <img src="https://starlit-crostata-9f186f.netlify.app/assets/logos/willpower-logo-white.png" alt="" loading="eager" />
+  </a>
+  <nav class="sp-nav">
+    <a href="/">Home</a>
+    <a href="/events">Events</a>
+    <a href="/past-events">Past Events</a>
+    <a href="/partners">Partners</a>
+    <a href="/media" aria-current="page">Media</a>
+    <a href="/apply" class="sp-cta">Request Invite</a>
+  </nav>
+</header>
+
+<!-- ── Page body ──────────────────────────────────────────────── -->
+<div class="page-wrap">
+
+  <div class="media-head">
+    <h1>All the panels. <em>All the insight.</em></h1>
+    <p>Watch and read every Willpower session. Tap a card to pull it up right here, or open the full page to share it.</p>
+  </div>
+
+  <!-- Filter pills -->
+  <div class="filter-bar">
+    <button class="filter-pill active" onclick="filter('all')">All</button>
+    <button class="filter-pill" onclick="filter('wh')" style="--series-color:var(--wh)">
+      <span class="dot" style="background:var(--wh)"></span>Wellness House
+    </button>
+    <button class="filter-pill" onclick="filter('cat')" style="--series-color:var(--cat)">
+      <span class="dot" style="background:var(--cat)"></span>Catalyst
+    </button>
+    <button class="filter-pill" onclick="filter('lounge')" style="--series-color:var(--lounge)">
+      <span class="dot" style="background:var(--lounge)"></span>Wellness Lounge
+    </button>
+    <button class="filter-pill" onclick="filter('wos')" style="--series-color:var(--wos)">
+      <span class="dot" style="background:var(--wos)"></span>World of Sports
+    </button>
+    <button class="filter-pill" onclick="filter('hps')" style="--series-color:var(--hps)">
+      <span class="dot" style="background:var(--hps)"></span>Human Performance
+    </button>
+  </div>
+
+  <!-- Grid -->
+  <div class="media-grid" id="mediaGrid">
+
+    <!-- Section: Wellness House 2025 -->
+    <div class="section-label" data-series="wh">
+      <span class="section-label__text">Wellness House 2025 · Austin</span>
+      <div class="section-label__line"></div>
+    </div>
+
+    <!-- Keynote -->
+    <div class="media-card" data-series="wh" onclick="openDrawer('keynote-founder-mode-in-health-and-wellness.html','Founder mode in health &amp; wellness')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#1a2e40 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <div class="play-ring">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="6,4 12,8 6,12" fill="white" opacity=".9"/></svg>
+        </div>
+        <span class="card-type">Keynote</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--wh)"></div>
+          <span class="card-series-name">Wellness House</span>
+        </div>
+        <div class="card-title">Founder mode in <em>health &amp; wellness</em></div>
+        <div class="card-brands">Greg LaVecchia · Bloom Nutrition</div>
+        <div class="card-footer">
+          <span class="card-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            Watch &amp; read
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 7 -->
+    <div class="media-card" data-series="wh" onclick="openDrawer('panel-7-the-future-of-commerce-brand-community-and-ai.html','The future of commerce: brand, community &amp; AI')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#1a2e40 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <div class="play-ring">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="6,4 12,8 6,12" fill="white" opacity=".9"/></svg>
+        </div>
+        <span class="card-type">Panel · Session 07</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--wh)"></div>
+          <span class="card-series-name">Wellness House</span>
+        </div>
+        <div class="card-title">The future of commerce: <em>brand, community &amp; AI</em></div>
+        <div class="card-brands">Tecovas · YETI · Estée Lauder · Shopify</div>
+        <div class="card-footer">
+          <span class="card-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            Watch &amp; read
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 6 -->
+    <div class="media-card" data-series="wh" onclick="openDrawer('panel-6-building-worlds-through-sports.html','Building worlds through sports')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#1a2e40 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <div class="play-ring">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="6,4 12,8 6,12" fill="white" opacity=".9"/></svg>
+        </div>
+        <span class="card-type">Panel · Session 06</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--wh)"></div>
+          <span class="card-series-name">Wellness House</span>
+        </div>
+        <div class="card-title">Building worlds <em>through sports</em></div>
+        <div class="card-brands">San Antonio Spurs · MLP · Tyler Eifert</div>
+        <div class="card-footer">
+          <span class="card-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            Watch &amp; read
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 5 -->
+    <div class="media-card" data-series="wh" onclick="openDrawer('panel-5-comedy-panel-roast.html','Comedy panel: the roast')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#1a2e40 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <div class="play-ring">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="6,4 12,8 6,12" fill="white" opacity=".9"/></svg>
+        </div>
+        <span class="card-type">Panel · Session 05</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--wh)"></div>
+          <span class="card-series-name">Wellness House</span>
+        </div>
+        <div class="card-title">Comedy panel: <em>the roast</em></div>
+        <div class="card-brands">Super Coffee · Lofty · Kaviva · Jevity · Kintsugi</div>
+        <div class="card-footer">
+          <span class="card-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            Watch &amp; read
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 4 -->
+    <div class="media-card" data-series="wh" onclick="openDrawer('panel-4-wellness-at-the-core-of-community.html','Wellness at the core of community')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#1a2e40 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <div class="play-ring">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="6,4 12,8 6,12" fill="white" opacity=".9"/></svg>
+        </div>
+        <span class="card-type">Panel · Session 04</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--wh)"></div>
+          <span class="card-series-name">Wellness House</span>
+        </div>
+        <div class="card-title">Wellness at <em>the core of community</em></div>
+        <div class="card-brands">Vivo Barefoot · Sweat Pals</div>
+        <div class="card-footer">
+          <span class="card-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            Watch &amp; read
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="media-card" data-series="wh" onclick="openDrawer('panel-3-founder-mode-getting-scrappy.html','Founder mode: getting scrappy')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#1a2e40 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <div class="play-ring">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="6,4 12,8 6,12" fill="white" opacity=".9"/></svg>
+        </div>
+        <span class="card-type">Panel · Session 03</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--wh)"></div>
+          <span class="card-series-name">Wellness House</span>
+        </div>
+        <div class="card-title">Founder mode: <em>getting scrappy</em></div>
+        <div class="card-brands">437 Swimwear · Good Wipes · It's That Simple</div>
+        <div class="card-footer">
+          <span class="card-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            Watch &amp; read
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 2 -->
+    <div class="media-card" data-series="wh" onclick="openDrawer('panel-2-the-power-of-routine.html','The power of routine')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#1a2e40 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <div class="play-ring">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="6,4 12,8 6,12" fill="white" opacity=".9"/></svg>
+        </div>
+        <span class="card-type">Panel · Session 02</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--wh)"></div>
+          <span class="card-series-name">Wellness House</span>
+        </div>
+        <div class="card-title">The power <em>of routine</em></div>
+        <div class="card-brands">WHOOP · HigherDOSE · Wellworthy</div>
+        <div class="card-footer">
+          <span class="card-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            Watch &amp; read
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 1 -->
+    <div class="media-card" data-series="wh" onclick="openDrawer('panel-1-founders-rebuilding-health-and-the-future-of-wellness.html','Founders rebuilding health &amp; wellness')">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0d1a26 0%,#1a2e40 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <div class="play-ring">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polygon points="6,4 12,8 6,12" fill="white" opacity=".9"/></svg>
+        </div>
+        <span class="card-type">Panel · Session 01</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--wh)"></div>
+          <span class="card-series-name">Wellness House</span>
+        </div>
+        <div class="card-title">Founders rebuilding <em>health &amp; wellness</em></div>
+        <div class="card-brands">Tiny Health · Function · Throne Science</div>
+        <div class="card-footer">
+          <span class="card-cta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+            Watch &amp; read
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Catalyst -->
+    <div class="section-label" data-series="cat">
+      <span class="section-label__text">Catalyst · NYC &amp; Austin</span>
+      <div class="section-label__line"></div>
+    </div>
+
+    <!-- Catalyst cards — available=false until content is live -->
+    <div class="media-card" data-series="cat" data-available="false">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#201508 0%,#3a2310 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--cat)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <span class="card-type">Dinner · Nov 2025 · NYC</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--cat)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--cat)"></div>
+          <span class="card-series-name">Catalyst NYC</span>
+        </div>
+        <div class="card-title">Capitalizing on the future <em>of wellness</em></div>
+        <div class="card-brands">Masa Chips · Caulipower · HYROX · Soho House</div>
+        <div class="card-footer">
+          <span class="card-coming">Coming soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="media-card" data-series="cat" data-available="false">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#201508 0%,#3a2310 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--cat)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <span class="card-type">Dinner · Oct 2025 · Austin</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--cat)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--cat)"></div>
+          <span class="card-series-name">Catalyst Austin</span>
+        </div>
+        <div class="card-title">Winning cultural tentpoles, <em>F1 Edition</em></div>
+        <div class="card-brands">Caraway · LALO Tequila · Kendra Scott</div>
+        <div class="card-footer">
+          <span class="card-coming">Coming soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="media-card" data-series="cat" data-available="false">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#201508 0%,#3a2310 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--cat)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <span class="card-type">Dinner · Feb 2025 · Austin</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--cat)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--cat)"></div>
+          <span class="card-series-name">Catalyst Austin</span>
+        </div>
+        <div class="card-title">Inflection point <em>w/ Paulie Dery</em></div>
+        <div class="card-brands">AG1 · It's Skinny</div>
+        <div class="card-footer">
+          <span class="card-coming">Coming soon</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Wellness Lounge -->
+    <div class="section-label" data-series="lounge">
+      <span class="section-label__text">The Wellness Lounge · NYC</span>
+      <div class="section-label__line"></div>
+    </div>
+
+    <div class="media-card" data-series="lounge" data-available="false">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#071a13 0%,#0f2d1f 100%)">
+        <svg class="bird-bg" viewBox="0 0 24 16" fill="var(--lounge)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        <span class="card-type">Lounge · May 2026 · Remedy Place Soho</span>
+        <div class="card-series-bird">
+          <svg viewBox="0 0 24 16" fill="var(--lounge)" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-meta">
+          <div class="card-series-dot" style="background:var(--lounge)"></div>
+          <span class="card-series-name">Wellness Lounge</span>
+        </div>
+        <div class="card-title">The first <em>Wellness Lounge</em></div>
+        <div class="card-brands">AG1 · Beekman 1802 · Evolv · 80+ brand leaders</div>
+        <div class="card-footer">
+          <span class="card-coming">Recap coming soon</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /media-grid -->
+
+</div><!-- /page-wrap -->
+
+<!-- ── Footer ─────────────────────────────────────────────────── -->
+<footer class="sp-footer">
+  <div class="wrap">
+    <a href="/" class="fl">
+      <img src="https://starlit-crostata-9f186f.netlify.app/assets/logos/willpower-logo-white.png" alt="" loading="lazy" />
+    </a>
+    <nav class="f-nav">
+      <a href="/">Home</a>
+      <a href="/events">Events</a>
+      <a href="/past-events">Past Events</a>
+      <a href="/partners">Partners</a>
+      <a href="/media">Media</a>
+      <a href="/apply">Request Invite</a>
+      <a href="mailto:bill@willpowerhq.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  var overlay = document.getElementById('drawerOverlay');
+  var drawer = document.getElementById('drawer');
+  var drawerContent = document.getElementById('drawerContent');
+  var drawerTitleShort = document.getElementById('drawerTitleShort');
+  var drawerFullLink = document.getElementById('drawerFullLink');
+
+  function openDrawer(url, title) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = title;
+    drawerTitleShort.textContent = tmp.textContent;
+    drawerFullLink.href = url;
+    drawerContent.innerHTML = '<div class="drawer-loading"><div class="drawer-spinner"></div><span>Loading…</span></div>';
+    overlay.classList.add('open');
+    drawer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    fetch(url)
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        ['nav','footer','.nav','.footer','.sp-header','.sp-footer'].forEach(function(sel) {
+          doc.querySelectorAll(sel).forEach(function(el) { el.remove(); });
+        });
+        var styles = Array.from(doc.querySelectorAll('style')).map(function(s) { return s.textContent; }).join('\n');
+        drawerContent.innerHTML = '<style>' + styles + '</style>' + doc.body.innerHTML;
+        drawerContent.scrollTop = 0;
+      })
+      .catch(function() {
+        drawerContent.innerHTML = '<div style="padding:48px 32px;text-align:center;color:rgba(255,255,255,.35);"><p style="margin-bottom:16px;font-size:14px;">Could not load inline.</p><a href="' + url + '" style="color:var(--blue);font-size:13px;" target="_blank">Open full page →</a></div>';
+      });
+  }
+
+  function closeDrawer() {
+    overlay.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function filter(series) {
+    document.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
+    event.currentTarget.classList.add('active');
+    document.querySelectorAll('.media-card, .section-label').forEach(function(el) {
+      if (series === 'all' || el.dataset.series === series) {
+        el.style.display = '';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
+</script>
+</body>
+</html>
