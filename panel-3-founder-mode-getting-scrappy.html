@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / AEO -->
+  <title>Founder Mode: Getting Scrappy — Surviving, Adapting, and Building Anyway | Willpower Panel Series</title>
+  <meta name="description" content="Founders from 437 Swimwear, Good Wipes, and It's That Simple share the unfiltered truth about cash crises, burnout, guerrilla marketing, and what it actually takes to keep going when everything goes wrong." />
+  <meta name="keywords" content="founder mode, scrappy founder, startup resilience, bootstrapped brand, founder burnout, guerrilla marketing, CPG founder, DTC brand strategy, Willpower panel" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Founder Mode: Getting Scrappy" />
+  <meta property="og:description" content="Three bootstrapped founders on IP lawsuits, near-bankruptcy, four-day work weeks, and the guerrilla move that turned a porta potty into a brand icon." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Willpower" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://willpowerhq.com/content/panel-3-founder-mode-getting-scrappy" />
+
+  <!-- Fonts: matches Willpower's clean sans-serif aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────────────────── */
+    :root {
+      --bg-primary:    #0a0a0a;
+      --bg-secondary:  #111111;
+      --bg-card:       #161616;
+      --bg-accent:     #1a1a1a;
+      --border:        rgba(255,255,255,0.08);
+      --border-accent: rgba(255,255,255,0.15);
+
+      --text-primary:   #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-muted:     #666666;
+
+      --gold:          #c9a84c;
+      --gold-light:    #e0c06a;
+
+      --font:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --max-w:         780px;
+      --max-w-wide:    1100px;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Nav (minimal top bar) ──────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav__logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+    .site-nav__links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .site-nav__links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .site-nav__links a:hover { color: var(--text-primary); }
+
+    /* ─── Hero ───────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 72px 32px 64px;
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero__title {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    .hero__subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .hero__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero__meta-item svg {
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* ─── Video ──────────────────────────────────────────────────────────────── */
+    .video-section {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .video-wrapper iframe,
+    .video-wrapper .video-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Placeholder shown until YouTube URL is added */
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+    .video-placeholder__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── Panelists ──────────────────────────────────────────────────────────── */
+    .panelists {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .panelists__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .panelists__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .panelist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .panelist-card:hover { border-color: var(--border-accent); }
+    .panelist-card__name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .panelist-card__title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .panelist-card__company {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ─── Key Takeaways ──────────────────────────────────────────────────────── */
+    .takeaways {
+      max-width: var(--max-w);
+      margin: 0 auto 80px;
+      padding: 0 32px;
+    }
+    .takeaways__box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 36px 40px;
+    }
+    .takeaways__heading {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .takeaways__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .takeaways__list li {
+      display: flex;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+    .takeaways__list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 8px;
+    }
+    .takeaways__list strong {
+      font-weight: 600;
+    }
+
+    /* ─── Article Body ───────────────────────────────────────────────────────── */
+    .article {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+    .article h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 64px 0 20px;
+      line-height: 1.25;
+    }
+    .article h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 40px 0 14px;
+    }
+    .article p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+    .article p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      margin: 48px 0;
+      padding: 36px 40px;
+      background: var(--bg-accent);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      left: 32px;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      opacity: 0.6;
+    }
+    .pull-quote__text {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .pull-quote__attribution {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .pull-quote__attribution span {
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 6px;
+    }
+
+    /* Stat callout */
+    .stat-callout {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin: 40px 0;
+    }
+    .stat-callout__item {
+      flex: 1;
+      min-width: 140px;
+    }
+    .stat-callout__number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-callout__label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 64px 0;
+    }
+
+    /* ─── CTA ────────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .cta-section__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .cta-section__title {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section__subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 440px;
+      margin: 0 auto 36px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-accent);
+    }
+    .btn--ghost:hover {
+      border-color: var(--text-secondary);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .site-footer__copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .site-footer__links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .site-footer__links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .site-footer__links a:hover { color: var(--text-secondary); }
+
+    /* ─── Responsive ─────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .site-nav__links { display: none; }
+      .hero { padding: 48px 20px 40px; }
+      .video-section,
+      .panelists,
+      .takeaways,
+      .article { padding-left: 20px; padding-right: 20px; }
+      .takeaways__box { padding: 28px 24px; }
+      .pull-quote { padding: 28px 24px; }
+      .stat-callout { padding: 24px 20px; gap: 24px; }
+      .cta-section { padding: 60px 20px; }
+      .site-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+  <nav class="site-nav">
+    <a href="https://willpowerhq.com" class="site-nav__logo">Willpower</a>
+    <ul class="site-nav__links">
+      <li><a href="https://willpowerhq.com/events">Events</a></li>
+      <li><a href="https://willpowerhq.com/past-events">Past Events</a></li>
+      <li><a href="#">Content</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__eyebrow">Willpower Panel Series &mdash; Session 3</div>
+    <h1 class="hero__title">Founder Mode: Getting Scrappy</h1>
+    <p class="hero__subtitle">
+      Three bootstrapped founders — across activewear, personal care, and food — share the
+      unfiltered truth about IP lawsuits, near-bankruptcy, burnout, four-day work weeks, and
+      the guerrilla moves that built brands worth fighting for.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <!-- Calendar icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 1v2M11 1v2M1 6h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Willpower Wellness House, 2025
+      </div>
+      <div class="hero__meta-item">
+        <!-- People icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M1 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M11 12.5c1.333-.5 4-.5 4 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Moderated by Brett, Postpilot
+      </div>
+      <div class="hero__meta-item">
+        <!-- Clock icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        ~20 min read
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Video ────────────────────────────────────────────────────────────────── -->
+  <section class="video-section">
+    <div class="video-wrapper">
+      <!--
+        INSTRUCTIONS FOR WEB TEAM:
+        Replace the .video-placeholder div below with an iframe once the YouTube/Vimeo URL is ready.
+
+        YouTube embed example:
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="Willpower Panel 3 — Founder Mode: Getting Scrappy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        Vimeo embed example:
+        <iframe
+          src="https://player.vimeo.com/video/YOUR_VIDEO_ID?badge=0&autopause=0&player_id=0&app_id=58479"
+          title="Willpower Panel 3 — Founder Mode: Getting Scrappy"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="video-placeholder__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="5,3 19,12 5,21" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        <span>Video coming soon — embed URL goes here</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Panelists ─────────────────────────────────────────────────────────────── -->
+  <section class="panelists">
+    <div class="panelists__label">Featured Panelists</div>
+    <div class="panelists__grid">
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Hila</div>
+        <div class="panelist-card__title">Co-Founder</div>
+        <div class="panelist-card__company">437 Swimwear / Activewear</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Sam Nebel</div>
+        <div class="panelist-card__title">Co-Founder</div>
+        <div class="panelist-card__company">Good Wipes</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Brian</div>
+        <div class="panelist-card__title">Co-Founder</div>
+        <div class="panelist-card__company">It's That Simple</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Brett</div>
+        <div class="panelist-card__title">Moderator</div>
+        <div class="panelist-card__company">Postpilot <span style="color:var(--text-muted);font-weight:400;">(Moderator)</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Key Takeaways ──────────────────────────────────────────────────────────── -->
+  <section class="takeaways">
+    <div class="takeaways__box">
+      <div class="takeaways__heading">Key Takeaways</div>
+      <ul class="takeaways__list">
+        <li><strong>Adversity is part of the contract, not an exception.</strong> Every founder on this panel faced an existential threat — IP lawsuits, near-bankruptcy, lost purchase orders — and none of them saw it coming. Resilience isn't a trait; it's a practice you build by staying in the game.</li>
+        <li><strong>Burnout is a business risk, not just a personal one.</strong> Founder exhaustion leads directly to bad hiring, desperate decisions, and value destruction. Protecting your own energy isn't indulgent — it's one of the highest-leverage moves you can make for your company.</li>
+        <li><strong>Scrappiness means playing to your actual strengths.</strong> The best resource-constrained moves aren't copied from competitors — they come from understanding what your team is uniquely good at and scaling that relentlessly, whether it's influencer seeding, IRL events, or taking back your own social media.</li>
+        <li><strong>Going IRL is still the highest-trust marketing channel.</strong> Product sampling, pop-ups, and live events convert at a depth that no digital channel can match. The brands that build real-world touchpoints — even expensive, weird, or uncomfortable ones — earn a kind of loyalty that algorithms can't replicate.</li>
+        <li><strong>The people around you are your real safety net.</strong> When cash is tight and the math doesn't math, what keeps founders going isn't capital — it's one person who says, "I believe in you more than I believe in the money." Build those relationships before you need them.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Article Body ───────────────────────────────────────────────────────────── -->
+  <article class="article">
+
+    <h2>The Real Cost of Starting: Lawsuits, Lost Deals, and the Will to Keep Going</h2>
+
+    <p>
+      Most founder origin stories are told in reverse — from a position of success, looking back
+      at the hard parts with the warm light of hindsight. This panel resisted that instinct.
+      Brian, co-founder of It's That Simple, a low-carb meal brand now in approximately 10,000
+      grocery stores, set the tone early: he wasn't interested in a panel that was "boring and bullshit."
+    </p>
+
+    <p>
+      His story starts in early 2020. COVID hit just as the brand launched, and paradoxically, the
+      lockdown was a boost — they were fully in stock and built DTC momentum quickly. Then, less than
+      six months in, an IP lawsuit arrived. "Situationally, this is about how you respond to things,"
+      Brian said. "We felt like our business was going to go away, but we kept moving forward." Shortly
+      after, a massive purchase order came in from one of the largest retailers in the country. Then the
+      retailer discovered the ongoing litigation and pulled the deal. The order disappeared.
+    </p>
+
+    <p>
+      Three years later, they're in that same retailer — every single store. The arc wasn't clean.
+      It wasn't fast. But it happened because the team kept showing up. <strong>"Legal stuff happens.
+      People stuff happens,"</strong> Brian said. "What matters is perseverance." The lesson isn't that
+      everything works out eventually — it's that the founders who survive are the ones who don't
+      let any single event become the final word.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">The problems we face now are the same problems we faced when we started the brand. We're an eight-figure company, but the challenges haven't changed. You just get better at surviving them.</p>
+      <div class="pull-quote__attribution">Brian <span>Co-Founder, It's That Simple</span></div>
+    </div>
+
+    <p>
+      Sam Nebel's journey with Good Wipes has spanned 12 and a half years, and he's direct about the
+      timeline: "When a lot of founders start out, you think you're going on a five-year journey. It's
+      really going to end up being more like 15, maybe 20." That recalibration — from sprint to marriage —
+      changes everything. It changes how you hire, how you pace yourself, and how much you're willing
+      to invest in the parts of your life that aren't the company. Good Wipes is now in Walmart, Kroger,
+      Target, and H-E-B. The first seven years, Sam says, were "really scrappy and ineffective." The
+      compound effect of staying in was what eventually built the platform.
+    </p>
+
+    <h2>Burnout Is a Business Problem — Not a Personal Weakness</h2>
+
+    <p>
+      Hila, co-founder of 437 — an eight-figure activewear brand that began as a side project named
+      after a house number at Queens University — offered the panel's most candid account of what
+      happens when founder identity and personal life collapse into each other.
+    </p>
+
+    <p>
+      The brand had real momentum: Kendall Jenner was wearing their activewear, they were getting
+      into major retailers, revenue was growing. And underneath all of it, she and her co-founder
+      were burning out. They'd hired a replacement CEO. They'd brought on expensive advisors. They
+      were spending faster than they were earning, not because of reckless ambition, but because
+      they were desperate to hand off the weight. Then, while Hila was at a retreat in Sri Lanka,
+      her COO called: "We're about to go bankrupt."
+    </p>
+
+    <p>
+      The response was counterintuitive. Instead of raising capital or cutting headcount, they
+      cut everything else: every agency, every external vendor, email marketing, SMS, ad buying.
+      They took back control of their own brand — Hila and her co-founder running Canva themselves,
+      discovering email flows that still had swimwear imagery from four years prior. <strong>"We
+      realized we had these flows that were completely off-brand. We're charging $200 for a workout
+      set. Everything needs to be exceptional."</strong> Getting back into the weeds, it turned out,
+      was the fix.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">Sometimes we miss the reason why do we want such massive companies. What are we avoiding deep down? What are we running away from? Sometimes I think we need to do a little founder therapy to take our stand.</p>
+      <div class="pull-quote__attribution">Hila <span>Co-Founder, 437 Swimwear / Activewear</span></div>
+    </div>
+
+    <p>
+      When raises became impossible and morale was fragile, they found a different currency to offer
+      their team: time. They implemented a four-day work week — and three years later, they haven't
+      gone back. "You can still provide value to people even outside of cash," Hila said. It's a
+      principle that sounds generous but is also strategically sound: a team that wants to be there
+      is more productive, more creative, and less likely to exit than one that's grinding on fumes.
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">9.5</div>
+        <div class="stat-callout__label">Years 437 has been building — started as a side project, now an eight-figure brand</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">12.5</div>
+        <div class="stat-callout__label">Years Good Wipes has been in market — first 7 described as "really scrappy and ineffective"</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">4-day</div>
+        <div class="stat-callout__label">Work week at 437 — implemented during a cash crisis as an alternative to layoffs</div>
+      </div>
+    </div>
+
+    <h2>The Porta Palace: What Guerrilla Marketing Looks Like When It Actually Works</h2>
+
+    <p>
+      Good Wipes has a problem that most consumer brands would recognize: the product is fundamentally
+      private. You don't talk about it at dinner. You don't wear it like a billboard. Getting word-of-mouth
+      going requires either a very honest friend group or a brand that is willing to take the private
+      and make it radically, unavoidably public.
+    </p>
+
+    <p>
+      That's the logic behind the Porta Palace. It started modestly — an opportunity at an Atlanta event
+      to outfit a porta potty and hand out wipes. The line stretched out both doors all day. The team
+      had a good time. Internally, someone said: let's make this a thing. They found an oversized,
+      triple-wide porta potty on what sounds like a very specific corner of Craigslist, refurbished
+      it, outfitted it in all gold, and turned it into a touring experiential unit.
+    </p>
+
+    <p>
+      Now the Porta Palace goes to 15 to 20 events a year — Revolve Fest, Coachella, Stagecoach, Kilby,
+      and more. They get invited for free because event organizers want it there. <strong>"We have way
+      more events than we can even do, and people beg us to come,"</strong> Sam said. The economics
+      are scrappy in the best sense: minimal spend, maximum earned media, and the ability to put the
+      product in someone's hands at the exact moment they need it — then interview them on the way out.
+    </p>
+
+    <p>
+      The apex of the strategy came at Diplo's New York Run Club, where the DJ set a 5K PR with a
+      Good Wipes brand ambassador pacing him, then visited the Porta Palace after crossing the finish
+      line. That moment became a t-shirt. It is, as Sam noted with some wonder, an outcome that no
+      advertising budget could have planned for. They've since built an IP suite around the concept —
+      because when you build something no competitor can copy, you protect it.
+    </p>
+
+    <h2>Play to Your Strengths, Not the Playbook</h2>
+
+    <p>
+      One of the sharpest moments of tactical clarity in the panel came from Hila's answer to an
+      audience question about influencer marketing. She was transparent about the strategy at 437 —
+      they're preparing to roughly 3x their influencer spend over the next quarter — but she was just
+      as clear about why it works for them specifically: when someone wears a sports bra and legging,
+      it's a walking billboard. The product is the ad.
+    </p>
+
+    <p>
+      The corollary: if you sell jewelry that's unrecognizable from a distance, the same influencer
+      playbook doesn't work. "Apply the same exact strategy as us," she said, "and that's not going
+      to work for them." The scrappy founder's instinct is to copy what's working elsewhere and move
+      fast. The better instinct is to ask what your team is actually built for — and scale that with
+      the same energy.
+    </p>
+
+    <p>
+      At 437, the team is built for creative execution, not event logistics. So they're not chasing
+      elaborate pop-ups. They're systematizing influencer seeding: building SOPs, hiring virtual
+      assistants to handle outreach and order placement, and freeing their internal partnerships team
+      to focus on the higher-leverage work — finding niche creators and designing full influencer
+      collections that can drive multiple six figures on a single launch day. The scrappiness isn't
+      in doing everything; it's in doing the right things with ruthless efficiency.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">You can't build a consumer brand behind a computer screen. Social is part of it, influencer marketing is huge — but we always try to tie in something IRL. You maximize every opportunity to be in front of people, and then you put a phone in it.</p>
+      <div class="pull-quote__attribution">Sam Nebel <span>Co-Founder, Good Wipes</span></div>
+    </div>
+
+    <p>
+      Brian's version of this principle plays out differently in grocery. It's That Simple sells
+      center-store items, which means their brand ultimately lives or dies at the shelf — not in
+      an Instagram carousel. During COVID, the strategy was clear: Amazon. But winning in grocery
+      requires a different muscle entirely: in-store awareness, shelf placement, and understanding
+      the conversion and repeat data that tells you where in the purchase funnel you're actually
+      leaking. "We have incredible purchase conversions. We have incredible repeat," Brian said.
+      "So ours is about awareness." The math told them where to push. They pushed there.
+    </p>
+
+    <hr class="divider" />
+
+    <h2>The People Around You Are the Business</h2>
+
+    <p>
+      The panel closed on a question that cut to the human center of everything: in your lowest
+      moments, what actually got you through? Not tactically — personally.
+    </p>
+
+    <p>
+      The answers weren't about capital infusions or pivots. They were about people. Brian described
+      lying in bed during one of his lowest stretches — cash tight, the math not mathing, existential
+      threats stacking up — when his wife dropped a notepad on his chest and told him to write a list
+      of everyone who believed in him. "That hit hard," he said.
+    </p>
+
+    <p>
+      Sam's version of this was even more direct. He called his best friend — someone who had invested
+      in Good Wipes — and told him he was thinking about quitting. His friend's response: "I care more
+      about you than I do about the money." Sam's voice caught on that memory. <strong>"You got people
+      like that in your life? You can keep going. That's the safety net."</strong>
+    </p>
+
+    <p>
+      Hila's lowest point came during the bootstrapped brand's near-bankruptcy: she and her co-founder
+      removed their own salaries for a year and a half, considered selling their homes, and came closer
+      to the edge than their public profile ever suggested. What brought her back wasn't a financial
+      lifeline — it was reconnecting with the original reason they built 437 in the first place. "I
+      tuned back into the love that I had for this business, why we started it." When the why is
+      solid, the how becomes a solvable problem.
+    </p>
+
+    <p>
+      What this panel offered — across three very different brands, categories, and founder personalities —
+      was a consistent argument: being scrappy isn't just about cutting costs or finding creative hacks.
+      It's about sustaining the will to keep going when the circumstances give you every reason not to.
+      That will doesn't come from strategy decks or growth metrics. It comes from the clarity of knowing
+      why you started, the people who remind you of that when you forget, and the discipline to protect
+      your own energy as fiercely as you protect your business.
+    </p>
+
+  </article>
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-section__eyebrow">Willpower Content Library</div>
+    <h2 class="cta-section__title">More from the Panel Series</h2>
+    <p class="cta-section__subtitle">
+      Access recaps, recordings, and insights from every Willpower panel —
+      or join us at the next event.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn--primary">View All Panels</a>
+      <a href="https://willpowerhq.com/events" class="btn btn--ghost">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span class="site-footer__copy">&copy; 2025 Willpower. All rights reserved.</span>
+    <ul class="site-footer__links">
+      <li><a href="https://willpowerhq.com">Home</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+      <li><a href="#">Content Library</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / AEO -->
+  <title>Founder Mode in Health &amp; Wellness: 10 Lessons from Building Bloom | Willpower Keynote</title>
+  <meta name="description" content="Greg from Bloom Nutrition shares 10 hard-won lessons from a decade of building the #1 greens brand in U.S. retail — from influencer arbitrage and ruthless focus to platform brands and the power of staying in the game." />
+  <meta name="keywords" content="founder mode health wellness, Bloom Nutrition, CPG founder lessons, influencer marketing strategy, health brand building, TikTok shop CPG, energy drink brand, founder keynote, Willpower keynote" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Founder Mode in Health &amp; Wellness: 10 Lessons from Building Bloom" />
+  <meta property="og:description" content="Bloom co-founder Greg on why 10-year overnight success is the only kind that lasts — and the hard truths behind one of the fastest-growing brands in health and wellness." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Willpower" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://willpowerhq.com/content/keynote-founder-mode-in-health-and-wellness" />
+
+  <!-- Fonts: matches Willpower's clean sans-serif aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────────────────── */
+    :root {
+      --bg-primary:    #0a0a0a;
+      --bg-secondary:  #111111;
+      --bg-card:       #161616;
+      --bg-accent:     #1a1a1a;
+      --border:        rgba(255,255,255,0.08);
+      --border-accent: rgba(255,255,255,0.15);
+
+      --text-primary:   #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-muted:     #666666;
+
+      --gold:          #c9a84c;
+      --gold-light:    #e0c06a;
+
+      --font:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --max-w:         780px;
+      --max-w-wide:    1100px;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Nav (minimal top bar) ──────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav__logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+    .site-nav__links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .site-nav__links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .site-nav__links a:hover { color: var(--text-primary); }
+
+    /* ─── Hero ───────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 72px 32px 64px;
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero__title {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    .hero__subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .hero__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero__meta-item svg {
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* ─── Video ──────────────────────────────────────────────────────────────── */
+    .video-section {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .video-wrapper iframe,
+    .video-wrapper .video-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Placeholder shown until YouTube URL is added */
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+    .video-placeholder__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── Panelists ──────────────────────────────────────────────────────────── */
+    .panelists {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .panelists__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .panelists__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .panelist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .panelist-card:hover { border-color: var(--border-accent); }
+    .panelist-card__name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .panelist-card__title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .panelist-card__company {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ─── Key Takeaways ──────────────────────────────────────────────────────── */
+    .takeaways {
+      max-width: var(--max-w);
+      margin: 0 auto 80px;
+      padding: 0 32px;
+    }
+    .takeaways__box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 36px 40px;
+    }
+    .takeaways__heading {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .takeaways__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .takeaways__list li {
+      display: flex;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+    .takeaways__list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 8px;
+    }
+    .takeaways__list strong {
+      font-weight: 600;
+    }
+
+    /* ─── Article Body ───────────────────────────────────────────────────────── */
+    .article {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+    .article h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 64px 0 20px;
+      line-height: 1.25;
+    }
+    .article h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 40px 0 14px;
+    }
+    .article p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+    .article p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      margin: 48px 0;
+      padding: 36px 40px;
+      background: var(--bg-accent);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      left: 32px;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      opacity: 0.6;
+    }
+    .pull-quote__text {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .pull-quote__attribution {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .pull-quote__attribution span {
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 6px;
+    }
+
+    /* Stat callout */
+    .stat-callout {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin: 40px 0;
+    }
+    .stat-callout__item {
+      flex: 1;
+      min-width: 140px;
+    }
+    .stat-callout__number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-callout__label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 64px 0;
+    }
+
+    /* ─── CTA ────────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .cta-section__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .cta-section__title {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section__subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 440px;
+      margin: 0 auto 36px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-accent);
+    }
+    .btn--ghost:hover {
+      border-color: var(--text-secondary);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .site-footer__copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .site-footer__links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .site-footer__links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .site-footer__links a:hover { color: var(--text-secondary); }
+
+    /* ─── Responsive ─────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .site-nav__links { display: none; }
+      .hero { padding: 48px 20px 40px; }
+      .video-section,
+      .panelists,
+      .takeaways,
+      .article { padding-left: 20px; padding-right: 20px; }
+      .takeaways__box { padding: 28px 24px; }
+      .pull-quote { padding: 28px 24px; }
+      .stat-callout { padding: 24px 20px; gap: 24px; }
+      .cta-section { padding: 60px 20px; }
+      .site-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+  <nav class="site-nav">
+    <a href="https://willpowerhq.com" class="site-nav__logo">Willpower</a>
+    <ul class="site-nav__links">
+      <li><a href="https://willpowerhq.com/events">Events</a></li>
+      <li><a href="https://willpowerhq.com/past-events">Past Events</a></li>
+      <li><a href="#">Content</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__eyebrow">Willpower Panel Series &mdash; Keynote</div>
+    <h1 class="hero__title">Founder Mode in Health &amp; Wellness: 10 Lessons from Building Bloom</h1>
+    <p class="hero__subtitle">
+      Bloom co-founder Greg breaks down the real story behind one of the fastest-growing brands
+      in health and wellness — from scrappy influencer arbitrage and bootstrapped beginnings
+      to 80,000 retail doors and a partnership with Keurig Dr. Pepper.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <!-- Calendar icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 1v2M11 1v2M1 6h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Willpower Wellness House, 2025
+      </div>
+      <div class="hero__meta-item">
+        <!-- People icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M1 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M11 12.5c1.333-.5 4-.5 4 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Keynote by Greg LaVecchia, Bloom Nutrition
+      </div>
+      <div class="hero__meta-item">
+        <!-- Clock icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        ~20 min read
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Video ────────────────────────────────────────────────────────────────── -->
+  <section class="video-section">
+    <div class="video-wrapper">
+      <!--
+        INSTRUCTIONS FOR WEB TEAM:
+        Replace the .video-placeholder div below with an iframe once the YouTube/Vimeo URL is ready.
+
+        YouTube embed example:
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="Willpower Keynote — Founder Mode in Health &amp; Wellness"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        Vimeo embed example:
+        <iframe
+          src="https://player.vimeo.com/video/YOUR_VIDEO_ID?badge=0&autopause=0&player_id=0&app_id=58479"
+          title="Willpower Keynote — Founder Mode in Health &amp; Wellness"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="video-placeholder__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="5,3 19,12 5,21" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        <span>Video coming soon — embed URL goes here</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Speakers ─────────────────────────────────────────────────────────────── -->
+  <section class="panelists">
+    <div class="panelists__label">Featured Speaker</div>
+    <div class="panelists__grid">
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Greg LaVecchia</div>
+        <div class="panelist-card__title">Co-Founder &amp; CEO</div>
+        <div class="panelist-card__company">Bloom Nutrition</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Mari LaVecchia</div>
+        <div class="panelist-card__title">Co-Founder</div>
+        <div class="panelist-card__company">Bloom Nutrition</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Key Takeaways ──────────────────────────────────────────────────────────── -->
+  <section class="takeaways">
+    <div class="takeaways__box">
+      <div class="takeaways__heading">Key Takeaways</div>
+      <ul class="takeaways__list">
+        <li><strong>Brand compounds where product cannot.</strong> Bloom launched as a pre-workout company but now owns a nine-figure greens business and a top-five energy drink — because they built a brand and community first, and plugged new innovations in later. A strong brand means you never start from zero again.</li>
+        <li><strong>Influencer arbitrage beats paid advertising at early scale.</strong> Bloom's fastest growth lever wasn't media spend — it was identifying underpriced influencer audiences and going all-in before the rest of the market caught up. This is still the playbook for D2C brands entering retail.</li>
+        <li><strong>Ruthless focus is a competitive moat.</strong> Greg ran Bloom for 10 years with only two goals at a time and zero diversified investments. Most competitors eventually take the acquisition, pull back, or get distracted — outlasting them requires staying locked in while they drift.</li>
+        <li><strong>Your greatest opportunities cannot be predicted — only caught.</strong> COVID, TikTok, TikTok Shop, and GLP-1s were all macro shifts Bloom rode because they stayed close to culture. The right mindset isn't forecasting; it's maintaining the widest possible aperture for what's emerging right now.</li>
+        <li><strong>Saturation is not your enemy — education cost is.</strong> Bloom did not invent greens, sodas, or energy drinks. They let Red Bull, Athletic Greens, and Poppy spend billions educating the market, then entered with better products at better prices in the same aisles. Let incumbents pay for category awareness.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Article Body ───────────────────────────────────────────────────────────── -->
+  <article class="article">
+
+    <h2>The Myth of the Overnight Success</h2>
+
+    <p>
+      When people look at Bloom Nutrition today — number one greens brand in U.S. retail, top-five energy drink in mass retail, 80,000 retail doors, 15 billion views on TikTok alone — they tend to see a two-year rocket ship. What they're actually looking at is a 10-year community-building career that reached an inflection point most founders never get to.
+    </p>
+
+    <p>
+      Greg LaVecchia, Bloom's co-founder, used his Willpower keynote not to celebrate the highlight reel but to dissect the connective tissue underneath it — the decisions, relocations, pivots, and convictions that made the scale possible. His framing was deliberate: what looks like overnight success from the outside is almost always the compound interest of years of unglamorous work, pattern recognition, and refusing to get comfortable.
+    </p>
+
+    <p>
+      The through-line of his 10 lessons is something that doesn't get discussed enough in the founder ecosystem: <strong>brand is the only asset that can absorb reinvention.</strong> Bloom launched as a pre-workout company. That product is now irrelevant to the brand's identity. But the community they built around that pre-workout became the launchpad for a greens business, an energy drink line, a soda, and a distribution partnership with Keurig Dr. Pepper. The product can evolve. The brand, if built correctly, never starts over.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">What seems like a two-year overnight success energy drink company is actually a full connecting-the-dots moment of a 10-year community-building career. 10-year overnight success.</p>
+      <div class="pull-quote__attribution">Greg LaVecchia <span>Co-Founder, Bloom Nutrition</span></div>
+    </div>
+
+    <h2>The Influencer Playbook That Most Brands Are Still Missing</h2>
+
+    <p>
+      In 2018, most consumer brands were either chasing algorithmic reach or signing athletes and celebrities to coupon-code arrangements. Bloom did something that looked, at the time, almost embarrassingly unsophisticated: they treated Mari's personal Instagram account as a business asset and ran paid advertising against it from day one.
+    </p>
+
+    <p>
+      The instinct was contrarian. Paid amplification of a personal fitness account was not the playbook anyone was running. But Greg and Mari understood something that their competitors didn't: they had a message, they had great content, and they just needed more eyes on it faster than the algorithm would provide. So they bought those eyes — at a time when that was still cheap and largely uncontested.
+    </p>
+
+    <p>
+      That early audience became Bloom's nucleus. When they eventually launched product, they weren't cold-starting. They had a community that already trusted the source. And when they were ready to go after retail buyers at Target, they found another version of the same arbitrage: they researched which influencers the Target buyers followed, hired those creators, and made sure that when an email from Bloom landed in a buyer's inbox, they'd already been seeing the brand everywhere for weeks. "People forget that there are humans that work at Target," Greg noted, "and they will make emotional decisions."
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">15B</div>
+        <div class="stat-callout__label">TikTok views across Bloom's content ecosystem</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">80,000</div>
+        <div class="stat-callout__label">Retail doors globally (roughly 70,000 in the U.S.)</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">$180M</div>
+        <div class="stat-callout__label">Bootstrapped Shopify revenue before first major retail launch</div>
+      </div>
+    </div>
+
+    <p>
+      The lesson Greg drew from the influencer strategy extends well beyond social media. The fundamental principle is identifying where attention is underpriced, concentrating resources there before the market corrects, and moving on before saturation drives up the cost. He applied it to influencer marketing in 2018. He applied it to Amazon in the early days of DTC. He applied it to TikTok Shop. The vehicle changes; the mindset doesn't.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">I am more than happy to let Athletic Greens go pay the Joe Rogan invoice and tell everyone they should take a greens powder. And then ours is half the price and available in all of your favorite retailers.</p>
+      <div class="pull-quote__attribution">Greg LaVecchia <span>Co-Founder, Bloom Nutrition</span></div>
+    </div>
+
+    <h2>Focus as a Weapon: Why Bloom Only Has Two Goals at a Time</h2>
+
+    <p>
+      One of the most counterintuitive parts of Greg's keynote was his treatment of focus — not as a productivity tip but as a genuine competitive strategy. In an environment where founders are constantly encouraged to diversify their portfolios, hedge their bets, and build multiple income streams, Bloom's entire trajectory was built on the opposite instinct: 100% in, for 10 years straight.
+    </p>
+
+    <p>
+      Greg described operating Bloom with only two active goals at any given time. Not two departments, not two channels — two goals, total. The discipline required to maintain that constraint as the company scaled from bootstrapped startup to nine-figure brand is significant. Resources grow. Opportunities multiply. The temptation to spread attention is constant. Most founders eventually rationalize the drift by calling it strategic diversification.
+    </p>
+
+    <p>
+      Greg's framework for resisting it is pragmatic: he runs the company by hiring for problems, not org charts. His problems are the things he doesn't enjoy doing. The things he does enjoy — brand, community, innovation — he keeps. Everything else goes to people who are genuinely passionate about it, because passionate people will always outperform competent-but-indifferent ones over the long term. The result is a founder who spends the majority of his time doing things that energize him, surrounded by specialists who care deeply about the domains he doesn't.
+    </p>
+
+    <p>
+      The focus thesis also applies to marketing budget. Greg described a deliberate anti-peanut-butter philosophy: rather than spreading spend evenly across channels, Bloom concentrates resources to create what he calls "tsunami moments" — periods of concentrated, overwhelming presence on a single channel or platform. When Bloom launched on Amazon, they bought the front page for 24 hours. When they launched at Target, they wanted to "turn their website green." The goal isn't consistent presence; it's memorable dominance.
+    </p>
+
+    <hr class="divider" />
+
+    <h2>Geography, Proximity, and the Underrated Advantage of Moving</h2>
+
+    <p>
+      Greg and Mari moved five times in five years: Philadelphia to New York, New York to Boulder, Boulder back to Brooklyn, Brooklyn to Los Angeles when COVID hit, and Los Angeles to Austin when the center of gravity in CPG entrepreneurship shifted. Each move was strategic — not just for the network effects of being in the right city, but for the discipline that relocation forces on a founding team.
+    </p>
+
+    <p>
+      The Boulder chapter is telling. They lived there for a year and a half, knew almost no one by the end of it, and worked seven days a week the entire time. That's not an accident. Removing themselves from the social inertia of home turf was, in part, the point. "We needed to get away from the influences in our hometown." The isolation created focus. The focus created results. The results created confidence. That cycle repeated itself in every city they moved to.
+    </p>
+
+    <p>
+      The Austin chapter is where Greg believes the next wave is being built. His read on the current moment: retail is democratizing faster than most founders realize. Major retailers that used to require $30 million in revenue before taking a meeting are now moving closer to $10 million, or lower. The innovation they need is sitting in founder-led brands, and they're coming to conferences like Expo West to find it. <strong>The retailers need founders more than founders need retailers right now.</strong> That is a structural shift, and it's moving fast.
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">#1</div>
+        <div class="stat-callout__label">Greens and superfoods brand across all U.S. retail</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">Top 5</div>
+        <div class="stat-callout__label">Energy drink in mass retail in only the second year of launch</div>
+      </div>
+    </div>
+
+    <h2>Staying in the Game: Commitment as the Ultimate Moat</h2>
+
+    <p>
+      Perhaps the most quietly radical argument in Greg's keynote is the one about survival. He didn't describe Bloom's competitive advantage in terms of product formulation, distribution, or marketing innovation — all of which matter. He described it in terms of simply being there, still running hard, while competitors pulled back.
+    </p>
+
+    <p>
+      The pattern is consistent across the brands he's watched come and go: a competitor gets strong enough to attract acquisition interest, or comfortable enough to stop pushing, or distracted enough by new opportunities that they lose market share. And every time one of them pulls back, the brands that stayed fully committed absorb what they leave behind. You don't have to beat the competition, Greg argued. You just have to outlast them.
+    </p>
+
+    <p>
+      This framing matters especially in health and wellness, where brands are continuously tempted by adjacent categories, new formats, and licensing opportunities. The category rewards brand equity more than almost any other consumer space — consumers are loyal, they evangelize, and they make repeat purchases across product lines if they trust the brand. But that equity erodes fast when a founder's attention fragments. The brands that compound in wellness are the ones where the founders stayed in founder mode: obsessive, present, and unwilling to coast.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">To win the game, you just need to stay in the game. All we needed to do was outlast them. It is just a matter of time until they pull the profitability card or go take the acquisition. And then that is your time.</p>
+      <div class="pull-quote__attribution">Greg LaVecchia <span>Co-Founder, Bloom Nutrition</span></div>
+    </div>
+
+    <p>
+      When Greg was asked about the single biggest growth lever that got Bloom to where it is, his answer was immediate: influencer arbitrage. But the deeper answer — the one that runs beneath all 10 lessons — is commitment. The influencer strategy only worked because they stayed with it long enough to build real community. The brand equity only compounded because they never stopped investing in it. The connecting-the-dots moments — like discovering that their top pre-workout flavors became their top energy drink flavors six years later — only happen to founders who are still around to connect them.
+    </p>
+
+    <p>
+      Ten-year overnight success isn't a paradox. It's the actual formula. And for founders building in health and wellness right now — where the retail landscape is opening up, GLP-1 tailwinds are reshaping consumer demand, and TikTok Shop is still dramatically underpriced — the window to do what Bloom did is still open. But only for the ones willing to stay in the room.
+    </p>
+
+  </article>
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-section__eyebrow">Willpower Content Library</div>
+    <h2 class="cta-section__title">More from the Panel Series</h2>
+    <p class="cta-section__subtitle">
+      Access recaps, recordings, and insights from every Willpower panel —
+      or join us at the next event.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn--primary">View All Panels</a>
+      <a href="https://willpowerhq.com/events" class="btn btn--ghost">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span class="site-footer__copy">&copy; 2025 Willpower. All rights reserved.</span>
+    <ul class="site-footer__links">
+      <li><a href="https://willpowerhq.com">Home</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+      <li><a href="#">Content Library</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

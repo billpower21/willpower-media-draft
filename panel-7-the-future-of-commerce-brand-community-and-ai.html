@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / AEO -->
+  <title>The Future of Commerce: Brand, Community & AI | Willpower Panel Series</title>
+  <meta name="description" content="Leaders from Tecovas, YETI, and Estée Lauder Companies joined Shopify at Willpower's panel to explore how community-led brands will win in the age of agentic commerce and AI." />
+  <meta name="keywords" content="brand community strategy, agentic commerce, AI in retail, community-led growth, voice of customer, Tecovas CMO, YETI marketing, Estée Lauder, Willpower panel" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Future of Commerce: Brand, Community & AI" />
+  <meta property="og:description" content="CMOs from Tecovas, YETI, and Estée Lauder on why authentic community is the only moat that survives AI-driven commerce." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Willpower" />
+
+  <!-- Canonical — update with live URL -->
+  <link rel="canonical" href="https://willpowerhq.com/content/panel-7-future-of-commerce-brand-community-ai" />
+
+  <!-- Fonts: matches Willpower's clean sans-serif aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────────────────── */
+    :root {
+      --bg-primary:    #0a0a0a;
+      --bg-secondary:  #111111;
+      --bg-card:       #161616;
+      --bg-accent:     #1a1a1a;
+      --border:        rgba(255,255,255,0.08);
+      --border-accent: rgba(255,255,255,0.15);
+
+      --text-primary:   #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-muted:     #666666;
+
+      --gold:          #c9a84c;
+      --gold-light:    #e0c06a;
+
+      --font:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --max-w:         780px;
+      --max-w-wide:    1100px;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Nav (minimal top bar) ──────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav__logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+    .site-nav__links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .site-nav__links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .site-nav__links a:hover { color: var(--text-primary); }
+
+    /* ─── Hero ───────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 72px 32px 64px;
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero__title {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    .hero__subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .hero__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero__meta-item svg {
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* ─── Video ──────────────────────────────────────────────────────────────── */
+    .video-section {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .video-wrapper iframe,
+    .video-wrapper .video-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Placeholder shown until YouTube URL is added */
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+    .video-placeholder__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── Panelists ──────────────────────────────────────────────────────────── */
+    .panelists {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .panelists__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .panelists__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .panelist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .panelist-card:hover { border-color: var(--border-accent); }
+    .panelist-card__name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .panelist-card__title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .panelist-card__company {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ─── Key Takeaways ──────────────────────────────────────────────────────── */
+    .takeaways {
+      max-width: var(--max-w);
+      margin: 0 auto 80px;
+      padding: 0 32px;
+    }
+    .takeaways__box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 36px 40px;
+    }
+    .takeaways__heading {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .takeaways__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .takeaways__list li {
+      display: flex;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+    .takeaways__list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 8px;
+    }
+    .takeaways__list strong {
+      font-weight: 600;
+    }
+
+    /* ─── Article Body ───────────────────────────────────────────────────────── */
+    .article {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+    .article h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 64px 0 20px;
+      line-height: 1.25;
+    }
+    .article h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 40px 0 14px;
+    }
+    .article p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+    .article p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      margin: 48px 0;
+      padding: 36px 40px;
+      background: var(--bg-accent);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      left: 32px;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      opacity: 0.6;
+    }
+    .pull-quote__text {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .pull-quote__attribution {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .pull-quote__attribution span {
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 6px;
+    }
+
+    /* Stat callout */
+    .stat-callout {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin: 40px 0;
+    }
+    .stat-callout__item {
+      flex: 1;
+      min-width: 140px;
+    }
+    .stat-callout__number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-callout__label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 64px 0;
+    }
+
+    /* ─── CTA ────────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .cta-section__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .cta-section__title {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section__subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 440px;
+      margin: 0 auto 36px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-accent);
+    }
+    .btn--ghost:hover {
+      border-color: var(--text-secondary);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .site-footer__copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .site-footer__links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .site-footer__links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .site-footer__links a:hover { color: var(--text-secondary); }
+
+    /* ─── Responsive ─────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .site-nav__links { display: none; }
+      .hero { padding: 48px 20px 40px; }
+      .video-section,
+      .panelists,
+      .takeaways,
+      .article { padding-left: 20px; padding-right: 20px; }
+      .takeaways__box { padding: 28px 24px; }
+      .pull-quote { padding: 28px 24px; }
+      .stat-callout { padding: 24px 20px; gap: 24px; }
+      .cta-section { padding: 60px 20px; }
+      .site-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+  <nav class="site-nav">
+    <a href="https://willpowerhq.com" class="site-nav__logo">Willpower</a>
+    <ul class="site-nav__links">
+      <li><a href="https://willpowerhq.com/events">Events</a></li>
+      <li><a href="https://willpowerhq.com/past-events">Past Events</a></li>
+      <li><a href="#">Content</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__eyebrow">Willpower Panel Series &mdash; Session 7</div>
+    <h1 class="hero__title">The Future of Commerce: Brand, Community &amp; AI</h1>
+    <p class="hero__subtitle">
+      Leaders from Tecovas, YETI, and Estée Lauder Companies discuss why authentic community
+      is the only competitive moat that compounds — and why it's the brand asset most likely
+      to survive the rise of agentic commerce.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <!-- Calendar icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 1v2M11 1v2M1 6h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Willpower Wellness House, 2025
+      </div>
+      <div class="hero__meta-item">
+        <!-- People icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M1 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M11 12.5c1.333-.5 4-.5 4 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Moderated by Glenn Begwein, Shopify
+      </div>
+      <div class="hero__meta-item">
+        <!-- Clock icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        ~25 min read
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Video ────────────────────────────────────────────────────────────────── -->
+  <section class="video-section">
+    <div class="video-wrapper">
+      <!--
+        INSTRUCTIONS FOR WEB TEAM:
+        Replace the .video-placeholder div below with an iframe once the YouTube/Vimeo URL is ready.
+
+        YouTube embed example:
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="Willpower Panel 7 — The Future of Commerce: Brand, Community & AI"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        Vimeo embed example:
+        <iframe
+          src="https://player.vimeo.com/video/YOUR_VIDEO_ID?badge=0&autopause=0&player_id=0&app_id=58479"
+          title="Willpower Panel 7"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="video-placeholder__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="5,3 19,12 5,21" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        <span>Video coming soon — embed URL goes here</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Panelists ─────────────────────────────────────────────────────────────── -->
+  <section class="panelists">
+    <div class="panelists__label">Featured Panelists</div>
+    <div class="panelists__grid">
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Krista Dalton</div>
+        <div class="panelist-card__title">CMO &amp; CDO</div>
+        <div class="panelist-card__company">Tecovas</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Bill Neff</div>
+        <div class="panelist-card__title">VP of Marketing</div>
+        <div class="panelist-card__company">YETI</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Kumkum Pinto</div>
+        <div class="panelist-card__title">VP of Product</div>
+        <div class="panelist-card__company">Estée Lauder Companies</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Glenn Begwein</div>
+        <div class="panelist-card__title">Office of the President</div>
+        <div class="panelist-card__company">Shopify <span style="color:var(--text-muted);font-weight:400;">(Moderator)</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Key Takeaways ──────────────────────────────────────────────────────────── -->
+  <section class="takeaways">
+    <div class="takeaways__box">
+      <div class="takeaways__heading">Key Takeaways</div>
+      <ul class="takeaways__list">
+        <li><strong>Community is the only moat that compounds.</strong> YETI grew from a fishing brand into 13+ passion verticals through ambassador word-of-mouth, not advertising spend. The compounding effect is nearly impossible to reverse-engineer.</li>
+        <li><strong>Voice of customer is your most underused growth lever.</strong> Tecovas's unpaid superfan interviews — zero incentive offered — produced more loyalty-building signal than any campaign. Listening, it turns out, is its own reward program.</li>
+        <li><strong>AI should amplify human connection, not replace it.</strong> The brands winning with AI are deploying it upstream: synthesizing reports, surfacing VOC signals, and accelerating internal workflows — not swapping out the human moments that build trust.</li>
+        <li><strong>Agentic commerce rewards community-first brands.</strong> When AI agents recommend products, they'll surface brands with the most trusted content and the most active community signals. The brands building community today are training tomorrow's algorithms.</li>
+        <li><strong>Don't treat community as a channel — treat it as a product.</strong> Invest in it. Evolve it. Meet people where they are. The brands that win aren't extracting value from communities; they're genuinely part of them.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Article Body ───────────────────────────────────────────────────────────── -->
+  <article class="article">
+
+    <h2>From Boots to Culture: How Commerce Becomes Community</h2>
+
+    <p>
+      Tecovas opened its first retail store with a clear product thesis: sell handcrafted cowboy boots
+      to people who appreciate quality. What they discovered was something else entirely. People didn't
+      leave the store talking about the boots. They left talking about the experience — the associates,
+      the atmosphere, the margarita someone handed them at the door.
+    </p>
+
+    <p>
+      "When I was first looking at Tecovas," said Krista Dalton, the brand's CMO and CDO, "the thing
+      everyone told me was, 'I've been to your store, they gave me a margarita, and I loved it.' And
+      everybody I met didn't say 'I love your boots.' They more so talked about the store experience."
+    </p>
+
+    <p>
+      That moment of recognition — that you've built something bigger than a product — is the inflection
+      point every brand wants to find and almost none can plan for. The Western market, Dalton noted,
+      carries a particular energy: it's genuinely welcoming. A customer walked into one of their stores
+      ahead of Beyoncé's Cowboy Carter tour asking to be dressed from scratch. The associate's response
+      wasn't a sales pitch. It was an invitation. <strong>"Let's find things that make you feel comfortable
+      and confident."</strong> That's not a transaction. That's community.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">Don't treat community as a channel. Treat it as a product. Actually invest in it. Help grow it. Evolve it as you do your product — not as a campaign.</p>
+      <div class="pull-quote__attribution">Bill Neff <span>VP of Marketing, YETI</span></div>
+    </div>
+
+    <h2>The Human Network: Why YETI Doesn't Need a Million Followers</h2>
+
+    <p>
+      YETI is a brand people have tattooed on their bodies. It generates the kind of loyalty most
+      marketing teams spend entire careers chasing — and it was built almost entirely through a
+      philosophy that runs counter to the modern attention economy: invest in humans, not platforms.
+    </p>
+
+    <p>
+      Bill Neff, YETI's VP of Marketing, described an ambassador program of 200+ people across
+      more than 13 passion verticals — fishing, barbecue, hunting, snowboarding, culinary arts,
+      and more. Most of them have small followings by influencer standards. That's the point.
+    </p>
+
+    <p>
+      "We believe in the human network," Neff said. "We believe that our product serves as a tool
+      for a specific passion or pursuit. And we let the human network take over as opposed to a
+      digital platform that can get a lot of eyeballs on things really fast. It's slower, but
+      that's the philosophy we work in."
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">200+</div>
+        <div class="stat-callout__label">YETI ambassadors across 13+ passion verticals</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">~$2B</div>
+        <div class="stat-callout__label">YETI revenue, built largely on word-of-mouth</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">50+</div>
+        <div class="stat-callout__label">Tecovas retail locations built on top of a D2C-first model</div>
+      </div>
+    </div>
+
+    <p>
+      The proof-of-concept moment came at Memphis in May, the massive barbecue competition where
+      YETI had no advertising presence — just Leanne Bakunas, their culinary community lead, and
+      years of showing up for pit masters who trusted the product. "It was like we owned the place,"
+      Neff recalled. "She was walking around like the mayor, but we weren't marketing."
+    </p>
+
+    <p>
+      A snowboarding documentary YETI funded for ambassador Travis Rice — not a Europe strategy,
+      simply support for something meaningful to their community — resulted in European distributors
+      calling off the hook asking how to carry YETI. The brand hadn't planned to enter Europe yet.
+      Community moved faster than strategy.
+    </p>
+
+    <h2>Voice of Customer at Scale: The Superfan Advantage</h2>
+
+    <p>
+      Somewhere on Facebook, there exists a group called Tecovas Enthusiasts. YETI didn't start
+      it — the customers did. They have opinions about materials, quality assurance, and production
+      decisions that most brand teams would pay consultants to surface.
+    </p>
+
+    <p>
+      Dalton's team reached out asking if members would give feedback. The response was immediate
+      and enthusiastic. Hour-long sessions, no compensation offered, no promotional ask attached.
+      "We didn't meet with them to be like, 'this is why we do it, go tell people,'" she said.
+      "We met with them to get feedback, to adjust, to meet the needs of our most loyal customers.
+      And they 10x'd the word of mouth — and we didn't give them anything."
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">The consumer-to-consumer education I see across forums — with some of our iconic brands, specifically Aveda — is driving innovation within the company. We are reacting to that education.</p>
+      <div class="pull-quote__attribution">Kumkum Pinto <span>VP of Product, Estée Lauder Companies</span></div>
+    </div>
+
+    <p>
+      For Estée Lauder, the signal doesn't come from a Facebook group but from the systems
+      Kumkum Pinto's team has built to surface it continuously. VOC metrics, loyalty signals,
+      engagement data across D2C and retail — reviewed weekly, brand by brand. "The whole idea
+      is you have to start seeing signs of engagement decline," she said. "As it starts declining,
+      you know something's wrong because you've either over-indexed in some areas or you're
+      losing trust."
+    </p>
+
+    <p>
+      Most brands look at this data by channel. Estée Lauder has deliberately moved to a
+      brand-first view — asking not how the DTC channel performed, but what people are actually
+      saying about the brand, regardless of where the interaction happened. The nuance matters
+      because communities don't live inside channels. They spill across them.
+    </p>
+
+    <hr class="divider" />
+
+    <h2>AI in Commerce: What the Best Operators Are Actually Doing</h2>
+
+    <p>
+      The conversation on AI was notable for what the panelists were <em>not</em> doing: none
+      of them were using it to replace the customer relationship. All of them were using it to
+      protect and extend it.
+    </p>
+
+    <h3>The AI Chief of Staff</h3>
+    <p>
+      Dalton described building an AI agent that synthesized 16 reports a week into a single
+      executive brief — and then, three months later, replacing that with a more sophisticated
+      AI chief of staff connected directly to Tecovas's enterprise data warehouse. Her directive
+      to her team the previous week: cancel as many meetings as possible and spend the time
+      exploring what AI could accelerate. "We're a private company, so our risk tolerance is
+      higher," she noted. "The team was able to play and integrate into getting all the data we need."
+    </p>
+
+    <h3>The Skin Consultation Bot</h3>
+    <p>
+      At The Ordinary (an Estée Lauder brand), Pinto's team has deployed an AI agent that helps
+      customers navigate complex ingredient combinations and skin routines — a genuinely hard
+      knowledge problem that store associates used to handle. The goal isn't containment, she
+      emphasized. It's giving customers quality information they couldn't previously access
+      consistently, and then <strong>seamlessly transitioning them to a physical experience</strong>
+      when they're ready to go deeper. "At what point are you putting enough guardrails to direct
+      someone to speak to a human? I'm not saying we've got it right, but that's the aspiration."
+    </p>
+
+    <h3>The VOC Aggregator</h3>
+    <p>
+      Neff recommended a tool called Unwrap — which scrapes social media, converts customer
+      service calls to text, and aggregates reviews into a weekly digest flagging anomalies.
+      One week it surfaced a spike of customers reporting they weren't offered a drink at
+      Tecovas stores. Dalton's head of retail saw it and immediately called the stores.
+      "It's voice of the customer at scale," Neff said. "And they've been incredible for us."
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">AI enhances skilled people. When you blindly trust AI, that's where I get worried it goes off the rails. Our people are experts in their areas — the question is how AI helps them, not replaces them.</p>
+      <div class="pull-quote__attribution">Bill Neff <span>VP of Marketing, YETI</span></div>
+    </div>
+
+    <p>
+      Neff's instinct on generative AI is worth noting for consumer brands in particular: YETI
+      has deliberately set it aside for marketing content — for now. "We want our marketing to be
+      as handcrafted as our boots," he said. The creative standard that built the brand is
+      non-negotiable. Process automation? Absolutely. Creative output? Not yet.
+    </p>
+
+    <hr class="divider" />
+
+    <h2>Agentic Commerce: The Community-First Brands Will Win</h2>
+
+    <p>
+      The panel's most forward-looking exchange centered on what happens when AI agents start
+      making purchase recommendations — and whether the community strategies these brands have
+      built will survive the transition.
+    </p>
+
+    <p>
+      The moderator framed the concern directly: an agentic shopping assistant won't care about
+      brand story. It'll optimize for the user's preferences and past behavior. Where does that
+      leave brands that have spent years building emotional connection?
+    </p>
+
+    <p>
+      The panelists pushed back — and their reasoning converged on the same point.
+    </p>
+
+    <p>
+      Pinto argued that <strong>agentic discovery precedes agentic commerce</strong> — and discovery
+      is fundamentally about risk reduction. "Agents are looking for content which brings trust,
+      where people are trusting, where people are speaking about stuff. If your community believes
+      in you, and they're talking about you — whether long-form or short-form — then agent discovery
+      will be more skewed towards you."
+    </p>
+
+    <p>
+      Dalton made a distinction the data is starting to validate: she believes consumers will
+      embrace AI for the research and discovery phase — narrowing a six-week consideration journey
+      into an afternoon — but will still want to be the ones who click buy. "The buy-it portion
+      is still something humans want to click. They like that moment."
+    </p>
+
+    <p>
+      Neff was the most bullish: "I can't wait for agentic commerce, quite frankly. When people
+      are like, 'what should I buy for my next fishing trip?' — we're going to show up. We're
+      going to show up because of the community, because we keep firing on that engine and the
+      trust of our products. I can't wait to get out of the whole ad-search-Google game."
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">#1</div>
+        <div class="stat-callout__label">Category for ChatGPT-driven purchases via Shopify: health & wellness</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">#2</div>
+        <div class="stat-callout__label">Beauty — the second most-purchased category via AI referral</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">Men</div>
+        <div class="stat-callout__label">Currently drive the majority of ChatGPT-assisted purchases, per early Shopify data</div>
+      </div>
+    </div>
+
+    <p>
+      The early data from Shopify's internal tracking bears this out. ChatGPT referral purchases
+      skew heavily toward categories — health, beauty, home — where the purchase requires trust
+      and some level of education. These are precisely the categories where strong brand community
+      creates the content and authority that AI systems index on.
+    </p>
+
+    <p>
+      The implication: brands investing in authentic community today are, without necessarily
+      intending to, building the training data and trust signals that will determine which
+      brands surface when the agent starts answering questions.
+    </p>
+
+    <hr class="divider" />
+
+    <h2>What to Change About How Brands Think About Community</h2>
+
+    <p>
+      The panel closed with a single question: if you could change one thing about how brands
+      approach community, what would it be?
+    </p>
+
+    <p>
+      Neff's answer: "Don't have an agenda. Just be with the community. We don't worry about
+      culture because the community shapes culture. If you're in the community, you're going
+      to be in the culture of the community. We're not trying to get something out of the
+      community. We're just a part of the community."
+    </p>
+
+    <p>
+      Pinto: "Don't like them as they are — don't try to shape them. Meet them where they're at."
+    </p>
+
+    <p>
+      Dalton's final word was the most counterintuitive: don't treat community as a marketing
+      channel. "Treat it as a product. Actually invest in the community. Help grow the community.
+      Evolve it as you do your product."
+    </p>
+
+    <p>
+      In a landscape where every brand is chasing the same paid audiences, the same influencer
+      relationships, and the same algorithmic shortcuts — these three brands have built something
+      that can't be bought on a media plan. They built communities that exist independent of
+      any platform, that grow through human trust, and that are, as it turns out, exactly the
+      kind of brand signal that the next generation of AI commerce systems will be designed to find.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">If you have a community, if you have that powerful brand, even in a world where AI agents control your narrative a little bit — your narrative will still stick out. Because you've worked on community.</p>
+      <div class="pull-quote__attribution">Glenn Begwein <span>Office of the President, Shopify</span></div>
+    </div>
+
+  </article>
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-section__eyebrow">Willpower Content Library</div>
+    <h2 class="cta-section__title">More from the Panel Series</h2>
+    <p class="cta-section__subtitle">
+      Access recaps, recordings, and insights from every Willpower panel —
+      or join us at the next event.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn--primary">View All Panels</a>
+      <a href="https://willpowerhq.com/events" class="btn btn--ghost">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span class="site-footer__copy">&copy; 2025 Willpower. All rights reserved.</span>
+    <ul class="site-footer__links">
+      <li><a href="https://willpowerhq.com">Home</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+      <li><a href="#">Content Library</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

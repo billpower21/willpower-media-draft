@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / AEO -->
+  <title>Building Worlds Through Sports: Community, Culture & the New Playbook | Willpower Panel Series</title>
+  <meta name="description" content="Leaders from the San Antonio Spurs, Major League Pickleball's Texas Ranchers, and the world of professional sports and NIL share how teams and brands build genuine community — from grassroots presence to live events to the locker room no one sees." />
+  <meta name="keywords" content="sports community building, fan engagement strategy, NIL community, Major League Pickleball, San Antonio Spurs Austin, sports sponsorship ROI, athlete brand ambassadors, Willpower panel" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Building Worlds Through Sports: Community, Culture & the New Playbook" />
+  <meta property="og:description" content="Sports operators, athletes, and league builders on what actually creates lasting fan loyalty — and why showing up beats spending every time." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Willpower" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://willpowerhq.com/content/panel-6-building-worlds-through-sports" />
+
+  <!-- Fonts: matches Willpower's clean sans-serif aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────────────────── */
+    :root {
+      --bg-primary:    #0a0a0a;
+      --bg-secondary:  #111111;
+      --bg-card:       #161616;
+      --bg-accent:     #1a1a1a;
+      --border:        rgba(255,255,255,0.08);
+      --border-accent: rgba(255,255,255,0.15);
+
+      --text-primary:   #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-muted:     #666666;
+
+      --gold:          #c9a84c;
+      --gold-light:    #e0c06a;
+
+      --font:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --max-w:         780px;
+      --max-w-wide:    1100px;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Nav (minimal top bar) ──────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav__logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+    .site-nav__links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .site-nav__links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .site-nav__links a:hover { color: var(--text-primary); }
+
+    /* ─── Hero ───────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 72px 32px 64px;
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero__title {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    .hero__subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .hero__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero__meta-item svg {
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* ─── Video ──────────────────────────────────────────────────────────────── */
+    .video-section {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .video-wrapper iframe,
+    .video-wrapper .video-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Placeholder shown until YouTube URL is added */
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+    .video-placeholder__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── Panelists ──────────────────────────────────────────────────────────── */
+    .panelists {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .panelists__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .panelists__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .panelist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .panelist-card:hover { border-color: var(--border-accent); }
+    .panelist-card__name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .panelist-card__title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .panelist-card__company {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ─── Key Takeaways ──────────────────────────────────────────────────────── */
+    .takeaways {
+      max-width: var(--max-w);
+      margin: 0 auto 80px;
+      padding: 0 32px;
+    }
+    .takeaways__box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 36px 40px;
+    }
+    .takeaways__heading {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .takeaways__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .takeaways__list li {
+      display: flex;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+    .takeaways__list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 8px;
+    }
+    .takeaways__list strong {
+      font-weight: 600;
+    }
+
+    /* ─── Article Body ───────────────────────────────────────────────────────── */
+    .article {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+    .article h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 64px 0 20px;
+      line-height: 1.25;
+    }
+    .article h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 40px 0 14px;
+    }
+    .article p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+    .article p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      margin: 48px 0;
+      padding: 36px 40px;
+      background: var(--bg-accent);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      left: 32px;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      opacity: 0.6;
+    }
+    .pull-quote__text {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .pull-quote__attribution {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .pull-quote__attribution span {
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 6px;
+    }
+
+    /* Stat callout */
+    .stat-callout {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin: 40px 0;
+    }
+    .stat-callout__item {
+      flex: 1;
+      min-width: 140px;
+    }
+    .stat-callout__number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-callout__label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 64px 0;
+    }
+
+    /* ─── CTA ────────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .cta-section__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .cta-section__title {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section__subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 440px;
+      margin: 0 auto 36px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-accent);
+    }
+    .btn--ghost:hover {
+      border-color: var(--text-secondary);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .site-footer__copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .site-footer__links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .site-footer__links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .site-footer__links a:hover { color: var(--text-secondary); }
+
+    /* ─── Responsive ─────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .site-nav__links { display: none; }
+      .hero { padding: 48px 20px 40px; }
+      .video-section,
+      .panelists,
+      .takeaways,
+      .article { padding-left: 20px; padding-right: 20px; }
+      .takeaways__box { padding: 28px 24px; }
+      .pull-quote { padding: 28px 24px; }
+      .stat-callout { padding: 24px 20px; gap: 24px; }
+      .cta-section { padding: 60px 20px; }
+      .site-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+  <nav class="site-nav">
+    <a href="https://willpowerhq.com" class="site-nav__logo">Willpower</a>
+    <ul class="site-nav__links">
+      <li><a href="https://willpowerhq.com/events">Events</a></li>
+      <li><a href="https://willpowerhq.com/past-events">Past Events</a></li>
+      <li><a href="#">Content</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__eyebrow">Willpower Panel Series &mdash; Session 6</div>
+    <h1 class="hero__title">Building Worlds Through Sports: Community, Culture &amp; the New Playbook</h1>
+    <p class="hero__subtitle">
+      From the NBA to Major League Pickleball to NIL — operators, athletes, and league builders
+      share what it actually takes to create lasting fan loyalty in an era where showing up
+      matters more than spending up.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <!-- Calendar icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 1v2M11 1v2M1 6h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Willpower Wellness House, 2025
+      </div>
+      <div class="hero__meta-item">
+        <!-- People icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M1 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M11 12.5c1.333-.5 4-.5 4 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Moderated by Bill (Willpower)
+      </div>
+      <div class="hero__meta-item">
+        <!-- Clock icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        ~20 min read
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Video ────────────────────────────────────────────────────────────────── -->
+  <section class="video-section">
+    <div class="video-wrapper">
+      <!--
+        INSTRUCTIONS FOR WEB TEAM:
+        Replace the .video-placeholder div below with an iframe once the YouTube/Vimeo URL is ready.
+
+        YouTube embed example:
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="Willpower Panel 6 — Building Worlds Through Sports"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        Vimeo embed example:
+        <iframe
+          src="https://player.vimeo.com/video/YOUR_VIDEO_ID?badge=0&autopause=0&player_id=0&app_id=58479"
+          title="Willpower Panel 6"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="video-placeholder__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="5,3 19,12 5,21" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        <span>Video coming soon — embed URL goes here</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Panelists ─────────────────────────────────────────────────────────────── -->
+  <section class="panelists">
+    <div class="panelists__label">Featured Panelists</div>
+    <div class="panelists__grid">
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Brian Watkins</div>
+        <div class="panelist-card__title">Chief Revenue Officer</div>
+        <div class="panelist-card__company">San Antonio Spurs</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Evan Morganstein</div>
+        <div class="panelist-card__title">Owner &amp; Operator</div>
+        <div class="panelist-card__company">Texas Ranchers / Major League Pickleball</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Tyler Eifert</div>
+        <div class="panelist-card__title">Former NFL Tight End &amp; Entrepreneur</div>
+        <div class="panelist-card__company">Stanford NIL / Consumer Goods</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Key Takeaways ──────────────────────────────────────────────────────────── -->
+  <section class="takeaways">
+    <div class="takeaways__box">
+      <div class="takeaways__heading">Key Takeaways</div>
+      <ul class="takeaways__list">
+        <li><strong>A logo is not a community.</strong> Modern sports sponsorship has moved well beyond placing a logo on a jersey — brands and teams that drive real results are measuring engagement, tracking sales lift, and showing up where their audience actually lives.</li>
+        <li><strong>Education is the first product in emerging sports.</strong> For newer leagues like Major League Pickleball, fan acquisition isn't just marketing — it's teaching people the rules, the stakes, and why they should care before you can ask them to cheer.</li>
+        <li><strong>The unsung player in the locker room moves the needle.</strong> The most influential person in a team ecosystem is often the one with 78 followers — the teammate everyone respects — not the star. Brands that do their research and find those voices build deeper, more durable trust.</li>
+        <li><strong>Presence beats transactions every time.</strong> Whether it's the Spurs opening an Austin office, flying to Paris without a game on the schedule, or MLP bringing a tour stop to town — actually being in a community, consistently, is what converts casual observers into loyal fans.</li>
+        <li><strong>Give people an environment and they will become fans.</strong> Austin is sport-deprived and hungry. Across every panelist's experience, the single biggest lever for fan development is creating a live, immersive environment — not a digital campaign — and letting the energy spread organically from there.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Article Body ───────────────────────────────────────────────────────────── -->
+  <article class="article">
+
+    <h2>Sponsorship Is Dead — Long Live Community</h2>
+
+    <p>
+      There was a time when sports sponsorship was a simple transaction: write a check, get your logo
+      on the boards, call it marketing. That era is over. The panelists at Willpower's Session 6 were
+      emphatic about this — and they came at it from different angles, representing the NBA, an
+      emerging professional league, and the world of athlete business ventures.
+    </p>
+
+    <p>
+      "It used to be you just put your logo on something and you're a sponsor," said Brian Watkins,
+      Chief Revenue Officer of the San Antonio Spurs. "I don't care if you're Super Coffee or you're
+      Hyperice or you're Coca-Cola — you're in this business to drive results and drive sales. And so
+      what we're really seeing is a big change: sponsorship is really not just putting your logo and
+      saying you're done, but <strong>how do you measure if it's working and how do you drive sales
+      for your company.</strong>"
+    </p>
+
+    <p>
+      The shift matters because it changes the entire frame of what sports organizations and brand
+      partners are building together. When sponsorship was a visibility play, reach was the metric.
+      When it's a community play, the question becomes entirely different: Are you actually embedded
+      in the way this audience lives, talks, and decides? Are fans becoming advocates? Are they
+      bringing others in?
+    </p>
+
+    <p>
+      For Evan Morganstein, owner of the Texas Ranchers in Major League Pickleball, this isn't just
+      a philosophy — it's an operational reality. You cannot rely on decades of inherited fandom when
+      your sport is still building its own vocabulary. The work is slower, more deliberate, and more
+      personal. But the compounding effect of that grassroots investment, he argued, is impossible
+      to replicate with ad spend alone.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">Until you're actually out in the market and listening to your fans and viewing their behavior, you don't truly know who your fans are.</p>
+      <div class="pull-quote__attribution">Evan Morganstein <span>Owner, Texas Ranchers / Major League Pickleball</span></div>
+    </div>
+
+    <h2>Education as Fan Acquisition: The Pickleball Lesson</h2>
+
+    <p>
+      Walk into a Dallas Cowboys game and you can assume your audience knows the basics — the rules,
+      the standings, what it means to root for the team. That luxury doesn't exist for newer sports
+      properties. Major League Pickleball, still a young organization despite pickleball being a
+      65-year-old sport, has had to engineer fan development from the ground up.
+    </p>
+
+    <p>
+      Morganstein described the challenge in layers: first, people need to know pickleball exists as a
+      competitive sport. Then they need to understand the rules well enough to appreciate watching.
+      Then they need to discover the Texas Ranchers specifically — who they are, why they matter, how
+      to follow them. "The amount of people who know the rules of Major League Pickleball is even
+      smaller" than those who play recreationally, he noted. "Education has been a key investment area
+      for us."
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">~6,000</div>
+        <div class="stat-callout__label">Attendees at a Texas Ranchers MLP tour stop in Austin last year — many unaware the team existed beforehand</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">5–6 yrs</div>
+        <div class="stat-callout__label">Drop in average pickleball fan age over just three years — the so-called "Benjamin Button sport"</div>
+      </div>
+    </div>
+
+    <p>
+      The payoff, when it works, is striking. The Texas Ranchers drew nearly 6,000 people to an Austin
+      event — a crowd largely unfamiliar with the team beforehand. That's not discovery through
+      advertising. It's discovery through immersion: give people an experience that meets them where
+      they are, and conversion follows.
+    </p>
+
+    <p>
+      Morganstein also made a point that any brand operating across consumer segments should take
+      seriously: pickleball has two very different audiences, and speaking to both requires distinct
+      environments and messaging. There are the recreational players who enjoy a casual game with
+      family, and there are the serious competitors and aspiring professionals — some starting at
+      age eight, following the career of world number one Annalee Waters, who signed a Nike deal
+      at nineteen. "If you try to speak to everybody, you're going to speak to nobody," he said.
+      "But there are two segments that we offer different environments to participate in."
+    </p>
+
+    <h2>The Hidden Influencer: Why the Locker Room You Can't See Matters Most</h2>
+
+    <p>
+      Tyler Eifert, former NFL tight end and now an entrepreneur building consumer brands and working
+      in the NIL space, offered one of the panel's most counterintuitive insights: the most powerful
+      influence inside a sports team often belongs to the person no one outside the organization
+      has heard of.
+    </p>
+
+    <p>
+      "Within a successful team, there's a culture and a community in that locker room," he said.
+      "You get involved with the teammates that aren't necessarily in the spotlight — because there's
+      guys on the team that every person you know about is talking about, but you don't know them.
+      They're the heart and soul of that actual team. The guy has 78 followers. But the whole team
+      is watching him when you don't know one thing about him."
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">Some of the most influential people are the ones you don't know about in the locker room. Doing your research as a brand — talking to the guys who actually move the needle — that's where the real leverage is.</p>
+      <div class="pull-quote__attribution">Tyler Eifert <span>Former NFL Tight End &amp; Entrepreneur</span></div>
+    </div>
+
+    <p>
+      He cited the example of a brand called Upside Down Dallas — a cap company that ended up on Dak
+      Prescott not because they went straight to the Cowboys' star quarterback, but because they
+      started with the fourth-string player who was beloved in the locker room. Once the hat was
+      trusted inside the team's culture, it naturally worked its way to the most visible face. The
+      lesson: <strong>cultural credibility flows inward before it flows outward.</strong>
+    </p>
+
+    <p>
+      This logic extends to NIL strategy at the university level. When Eifert helped found Stanford's
+      NIL group, the team made a critical early mistake: assuming their alumni audience already
+      understood what NIL was. Three years after collegiate athlete compensation was legalized, they
+      launched a fundraising campaign that skipped the basics — and the first questions they fielded
+      were about whether the program was illegal. Fifty to a hundred hours of pitching time had to
+      be rebuilt around education that should have come first. The lesson is one every community
+      builder encounters eventually: you cannot skip the foundation, no matter how obvious it feels
+      from the inside.
+    </p>
+
+    <h2>Presence Over Transactions: How the Spurs Think About Market-Building</h2>
+
+    <p>
+      The San Antonio Spurs are a mid-market franchise by NBA standards — San Antonio ranks 25th
+      in U.S. population — and yet they have won more games than any other NBA team since 1999.
+      That record was built not on glamour but on a scrappy, startup-minded approach to finding
+      advantages that bigger organizations overlook. Brian Watkins described this philosophy as
+      foundational to everything the organization does, including how it approaches Austin.
+    </p>
+
+    <p>
+      "We don't think of ourselves as a sports team," Watkins said. "We think of ourselves as an
+      entertainment company. We've always had to kind of outsmart and outthink the competition.
+      We were the first team to really scout international players. We were one of the first to
+      consider a secondary market. We're one of the first teams to really embrace AI in terms of
+      moving our business forward. We've always kind of thought like a startup because we have to."
+    </p>
+
+    <p>
+      Nowhere is that philosophy more visible than in the Spurs' approach to Austin. They have
+      maintained a full office here — with 20 employees — for four or five years. They sponsor the
+      Austin Half Marathon. They host watch parties. They played games in Austin when other NBA
+      teams thought they were crazy for doing it. The bet is a long one: Watkins and his team
+      believe the Austin–San Antonio corridor is becoming one integrated market, analogous to
+      the San Francisco–Oakland relationship, and that early, consistent community investment
+      will define who fans identify with for decades.
+    </p>
+
+    <p>
+      The same logic applied to Paris, where the Spurs have deep roots through former international
+      players. In the early years, the team played games there and went home — presence without
+      permanence. They course-corrected: this year, with no game on the schedule, the team traveled
+      to France anyway, hosting a watch party and activating with sponsors. "Just because you play
+      there doesn't mean you're there," Watkins said. The distinction between transactional presence
+      and genuine community membership is the entire game.
+    </p>
+
+    <hr class="divider" />
+
+    <h2>The Environment Thesis: Give Them a Reason to Show Up</h2>
+
+    <p>
+      One theme threaded through every panelist's experience — from pickleball to the NBA to
+      post-NFL entrepreneurship — is what Morganstein described as the environment thesis: if you
+      create the right conditions for fandom, fans will emerge. Austin, he argued, is an almost
+      perfect test case for this.
+    </p>
+
+    <p>
+      Having grown up in Chicago, where he attended a two-million-person championship parade after
+      the Blackhawks won the Stanley Cup, Morganstein arrived in Austin and was immediately struck
+      by how sport-deprived the city felt. "Coming to Austin about eight or nine years ago, you
+      realize just how sport-deprived I think this city really is. There's a need for more sports.
+      There's a need for more Spurs games. There's a need for more live events." That gap, he
+      insisted, represents opportunity.
+    </p>
+
+    <p>
+      Tyler Eifert's experience building community at Stanford reinforced this from a different
+      angle. Stanford is not a storied football brand on the national stage — West Coast time zones
+      mean games air when much of the country is already done for the night. The school cannot
+      compete with Texas or Miami on star power or national following. So instead, the NIL group
+      leaned into what was native to its environment: the Bay Area's reverence for founders and
+      tech leaders. They brought in figures recognizable to that specific community — the CEO of
+      Salesforce at a game, for instance — and built something that felt genuinely theirs, not
+      borrowed from elsewhere.
+    </p>
+
+    <p>
+      "You can't be University of Texas. You can't be University of Miami. But you can lean into
+      your own ways of how you make things cool and exciting," Eifert said. "We brought this tagline
+      of Nerd Nation — guys were wearing glasses with the tape in between. We're trying to bring
+      famous founders onto the field that the Bay Area would really recognize. You just try to
+      make things fun at the end of the day. And winning, by the way, does solve a lot of problems.
+      But if you don't make it fun and relatable to that grassroots community, you're just missing the mark."
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">If you give Austin Knights an environment to be a fan, they will be fans. They will rally around your team. There is a lot more room to grow here.</p>
+      <div class="pull-quote__attribution">Evan Morganstein <span>Owner, Texas Ranchers / Major League Pickleball</span></div>
+    </div>
+
+    <p>
+      What all three panelists ultimately converged on is a simple but difficult truth: community
+      cannot be bought in a media plan and it cannot be manufactured in a campaign. It is built
+      through the accumulation of genuine presence — the office you keep open, the event you fly
+      to without a business case, the athlete whose locker room credibility you invest in before
+      they have a following, the arena experience that makes a first-time attendee feel like they
+      belong. The organizations that do this work — slowly, patiently, and without expectation
+      of immediate return — are the ones who find themselves owning a city, a sport, or a culture
+      a decade later. And then it compounds.
+    </p>
+
+  </article>
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-section__eyebrow">Willpower Content Library</div>
+    <h2 class="cta-section__title">More from the Panel Series</h2>
+    <p class="cta-section__subtitle">
+      Access recaps, recordings, and insights from every Willpower panel —
+      or join us at the next event.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn--primary">View All Panels</a>
+      <a href="https://willpowerhq.com/events" class="btn btn--ghost">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span class="site-footer__copy">&copy; 2025 Willpower. All rights reserved.</span>
+    <ul class="site-footer__links">
+      <li><a href="https://willpowerhq.com">Home</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+      <li><a href="#">Content Library</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

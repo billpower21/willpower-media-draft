@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Archive — Timeline | Willpower</title>
+  <meta name="description" content="Every Willpower event, every panel — organized by year. The full history of the community." />
+  <link rel="canonical" href="https://willpowerhq.com/content" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #0c0c0c;
+      --bg-2:     #131313;
+      --bg-card:  #181818;
+      --bg-hover: #1e1e1e;
+      --border:   rgba(255,255,255,0.055);
+      --bmd:      rgba(255,255,255,0.10);
+      --bhi:      rgba(255,255,255,0.16);
+      --text:     #efefef;
+      --text-2:   #888;
+      --text-3:   #444;
+      --gold:     #c9a84c;
+      --gdim:     rgba(201,168,76,0.10);
+      --gbdr:     rgba(201,168,76,0.25);
+      --sans:     'DM Sans', -apple-system, sans-serif;
+      --serif:    'DM Serif Display', Georgia, serif;
+      --r:        8px;
+      --rm:       6px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    em { font-family: var(--serif); font-style: italic; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 100; height: 64px; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(12,12,12,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav__logo { font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .nav__links { display: flex; gap: 32px; list-style: none; }
+    .nav__links a { font-size: 13px; color: var(--text-2); transition: color .15s; }
+    .nav__links a:hover, .nav__links a.active { color: var(--text); }
+    .nav__cta { font-size: 12px; font-weight: 500; letter-spacing: .06em; padding: 9px 20px; border-radius: var(--rm); background: var(--text); color: var(--bg); transition: opacity .15s; }
+    .nav__cta:hover { opacity: .88; }
+
+    /* Hero */
+    .hero { padding: 88px 40px 72px; max-width: 1100px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .hero__eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 20px; }
+    .hero__h1 { font-family: var(--sans); font-size: clamp(36px, 5vw, 60px); font-weight: 300; letter-spacing: -.025em; line-height: 1.1; margin-bottom: 20px; }
+    .hero__sub { font-size: 15px; color: var(--text-2); max-width: 460px; line-height: 1.7; }
+
+    /* Filter row */
+    .filter-row { max-width: 1100px; margin: 0 auto; padding: 28px 40px; border-bottom: 1px solid var(--border); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .filter-pill { font-size: 12px; padding: 6px 16px; border-radius: 99px; border: 1px solid var(--border); color: var(--text-2); cursor: pointer; transition: all .15s; letter-spacing: .02em; }
+    .filter-pill:hover { border-color: var(--bmd); color: var(--text); }
+    .filter-pill.on { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+    /* Timeline body */
+    .timeline { max-width: 1100px; margin: 0 auto; padding: 64px 40px 120px; }
+
+    /* Year marker */
+    .year-marker { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
+    .year-marker + .year-block { margin-top: 0; }
+    .year-num { font-size: 13px; font-weight: 500; color: var(--text-3); letter-spacing: .06em; white-space: nowrap; }
+    .year-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* Event block */
+    .year-block { margin-bottom: 64px; }
+    .event-entry { display: grid; grid-template-columns: 28px 1fr; gap: 0 24px; margin-bottom: 40px; }
+
+    /* Spine */
+    .spine { display: flex; flex-direction: column; align-items: center; padding-top: 5px; }
+    .spine__dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--text-3); background: var(--bg); flex-shrink: 0; }
+    .spine__dot.live { border-color: var(--gold); background: var(--gold); }
+    .spine__dot.upcoming { border-color: var(--text-3); border-style: dashed; }
+    .spine__line { width: 1px; flex: 1; background: var(--border); margin-top: 6px; min-height: 20px; }
+
+    /* Event content */
+    .ev { }
+    .ev__head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; flex-wrap: wrap; }
+    .ev__name { font-size: 18px; font-weight: 300; letter-spacing: -.015em; line-height: 1.25; }
+    .ev__date { font-size: 12px; color: var(--text-3); letter-spacing: .02em; }
+    .ev__badge { font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 99px; border: 1px solid var(--border); color: var(--text-3); }
+    .ev__badge.live { background: var(--gdim); border-color: var(--gbdr); color: var(--gold); }
+    .ev__desc { font-size: 13px; color: var(--text-2); line-height: 1.6; max-width: 560px; margin-bottom: 16px; }
+
+    /* Session chips */
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 10px 14px;
+      cursor: pointer; transition: border-color .15s;
+      min-width: 0; flex-shrink: 0;
+      text-decoration: none; color: inherit;
+      max-width: 220px;
+    }
+    .chip:hover { border-color: var(--bmd); }
+    .chip.keynote { border-left: 2px solid var(--gold); border-radius: 0 var(--r) var(--r) 0; }
+    .chip__label { font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+    .chip__title { font-size: 12px; font-weight: 400; color: var(--text); line-height: 1.35; }
+
+    /* Dinner chips (for Catalyst — plain list style) */
+    .dinner-chips { display: flex; flex-direction: column; gap: 1px; }
+    .dinner-chip { display: flex; align-items: baseline; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--border); cursor: pointer; transition: opacity .15s; }
+    .dinner-chip:first-child { border-top: 1px solid var(--border); }
+    .dinner-chip:hover { opacity: .65; }
+    .dchip__date { font-size: 11px; color: var(--text-3); letter-spacing: .02em; white-space: nowrap; min-width: 90px; }
+    .dchip__title { font-size: 13px; color: var(--text); line-height: 1.35; }
+    .dchip__brands { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+    /* Upcoming state */
+    .ev-upcoming { opacity: .5; pointer-events: none; }
+    .ev-upcoming .ev__desc { font-style: italic; }
+
+    /* Future teaser */
+    .future-teaser { border: 1px dashed rgba(255,255,255,.07); border-radius: var(--r); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 40px; }
+    .ft__eyebrow { font-size: 10px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
+    .ft__title { font-size: 22px; font-weight: 300; letter-spacing: -.015em; margin-bottom: 6px; }
+    .ft__sub { font-size: 13px; color: var(--text-2); }
+    .btn-solid { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; padding: 11px 22px; border-radius: var(--rm); background: var(--text); color: var(--bg); transition: opacity .15s; }
+    .btn-solid:hover { opacity: .88; }
+    .btn-out { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 11px 22px; border-radius: var(--rm); border: 1px solid var(--bmd); color: var(--text); transition: background .15s, border-color .15s; }
+    .btn-out:hover { background: var(--bg-hover); border-color: var(--bhi); }
+
+    /* Footer */
+    .footer { border-top: 1px solid var(--border); padding: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer__copy { font-size: 12px; color: var(--text-3); }
+    .footer__links { display: flex; gap: 28px; list-style: none; }
+    .footer__links a { font-size: 12px; color: var(--text-3); transition: color .15s; }
+    .footer__links a:hover { color: var(--text-2); }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .nav { padding: 0 20px; }
+      .nav__links, .nav__cta { display: none; }
+      .hero, .timeline, .filter-row { padding-left: 20px; padding-right: 20px; }
+      .hero { padding-top: 52px; }
+      .chips { flex-direction: column; }
+      .chip { max-width: 100%; }
+      .future-teaser { flex-direction: column; }
+      .footer { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── Drawer ───────────────────────────── */
+    .drawer-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0);
+      pointer-events: none;
+      transition: background .3s;
+    }
+    .drawer-overlay.open { background: rgba(0,0,0,0.65); pointer-events: all; }
+    .drawer {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(680px, 100vw); z-index: 201;
+      background: #0f0f0f;
+      border-left: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer__bar { flex-shrink: 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; border-bottom: 1px solid rgba(255,255,255,0.07); background: #0c0c0c; }
+    .drawer__bar-left { display: flex; align-items: center; gap: 16px; min-width: 0; }
+    .drawer__label { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: #444; white-space: nowrap; }
+    .drawer__title-short { font-size: 13px; color: #efefef; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
+    .drawer__bar-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .drawer__full-link { font-size: 12px; color: #888; padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.10); transition: color .15s, border-color .15s; white-space: nowrap; }
+    .drawer__full-link:hover { color: #efefef; border-color: rgba(255,255,255,0.2); }
+    .drawer__close { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; cursor: pointer; border: 1px solid rgba(255,255,255,0.08); color: #666; background: none; transition: color .15s, border-color .15s, background .15s; font-size: 16px; line-height: 1; }
+    .drawer__close:hover { color: #efefef; border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.04); }
+    .drawer__content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .drawer__content::-webkit-scrollbar { width: 4px; }
+    .drawer__content::-webkit-scrollbar-track { background: transparent; }
+    .drawer__content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.10); border-radius: 2px; }
+    .drawer-loading { display: flex; align-items: center; justify-content: center; height: 300px; color: #444; font-size: 13px; gap: 12px; }
+    .drawer-spinner { width: 18px; height: 18px; border: 1.5px solid rgba(255,255,255,0.08); border-top-color: #c9a84c; border-radius: 50%; animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .drawer__content .nav, .drawer__content nav, .drawer__content .footer, .drawer__content footer { display: none !important; }
+    @media (max-width: 768px) { .drawer { width: 100vw; } }
+  </style>
+</head>
+<body>
+
+<!-- ── Drawer ──────────────────────────────────────── -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Panel content">
+  <div class="drawer__bar">
+    <div class="drawer__bar-left">
+      <span class="drawer__label">Panel</span>
+      <span class="drawer__title-short" id="drawerTitleShort"></span>
+    </div>
+    <div class="drawer__bar-right">
+      <a href="#" id="drawerFullLink" class="drawer__full-link" target="_blank">Open full page →</a>
+      <button class="drawer__close" onclick="closeDrawer()" aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="drawer__content" id="drawerContent">
+    <div class="drawer-loading"><div class="drawer-spinner"></div><span>Loading…</span></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="https://willpowerhq.com" class="nav__logo">Willpower</a>
+  <ul class="nav__links">
+    <li><a href="https://willpowerhq.com/#about">About</a></li>
+    <li><a href="https://willpowerhq.com/events">Events</a></li>
+    <li><a href="https://willpowerhq.com/past-events">Past Events</a></li>
+    <li><a href="#" class="active">The Archive</a></li>
+    <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+  </ul>
+  <a href="https://willpowerhq.com/apply" class="nav__cta">Request Invite →</a>
+</nav>
+
+<header class="hero">
+  <div class="hero__eyebrow">The Archive</div>
+  <h1 class="hero__h1">Every event,<br><em>one place.</em></h1>
+  <p class="hero__sub">The full history of Willpower — flagship summits, intimate dinners, and every conversation in between.</p>
+</header>
+
+<div class="filter-row">
+  <div class="filter-pill on">All series</div>
+  <div class="filter-pill">Wellness House</div>
+  <div class="filter-pill">Catalyst</div>
+  <div class="filter-pill">World of Sports</div>
+  <div class="filter-pill">Human Performance</div>
+  <div class="filter-pill">Wellness Lounge</div>
+</div>
+
+<div class="timeline">
+
+  <!-- ─── 2026 ────────────────────────────────────── -->
+  <div class="year-marker"><span class="year-num">2026</span><div class="year-line"></div></div>
+  <div class="year-block">
+
+    <div class="event-entry">
+      <div class="spine"><div class="spine__dot live"></div><div class="spine__line"></div></div>
+      <div class="ev">
+        <div class="ev__head">
+          <span class="ev__name">The Wellness <em>Lounge</em></span>
+          <span class="ev__date">NYC &amp; Austin · 4 events in 2026</span>
+          <span class="ev__badge live">New series</span>
+        </div>
+        <p class="ev__desc">The conversation moves off the stage and onto the recovery floor. Brand leaders engaged — not seated in rows. Remedy Place Soho, Flatiron, and Gevity Austin.</p>
+        <div class="dinner-chips">
+          <div class="dinner-chip">
+            <div class="dchip__date">May 20 · NYC</div>
+            <div><div class="dchip__title">The first <em>Wellness Lounge</em></div><div class="dchip__brands">AG1 · Beekman 1802 · Evolv · 80+ brands</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">Aug 19 · NYC</div>
+            <div><div class="dchip__title">DTC, retail &amp; everything <em>in between</em></div><div class="dchip__brands">Remedy Place Flatiron · 60+ brand leaders</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">Nov · NYC</div>
+            <div><div class="dchip__title">The Wellness <em>Lounge</em></div><div class="dchip__brands">Remedy Place · 80+ brand leaders</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">Dec · Austin</div>
+            <div><div class="dchip__title">The Wellness <em>Lounge</em></div><div class="dchip__brands">Gevity Austin · First Texas Lounge</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── 2025 ────────────────────────────────────── -->
+  <div class="year-marker"><span class="year-num">2025</span><div class="year-line"></div></div>
+  <div class="year-block">
+
+    <!-- Wellness House 2025 -->
+    <div class="event-entry">
+      <div class="spine"><div class="spine__dot"></div><div class="spine__line"></div></div>
+      <div class="ev">
+        <div class="ev__head">
+          <span class="ev__name">Wellness House <em>2025</em></span>
+          <span class="ev__date">March · Austin, TX · SXSW Week</span>
+          <span class="ev__badge">Flagship · Sold Out</span>
+        </div>
+        <p class="ev__desc">250+ operators, founders, and investors. One keynote, seven panels. No brand theater, no pay-to-play.</p>
+        <div class="chips">
+          <div class="chip keynote" onclick="openDrawer('keynote-founder-mode-in-health-and-wellness.html', 'Founder Mode in Health &amp; Wellness', 'Greg LaVecchia · Bloom Nutrition')">
+            <div class="chip__label">Keynote</div>
+            <div class="chip__title">Founder mode in <em>health &amp; wellness</em></div>
+          </div>
+          <div class="chip" onclick="openDrawer('panel-7-the-future-of-commerce-brand-community-and-ai.html', 'The Future of Commerce: Brand, Community &amp; AI', 'Tecovas · YETI · Estée Lauder · Shopify')">
+            <div class="chip__label">Panel 07 · New</div>
+            <div class="chip__title">Future of commerce: <em>brand, community &amp; AI</em></div>
+          </div>
+          <div class="chip" onclick="openDrawer('panel-6-building-worlds-through-sports.html', 'Building Worlds Through Sports', 'San Antonio Spurs · MLP · Tyler Eifert')">
+            <div class="chip__label">Panel 06</div>
+            <div class="chip__title">Building worlds <em>through sports</em></div>
+          </div>
+          <div class="chip" onclick="openDrawer('panel-5-comedy-panel-roast.html', 'Comedy Panel: The Roast', 'Super Coffee · Lofty · Kaviva · Jevity · Kintsugi')">
+            <div class="chip__label">Panel 05</div>
+            <div class="chip__title">Comedy panel: <em>the roast</em></div>
+          </div>
+          <div class="chip" onclick="openDrawer('panel-4-wellness-at-the-core-of-community.html', 'Wellness at the Core of Community', 'Vivo Barefoot · Sweat Pals')">
+            <div class="chip__label">Panel 04</div>
+            <div class="chip__title">Wellness at <em>the core of community</em></div>
+          </div>
+          <div class="chip" onclick="openDrawer('panel-3-founder-mode-getting-scrappy.html', 'Founder Mode: Getting Scrappy', '437 Swimwear · Good Wipes · It\'s That Simple')">
+            <div class="chip__label">Panel 03</div>
+            <div class="chip__title">Founder mode: <em>getting scrappy</em></div>
+          </div>
+          <div class="chip" onclick="openDrawer('panel-2-the-power-of-routine.html', 'The Power of Routine', 'WHOOP · HigherDOSE · Wellworthy')">
+            <div class="chip__label">Panel 02</div>
+            <div class="chip__title">The power <em>of routine</em></div>
+          </div>
+          <div class="chip" onclick="openDrawer('panel-1-founders-rebuilding-health-and-the-future-of-wellness.html', 'Founders Rebuilding Health &amp; Wellness', 'Tiny Health · Function · Throne Science')">
+            <div class="chip__label">Panel 01</div>
+            <div class="chip__title">Founders rebuilding <em>health &amp; wellness</em></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Human Performance Summit -->
+    <div class="event-entry">
+      <div class="spine"><div class="spine__dot"></div><div class="spine__line"></div></div>
+      <div class="ev">
+        <div class="ev__head">
+          <span class="ev__name">Human Performance <em>Summit</em></span>
+          <span class="ev__date">March 9 · Austin, TX</span>
+          <span class="ev__badge">Summit</span>
+        </div>
+        <p class="ev__desc">NASA, the Department of Defense, and performance science leaders. 102 attendees, 5 panels, at the edge of human capability.</p>
+        <div class="chips">
+          <div class="chip" style="cursor:default;">
+            <div class="chip__label">Full recap</div>
+            <div class="chip__title">NASA · DIU · Sweetgreen · Grizzlies</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catalyst NYC 2025 -->
+    <div class="event-entry">
+      <div class="spine"><div class="spine__dot"></div><div class="spine__line"></div></div>
+      <div class="ev">
+        <div class="ev__head">
+          <span class="ev__name">Catalyst <em>NYC</em></span>
+          <span class="ev__date">3 events · May – Nov</span>
+          <span class="ev__badge">Dinner Series</span>
+        </div>
+        <p class="ev__desc">Intimate dinners with 25–40 of the most influential wellness and consumer operators on the East Coast.</p>
+        <div class="dinner-chips">
+          <div class="dinner-chip">
+            <div class="dchip__date">Nov 10</div>
+            <div><div class="dchip__title">Capitalizing on the future of <em>wellness</em></div><div class="dchip__brands">Masa Chips · Caulipower · HYROX · Soho House</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">Jul 29</div>
+            <div><div class="dchip__title">Cutting through <em>the noise</em></div><div class="dchip__brands">Slate Milk · Othership · WHOOP</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">May 27</div>
+            <div><div class="dchip__title">Brand breakouts &amp; buyouts w/ <em>HelloFresh &amp; Daily Harvest</em></div><div class="dchip__brands">HelloFresh · Daily Harvest · Poppi</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catalyst Austin 2025 -->
+    <div class="event-entry">
+      <div class="spine"><div class="spine__dot"></div><div class="spine__line"></div></div>
+      <div class="ev">
+        <div class="ev__head">
+          <span class="ev__name">Catalyst <em>Austin</em></span>
+          <span class="ev__date">5 events · Feb – Oct</span>
+          <span class="ev__badge">Dinner Series</span>
+        </div>
+        <p class="ev__desc">Texas wellness culture — intimate, curated evenings with founders and operators building the next generation of consumer brands.</p>
+        <div class="dinner-chips">
+          <div class="dinner-chip">
+            <div class="dchip__date">Oct 14</div>
+            <div><div class="dchip__title">Winning cultural tentpoles, <em>F1 Edition</em></div><div class="dchip__brands">Caraway · LALO Tequila · Kendra Scott</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">Aug 19</div>
+            <div><div class="dchip__title">Partnerships for <em>growth</em></div><div class="dchip__brands">SoulCycle · Howler Brothers · Austin FC</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">Jun 18</div>
+            <div><div class="dchip__title">Customer-centric <em>scaling</em></div><div class="dchip__brands">Promix Nutrition</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">Apr 16</div>
+            <div><div class="dchip__title">Innovation <em>playbook</em></div><div class="dchip__brands">Super Coffee · GoodPop · Kin Euphorics</div></div>
+          </div>
+          <div class="dinner-chip">
+            <div class="dchip__date">Feb 5</div>
+            <div><div class="dchip__title">Inflection point w/ <em>Paulie Dery</em></div><div class="dchip__brands">AG1 · It's Skinny</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- World of Sports -->
+    <div class="event-entry">
+      <div class="spine"><div class="spine__dot"></div></div>
+      <div class="ev">
+        <div class="ev__head">
+          <span class="ev__name">World of <em>Sports</em></span>
+          <span class="ev__date">Austin, TX</span>
+          <span class="ev__badge">Summit</span>
+        </div>
+        <p class="ev__desc">Human performance at the intersection of sport and wellness — athletes, executives, and innovators redefining how we train, recover, and compete.</p>
+        <div class="chips">
+          <div class="chip" style="cursor:default;">
+            <div class="chip__label">Full recap</div>
+            <div class="chip__title">Vollebak · FloSports · Williams Racing · Houston Texans</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── 2027 Preview ─────────────────────────────── -->
+  <div class="future-teaser">
+    <div>
+      <div class="ft__eyebrow">Wellness House 2027</div>
+      <div class="ft__title">Year 4 is <em>coming.</em></div>
+      <div class="ft__sub">March 2027 · SXSW week · Lefty's Brick Bar, East Austin · 250+ leaders · Early access open.</div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="https://willpowerhq.com/apply?intent=wh27" class="btn-solid">Request Invite →</a>
+      <a href="https://willpowerhq.com/past-events" class="btn-out">View all events</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <span class="footer__copy">© 2026 Willpower. All rights reserved.</span>
+  <ul class="footer__links">
+    <li><a href="https://willpowerhq.com">Home</a></li>
+    <li><a href="https://willpowerhq.com/past-events">Past Events</a></li>
+    <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+    <li><a href="https://willpowerhq.com/apply">Request Invite →</a></li>
+  </ul>
+</footer>
+
+<script>
+  var overlay = document.getElementById('drawerOverlay');
+  var drawer = document.getElementById('drawer');
+  var drawerContent = document.getElementById('drawerContent');
+  var drawerTitleShort = document.getElementById('drawerTitleShort');
+  var drawerFullLink = document.getElementById('drawerFullLink');
+
+  function openDrawer(url, title, brands) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = title;
+    drawerTitleShort.textContent = tmp.textContent;
+    drawerFullLink.href = url;
+    drawerContent.innerHTML = '<div class="drawer-loading"><div class="drawer-spinner"></div><span>Loading…</span></div>';
+    overlay.classList.add('open');
+    drawer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    fetch(url)
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        ['nav', 'footer', '.nav', '.footer'].forEach(function(sel) {
+          doc.querySelectorAll(sel).forEach(function(el) { el.remove(); });
+        });
+        var styles = Array.from(doc.querySelectorAll('style')).map(function(s) { return s.textContent; }).join('\n');
+        drawerContent.innerHTML = '<style>' + styles + '</style>' + doc.body.innerHTML;
+        drawerContent.scrollTop = 0;
+      })
+      .catch(function() {
+        drawerContent.innerHTML = '<div style="padding:48px 32px;text-align:center;color:#666;"><p style="margin-bottom:16px;font-size:14px;">Could not load content inline.</p><a href="' + url + '" style="color:#c9a84c;font-size:13px;" target="_blank">Open full page →</a></div>';
+      });
+  }
+
+  function closeDrawer() {
+    overlay.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
+</script>
+
+</body>
+</html>

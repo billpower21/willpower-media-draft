@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- DRAFT: noindex while we iterate. Remove this line + add to nav when ready to launch. -->
   <meta name="robots" content="noindex,nofollow" />
   <title>Media · Willpower</title>
   <meta name="description" content="Panel recordings and the insights behind them, from Willpower events. The conversations consumer, wellness, and performance brand leaders are having, in full." />
@@ -11,319 +10,812 @@
   <meta property="og:description" content="Panel recordings and the insights behind them, from Willpower events." />
   <meta property="og:image" content="https://starlit-crostata-9f186f.netlify.app/assets/photos/wh26-greg-power-of-brand.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Media · Willpower" />
-  <meta name="twitter:description" content="Panel recordings and the insights behind them." />
   <link rel="icon" type="image/png" sizes="32x32" href="https://starlit-crostata-9f186f.netlify.app/assets/favicon-32.png?v=2" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://starlit-crostata-9f186f.netlify.app/assets/apple-touch-icon.png?v=2" />
-  <link rel="icon" type="image/png" sizes="16x16" href="https://starlit-crostata-9f186f.netlify.app/assets/favicon.png?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&amp;family=Inter:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://starlit-crostata-9f186f.netlify.app/assets/subpage.css" />
-  <style>
-    /* ── Media-page-specific extras (built on subpage.css tokens) ── */
 
-    /* Responsive 16:9 video frame */
-    .video-frame {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border-radius: 12px;
-      overflow: hidden;
+  <style>
+    /* ─── Base ─────────────────────────────────────────────── */
+    body { overflow-x: hidden; }
+
+    /* ─── Series color tokens ──────────────────────────────── */
+    :root {
+      --wh:     #7baad4;   /* Wellness House  — site blue     */
+      --cat:    #d4956a;   /* Catalyst        — amber         */
+      --lounge: #72b89a;   /* Wellness Lounge — sage          */
+      --wos:    #a87dc4;   /* World of Sports — violet        */
+      --hps:    #c47a7a;   /* Human Perf.     — coral         */
+    }
+
+    /* ─── Map legend ───────────────────────────────────────── */
+    .legend-band {
+      background: var(--card2, rgba(255,255,255,0.03));
+      border-bottom: 1px solid var(--border);
+    }
+    .legend-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 14px 40px;
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .legend-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .legend-items {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; color: var(--muted);
+      white-space: nowrap;
+    }
+    .legend-item .bird { width: 18px; height: 13px; flex-shrink: 0; }
+
+    /* ─── Series accordion ─────────────────────────────────── */
+    .series-wrap {
+      max-width: 1100px; margin: 0 auto;
+      padding: 40px 40px 100px;
+      display: flex; flex-direction: column; gap: 2px;
+    }
+
+    .sc {
       border: 1px solid var(--border);
+      border-radius: 10px;
       background: var(--card);
+      overflow: hidden;
+      transition: border-color .2s;
     }
-    .video-frame iframe,
-    .video-frame video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      border: 0;
+    .sc.open { border-color: rgba(255,255,255,.12); }
+
+    .sc__head {
+      display: grid; grid-template-columns: 48px 1fr auto;
+      align-items: center; cursor: pointer; user-select: none;
+      transition: background .15s;
     }
-    /* Placeholder shown until a real embed is dropped in */
-    .video-frame .placeholder {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 0.75rem; text-align: center; padding: 2rem;
-      background:
-        radial-gradient(ellipse at center, rgba(123,170,212,0.10), transparent 70%),
-        var(--card);
+    .sc__head:hover { background: var(--card2); }
+
+    .sc__icon {
+      width: 48px; height: 64px;
+      display: flex; align-items: center; justify-content: center;
+      border-right: 1px solid var(--border); flex-shrink: 0;
       color: var(--muted);
     }
-    .video-frame .placeholder .play {
-      width: 64px; height: 64px; border-radius: 50%;
-      border: 1px solid rgba(123,170,212,0.5);
-      display: flex; align-items: center; justify-content: center;
+    .sc__icon svg { opacity: .35; transition: opacity .15s; }
+    .sc.open .sc__icon svg { opacity: .7; }
+
+    .sc__info { padding: 18px 24px; }
+    .sc__name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 400; color: var(--white);
+      margin-bottom: 3px; line-height: 1.2;
+    }
+    .sc__name em { font-style: italic; }
+    .sc__sub { font-size: 12px; color: var(--muted); letter-spacing: .02em; }
+
+    .sc__right {
+      padding: 18px 24px; display: flex; align-items: center;
+      gap: 14px; flex-shrink: 0;
+    }
+    .sc__count { font-size: 12px; color: var(--muted); white-space: nowrap; }
+    .sc__count strong { color: rgba(255,255,255,.55); font-weight: 400; }
+    .sc__badge {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; padding: 4px 10px;
+      border-radius: 99px; border: 1px solid var(--border);
+      color: var(--muted); white-space: nowrap;
+    }
+    .sc__badge.live {
+      background: rgba(123,170,212,.10);
+      border-color: rgba(123,170,212,.35);
       color: var(--blue);
     }
-    .video-frame .placeholder .play svg { width: 22px; height: 22px; margin-left: 3px; }
-    .video-frame .placeholder code {
-      font-family: 'Space Mono', monospace; font-size: 0.72rem;
-      color: var(--blue); letter-spacing: 0.02em;
+    .sc__chevron {
+      width: 18px; height: 18px; color: var(--muted);
+      transition: transform .25s, color .15s; flex-shrink: 0;
     }
+    .sc.open .sc__chevron { transform: rotate(180deg); color: rgba(255,255,255,.4); }
 
-    /* Featured session: video + insight side by side */
-    .session-feature {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 2.5rem;
-      align-items: start;
-      margin-top: 2rem;
+    .sc__body { display: none; border-top: 1px solid var(--border); }
+    .sc.open .sc__body { display: block; }
+    .sc__inner { padding: 22px 28px 26px; }
+
+    /* ─── Keynote row ───────────────────────────────────────── */
+    .kn-row {
+      display: flex; align-items: center;
+      border: 1px solid var(--border); border-radius: 8px;
+      background: var(--card2); margin-bottom: 14px;
+      overflow: hidden; cursor: pointer; transition: border-color .2s;
     }
-    .session-feature .insight-head {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;
-      margin-bottom: 0.9rem;
-    }
-    .session-meta {
+    .kn-row:hover { border-color: rgba(255,255,255,.2); }
+    .kn-mark { width: 3px; align-self: stretch; flex-shrink: 0; }
+    .kn-body { padding: 12px 16px; flex: 1; }
+    .kn-label {
       font-family: 'Space Mono', monospace;
-      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em;
+      font-size: 9px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+    }
+    .kn-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; color: var(--white); line-height: 1.35;
+    }
+    .kn-title em { font-style: italic; }
+    .kn-speaker { font-size: 11px; color: var(--muted); margin-top: 3px; }
+    .kn-arrow { padding: 0 16px; font-size: 12px; color: var(--muted); flex-shrink: 0; }
+    .kn-bird { padding: 0 18px 0 4px; flex-shrink: 0; }
+
+    /* ─── Session rows ──────────────────────────────────────── */
+    .session-list { display: flex; flex-direction: column; }
+    .session-row {
+      display: grid;
+      grid-template-columns: 74px 1fr auto 28px;
+      gap: 12px; align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer; transition: opacity .15s;
+    }
+    .session-row:first-child { border-top: 1px solid var(--border); }
+    .session-row:hover { opacity: .62; }
+
+    .sr__num {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; color: var(--muted); letter-spacing: .05em;
+    }
+    .sr__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px; color: var(--white); line-height: 1.3;
+    }
+    .sr__title em { font-style: italic; }
+    .sr__brands { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .sr__tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; padding: 3px 8px; border-radius: 4px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .sr__tag--new {
+      background: rgba(123,170,212,.12); color: var(--blue);
+      border: 1px solid rgba(123,170,212,.3);
+    }
+    .sr__tag--recap {
+      background: var(--card2); color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    /* Bird mark at end of row */
+    .sr__bird { display: flex; align-items: center; justify-content: flex-end; flex-shrink: 0; }
+    .sr__bird .bird { width: 18px; height: 13px; opacity: .75; }
+    .session-row:hover .sr__bird .bird { opacity: 1; }
+
+    /* ─── Bird SVG helper ───────────────────────────────────── */
+    .bird { display: block; overflow: visible; }
+
+    /* ─── Dinner rows ───────────────────────────────────────── */
+    .dinner-list { display: flex; flex-direction: column; }
+    .dinner-row {
+      display: grid; grid-template-columns: 110px 1fr 80px 28px;
+      gap: 12px; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .dinner-row:first-child { border-top: 1px solid var(--border); }
+    .dr__date { font-size: 11px; color: var(--muted); }
+    .dr__title { font-size: 13px; color: var(--white); line-height: 1.3; }
+    .dr__title em { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+    .dr__brands { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .dr__link { font-size: 11px; color: var(--muted); text-align: right; }
+
+    /* ─── Sub label ─────────────────────────────────────────── */
+    .sub-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .13em;
       text-transform: uppercase; color: var(--muted);
+      margin: 18px 0 10px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
     }
-    .session-feature h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 400; line-height: 1.15; color: var(--white);
-      margin-bottom: 0.75rem;
-    }
-    .session-feature h3 em { font-style: italic; color: var(--blue); }
-    .speaker-line {
-      font-size: 0.92rem; color: rgba(255,255,255,0.7);
-      margin-bottom: 1.1rem;
-    }
-    .speaker-line strong { color: var(--white); font-weight: 600; }
+    .sub-label:first-child { margin-top: 0; }
 
-    /* Pull quote */
-    .pull-quote {
-      border-left: 2px solid var(--blue);
-      padding: 0.4rem 0 0.4rem 1.25rem;
-      margin: 1.5rem 0;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.3rem; line-height: 1.4; color: rgba(255,255,255,0.9);
+    /* ─── Body CTA ──────────────────────────────────────────── */
+    .body-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      margin-top: 18px; padding-top: 18px;
+      border-top: 1px solid var(--border);
     }
-    .pull-quote cite {
-      display: block; margin-top: 0.6rem;
-      font-family: 'Space Mono', monospace; font-style: normal;
-      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--blue);
-    }
+    .body-cta__text { font-size: 13px; color: var(--muted); }
+    .body-cta__text strong { color: rgba(255,255,255,.7); font-weight: 500; }
 
-    /* Session grid (the archive) */
-    .session-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
-      margin-top: 2rem;
+    /* ─── Empty state ───────────────────────────────────────── */
+    .empty { padding: 28px; text-align: center; }
+    .empty__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px; font-weight: 300;
+      color: var(--muted); margin-bottom: 5px;
     }
-    .session-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 12px; overflow: hidden; transition: all var(--t);
+    .empty__title em { font-style: italic; }
+    .empty__sub { font-size: 12px; color: var(--muted); opacity: .55; }
+
+    /* ─── Drawer ────────────────────────────────────────────── */
+    .drawer-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0); pointer-events: none;
+      transition: background .3s;
+    }
+    .drawer-overlay.open { background: rgba(0,0,0,0.72); pointer-events: all; }
+
+    .drawer {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(700px, 100vw); z-index: 201;
+      background: var(--bg, #08090e);
+      border-left: 1px solid var(--border);
       display: flex; flex-direction: column;
-    }
-    .session-card:hover { border-color: rgba(123,170,212,0.35); transform: translateY(-2px); }
-    .session-card .thumb {
-      position: relative; aspect-ratio: 16 / 9; background: var(--card2);
+      transform: translateX(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
       overflow: hidden;
     }
-    .session-card .thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .session-card .thumb .play-badge {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      background: rgba(8,9,14,0.35); transition: background var(--t);
-    }
-    .session-card:hover .thumb .play-badge { background: rgba(8,9,14,0.15); }
-    .session-card .thumb .play-badge span {
-      width: 46px; height: 46px; border-radius: 50%;
-      background: rgba(8,9,14,0.6); border: 1px solid rgba(123,170,212,0.6);
-      display: flex; align-items: center; justify-content: center; color: var(--blue);
-    }
-    .session-card .body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
-    .session-card .body .session-meta { margin-bottom: 0.6rem; }
-    .session-card .body h4 {
-      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
-      font-weight: 400; line-height: 1.2; color: var(--white); margin-bottom: 0.5rem;
-    }
-    .session-card .body p {
-      font-size: 0.92rem; color: rgba(255,255,255,0.68); margin-bottom: 1.1rem;
-    }
-    .session-card .body .card-link {
-      margin-top: auto;
-      font-family: 'Space Mono', monospace; font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue);
-      display: inline-flex; align-items: center; gap: 0.4rem;
-    }
+    .drawer.open { transform: translateX(0); }
 
-    @media (max-width: 820px) {
-      .session-feature { grid-template-columns: 1fr; gap: 1.75rem; }
-      .session-grid { grid-template-columns: 1fr; }
+    .drawer__bar {
+      flex-shrink: 0; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; border-bottom: 1px solid var(--border);
+      background: var(--card);
+    }
+    .drawer__bar-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .drawer__label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); white-space: nowrap;
+    }
+    .drawer__title-short {
+      font-size: 13px; color: var(--white);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      max-width: 340px;
+    }
+    .drawer__bar-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .drawer__full-link {
+      font-size: 12px; color: var(--muted);
+      padding: 6px 14px; border-radius: 6px;
+      border: 1px solid var(--border);
+      transition: color .15s, border-color .15s; white-space: nowrap;
+    }
+    .drawer__full-link:hover { color: var(--white); border-color: rgba(255,255,255,.2); }
+    .drawer__close {
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      border-radius: 6px; cursor: pointer; border: 1px solid var(--border);
+      color: var(--muted); background: none;
+      transition: color .15s, border-color .15s, background .15s;
+      font-size: 16px; line-height: 1;
+    }
+    .drawer__close:hover { color: var(--white); border-color: rgba(255,255,255,.2); background: var(--card2); }
+
+    .drawer__content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+    .drawer__content::-webkit-scrollbar { width: 4px; }
+    .drawer__content::-webkit-scrollbar-track { background: transparent; }
+    .drawer__content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .drawer-loading {
+      display: flex; align-items: center; justify-content: center;
+      height: 300px; color: var(--muted); font-size: 13px; gap: 12px;
+    }
+    .drawer-spinner {
+      width: 18px; height: 18px;
+      border: 1.5px solid var(--border); border-top-color: var(--blue);
+      border-radius: 50%; animation: dspin .7s linear infinite;
+    }
+    @keyframes dspin { to { transform: rotate(360deg); } }
+
+    .drawer__content .nav,
+    .drawer__content nav,
+    .drawer__content .footer,
+    .drawer__content footer,
+    .drawer__content .sp-header,
+    .drawer__content .sp-footer { display: none !important; }
+
+    /* ─── Responsive ────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .drawer { width: 100vw; }
+      .sc__right { display: none; }
+    }
+    @media (max-width: 640px) {
+      .series-wrap { padding-left: 20px; padding-right: 20px; }
+      .legend-inner { padding: 12px 20px; gap: 12px; }
+      .session-row { grid-template-columns: 56px 1fr 28px; }
+      .sr__tag { display: none; }
+      .dinner-row { grid-template-columns: 80px 1fr 28px; }
+      .dr__link { display: none; }
     }
   </style>
 </head>
 <body>
-  <header class="sp-header">
-    <a href="/" class="brand" aria-label="Willpower home">
-      <img src="https://starlit-crostata-9f186f.netlify.app/assets/logos/willpower-logo-white.png" alt="" loading="eager" />
+
+<!-- ── Drawer ────────────────────────────────────────────────── -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Panel content">
+  <div class="drawer__bar">
+    <div class="drawer__bar-left">
+      <span class="drawer__label">Session</span>
+      <span class="drawer__title-short" id="drawerTitleShort"></span>
+    </div>
+    <div class="drawer__bar-right">
+      <a href="#" id="drawerFullLink" class="drawer__full-link" target="_blank">Open full page →</a>
+      <button class="drawer__close" onclick="closeDrawer()" aria-label="Close">✕</button>
+    </div>
+  </div>
+  <div class="drawer__content" id="drawerContent">
+    <div class="drawer-loading"><div class="drawer-spinner"></div><span>Loading…</span></div>
+  </div>
+</div>
+
+<!-- ── Header ────────────────────────────────────────────────── -->
+<header class="sp-header">
+  <a href="/" class="brand" aria-label="Willpower home">
+    <img src="https://starlit-crostata-9f186f.netlify.app/assets/logos/willpower-logo-white.png" alt="" loading="eager" />
+  </a>
+  <nav class="sp-nav">
+    <a href="/">Home</a>
+    <a href="/events">Events</a>
+    <a href="/past-events">Past Events</a>
+    <a href="/partners">Partners</a>
+    <a href="/media" aria-current="page">Media</a>
+    <a href="/apply" class="sp-cta">Request Invite</a>
+  </nav>
+</header>
+
+<!-- ── Hero ──────────────────────────────────────────────────── -->
+<section class="sp-hero">
+  <div class="wrap">
+    <p class="eyebrow">Media</p>
+    <h1 class="headline">The conversations, in full. <em>And what they mean.</em></h1>
+    <p class="body-lg">Every Willpower panel, recorded and unpacked. Watch the room, then read what the operators actually wrote down.</p>
+  </div>
+</section>
+
+<!-- ── Series Legend (map key) ───────────────────────────────── -->
+<div class="legend-band">
+  <div class="legend-inner">
+    <span class="legend-label">Series key</span>
+    <div class="legend-items">
+
+      <div class="legend-item">
+        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        Wellness House
+      </div>
+
+      <div class="legend-item">
+        <svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        Catalyst
+      </div>
+
+      <div class="legend-item">
+        <svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        Wellness Lounge
+      </div>
+
+      <div class="legend-item">
+        <svg class="bird" viewBox="0 0 24 16" fill="var(--wos)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        World of Sports
+      </div>
+
+      <div class="legend-item">
+        <svg class="bird" viewBox="0 0 24 16" fill="var(--hps)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+        </svg>
+        Human Performance
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── Archive ────────────────────────────────────────────────── -->
+<div class="series-wrap">
+
+  <!-- ── Wellness House 2025 ──────────────────────────────────── -->
+  <div class="sc open" id="sc-wh">
+    <div class="sc__head" onclick="toggle('sc-wh')">
+      <div class="sc__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="sc__info">
+        <div class="sc__name">Wellness House <em>2025</em></div>
+        <div class="sc__sub">Annual flagship · Austin, TX · SXSW Week</div>
+      </div>
+      <div class="sc__right">
+        <div class="sc__count"><strong>8</strong> sessions</div>
+        <div class="sc__badge live">Flagship · Sold Out</div>
+        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+    </div>
+    <div class="sc__body">
+      <div class="sc__inner">
+
+        <div class="kn-row" onclick="openDrawer('keynote-founder-mode-in-health-and-wellness.html','Founder Mode in Health &amp; Wellness','Greg LaVecchia · Bloom Nutrition')">
+          <div class="kn-mark" style="background:var(--wh)"></div>
+          <div class="kn-body">
+            <div class="kn-label">Opening Keynote</div>
+            <div class="kn-title">Founder mode in <em>health &amp; wellness</em></div>
+            <div class="kn-speaker">Greg LaVecchia · Bloom Nutrition</div>
+          </div>
+          <div class="kn-arrow">Read &amp; watch →</div>
+          <div class="kn-bird">
+            <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true">
+              <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="session-list">
+
+          <div class="session-row" onclick="openDrawer('panel-7-the-future-of-commerce-brand-community-and-ai.html','The Future of Commerce: Brand, Community &amp; AI','Tecovas · YETI · Estée Lauder · Shopify')">
+            <div class="sr__num">Session 07</div>
+            <div><div class="sr__title">The future of commerce: <em>brand, community &amp; AI</em></div><div class="sr__brands">Tecovas · YETI · Estée Lauder · Shopify</div></div>
+            <span class="sr__tag sr__tag--new">New</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-6-building-worlds-through-sports.html','Building Worlds Through Sports','San Antonio Spurs · MLP · Tyler Eifert')">
+            <div class="sr__num">Session 06</div>
+            <div><div class="sr__title">Building worlds <em>through sports</em></div><div class="sr__brands">San Antonio Spurs · MLP · Tyler Eifert</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-5-comedy-panel-roast.html','Comedy Panel: The Roast','Super Coffee · Lofty · Kaviva · Jevity · Kintsugi')">
+            <div class="sr__num">Session 05</div>
+            <div><div class="sr__title">Comedy panel: <em>the roast</em></div><div class="sr__brands">Super Coffee · Lofty · Kaviva · Jevity · Kintsugi</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-4-wellness-at-the-core-of-community.html','Wellness at the Core of Community','Vivo Barefoot · Sweat Pals')">
+            <div class="sr__num">Session 04</div>
+            <div><div class="sr__title">Wellness at <em>the core of community</em></div><div class="sr__brands">Vivo Barefoot · Sweat Pals</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-3-founder-mode-getting-scrappy.html','Founder Mode: Getting Scrappy','437 Swimwear · Good Wipes · It\'s That Simple')">
+            <div class="sr__num">Session 03</div>
+            <div><div class="sr__title">Founder mode: <em>getting scrappy</em></div><div class="sr__brands">437 Swimwear · Good Wipes · It's That Simple</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-2-the-power-of-routine.html','The Power of Routine','WHOOP · HigherDOSE · Wellworthy')">
+            <div class="sr__num">Session 02</div>
+            <div><div class="sr__title">The power <em>of routine</em></div><div class="sr__brands">WHOOP · HigherDOSE · Wellworthy</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-1-founders-rebuilding-health-and-the-future-of-wellness.html','Founders Rebuilding Health &amp; Wellness','Tiny Health · Function · Throne Science')">
+            <div class="sr__num">Session 01</div>
+            <div><div class="sr__title">Founders rebuilding <em>health &amp; wellness</em></div><div class="sr__brands">Tiny Health · Function · Throne Science</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+        </div>
+
+        <div class="body-cta">
+          <div class="body-cta__text"><strong>WH26 sold out.</strong> WH27 is next. March 2027, Austin, SXSW week.</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="/apply?intent=wh27" class="btn btn-primary">Request Invite</a>
+            <a href="/past-events" class="btn btn-outline">View event details</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Catalyst NYC ─────────────────────────────────────────── -->
+  <div class="sc" id="sc-cat-nyc">
+    <div class="sc__head" onclick="toggle('sc-cat-nyc')">
+      <div class="sc__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      </div>
+      <div class="sc__info">
+        <div class="sc__name">Catalyst <em>NYC</em></div>
+        <div class="sc__sub">Intimate dinner series · New York City · 3 events</div>
+      </div>
+      <div class="sc__right">
+        <div class="sc__count"><strong>3</strong> dinners</div>
+        <div class="sc__badge">Dinner Series</div>
+        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+    </div>
+    <div class="sc__body">
+      <div class="sc__inner">
+        <div class="dinner-list">
+          <div class="dinner-row">
+            <div class="dr__date">Nov 10, 2025</div>
+            <div><div class="dr__title">Capitalizing on the future of <em>wellness</em></div><div class="dr__brands">Masa Chips · Caulipower · HYROX · Soho House NYC</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Jul 29, 2025</div>
+            <div><div class="dr__title">Cutting through <em>the noise</em></div><div class="dr__brands">Slate Milk · Othership · WHOOP</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">May 27, 2025</div>
+            <div><div class="dr__title">Brand breakouts &amp; buyouts w/ <em>HelloFresh &amp; Daily Harvest</em></div><div class="dr__brands">HelloFresh · Daily Harvest · Poppi · Padel Haus</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+        </div>
+        <div class="body-cta">
+          <div class="body-cta__text">Catalyst NYC continues in 2026. Invite-only. 25 to 40 people, one table.</div>
+          <a href="/apply" class="btn btn-primary">Request Invite</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Catalyst Austin ──────────────────────────────────────── -->
+  <div class="sc" id="sc-cat-aus">
+    <div class="sc__head" onclick="toggle('sc-cat-aus')">
+      <div class="sc__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      </div>
+      <div class="sc__info">
+        <div class="sc__name">Catalyst <em>Austin</em></div>
+        <div class="sc__sub">Intimate dinner series · Austin, TX · 5 events</div>
+      </div>
+      <div class="sc__right">
+        <div class="sc__count"><strong>5</strong> dinners</div>
+        <div class="sc__badge">Dinner Series</div>
+        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+    </div>
+    <div class="sc__body">
+      <div class="sc__inner">
+        <div class="dinner-list">
+          <div class="dinner-row">
+            <div class="dr__date">Oct 14, 2025</div>
+            <div><div class="dr__title">Winning cultural tentpoles, <em>F1 Edition</em></div><div class="dr__brands">Caraway · LALO Tequila · Kendra Scott</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Aug 19, 2025</div>
+            <div><div class="dr__title">Partnerships for <em>growth</em></div><div class="dr__brands">SoulCycle · Howler Brothers · JP Morgan · Austin FC</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Jun 18, 2025</div>
+            <div><div class="dr__title">Customer-centric <em>scaling</em></div><div class="dr__brands">Promix Nutrition</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Apr 16, 2025</div>
+            <div><div class="dr__title">Innovation <em>playbook</em></div><div class="dr__brands">Super Coffee · GoodPop · Kin Euphorics</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Feb 5, 2025</div>
+            <div><div class="dr__title">Inflection point w/ <em>Paulie Dery</em></div><div class="dr__brands">AG1 · It's Skinny</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+        </div>
+        <div class="body-cta">
+          <div class="body-cta__text">Catalyst Austin continues in 2026. Invite-only.</div>
+          <a href="/apply" class="btn btn-primary">Request Invite</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Wellness Lounge ──────────────────────────────────────── -->
+  <div class="sc" id="sc-lounge">
+    <div class="sc__head" onclick="toggle('sc-lounge')">
+      <div class="sc__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
+      <div class="sc__info">
+        <div class="sc__name">The Wellness <em>Lounge</em></div>
+        <div class="sc__sub">New series · NYC &amp; Austin · Remedy Place &amp; Gevity · 4 events in 2026</div>
+      </div>
+      <div class="sc__right">
+        <div class="sc__count"><strong>4</strong> lounges</div>
+        <div class="sc__badge live">New series</div>
+        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+    </div>
+    <div class="sc__body">
+      <div class="sc__inner">
+        <div class="sub-label">Completed</div>
+        <div class="dinner-list">
+          <div class="dinner-row">
+            <div class="dr__date">May 20, 2026 · NYC</div>
+            <div><div class="dr__title">The first <em>Wellness Lounge</em></div><div class="dr__brands">AG1 · Beekman 1802 · Evolv · Remedy Place Soho · 80+ brands</div></div>
+            <div class="dr__link">Recap soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+        </div>
+        <div class="sub-label">Upcoming</div>
+        <div class="dinner-list">
+          <div class="dinner-row">
+            <div class="dr__date">Aug 19 · NYC</div>
+            <div><div class="dr__title">DTC, retail &amp; everything <em>in between</em></div><div class="dr__brands">Remedy Place Flatiron · 60+ brand leaders</div></div>
+            <a href="/events/catalyst-nyc-august-2026" class="dr__link">Join →</a>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Nov · NYC</div>
+            <div><div class="dr__title">The Wellness <em>Lounge</em></div><div class="dr__brands">Remedy Place · 80+ brand leaders</div></div>
+            <a href="/apply" class="dr__link">Request Invite →</a>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" style="opacity:.4" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Dec · Austin</div>
+            <div><div class="dr__title">The Wellness <em>Lounge</em></div><div class="dr__brands">Gevity Austin · First Texas Lounge</div></div>
+            <a href="/apply" class="dr__link">Request Invite →</a>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" style="opacity:.4" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── World of Sports ─────────────────────────────────────── -->
+  <div class="sc" id="sc-wos">
+    <div class="sc__head" onclick="toggle('sc-wos')">
+      <div class="sc__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20M2 12h20"/></svg>
+      </div>
+      <div class="sc__info">
+        <div class="sc__name">World of <em>Sports</em></div>
+        <div class="sc__sub">Human Performance Summit · Austin, TX</div>
+      </div>
+      <div class="sc__right">
+        <div class="sc__count"><strong>1</strong> event</div>
+        <div class="sc__badge">Summit</div>
+        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+    </div>
+    <div class="sc__body">
+      <div class="sc__inner">
+        <div class="empty">
+          <div class="empty__title">Panel recaps <em>in production</em></div>
+          <div class="empty__sub">Vollebak · FloSports · Williams Racing · Houston Texans · Nutrabolt</div>
+        </div>
+        <div class="body-cta">
+          <div class="body-cta__text">Full event details on the past events page.</div>
+          <a href="/past-events" class="btn btn-outline">View event</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Human Performance ───────────────────────────────────── -->
+  <div class="sc" id="sc-hps">
+    <div class="sc__head" onclick="toggle('sc-hps')">
+      <div class="sc__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="sc__info">
+        <div class="sc__name">Human Performance <em>Summit</em></div>
+        <div class="sc__sub">March 9, 2025 · Austin, TX · 102 attendees · NASA &amp; DoD partners</div>
+      </div>
+      <div class="sc__right">
+        <div class="sc__count"><strong>5</strong> panels</div>
+        <div class="sc__badge">Summit</div>
+        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+    </div>
+    <div class="sc__body">
+      <div class="sc__inner">
+        <div class="empty">
+          <div class="empty__title">Content <em>coming soon</em></div>
+          <div class="empty__sub">NASA · DIU · Sweetgreen · True Food Kitchen · Memphis Grizzlies · HumanCo</div>
+        </div>
+        <div class="body-cta">
+          <div class="body-cta__text">Full event details on the past events page.</div>
+          <a href="/past-events" class="btn btn-outline">View event</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── CTA ───────────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="wrap">
+    <h2>Get the next one <em>in your inbox.</em></h2>
+    <p>New panels and breakdowns drop after every event. Join the leaders who get them first.</p>
+    <div class="btn-row">
+      <a href="/newsletter" class="btn btn-primary">Subscribe</a>
+      <a href="/apply" class="btn btn-outline">Request an Invite</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────── -->
+<footer class="sp-footer">
+  <div class="wrap">
+    <a href="/" class="fl">
+      <img src="https://starlit-crostata-9f186f.netlify.app/assets/logos/willpower-logo-white.png" alt="" loading="lazy" />
     </a>
-    <nav class="sp-nav">
+    <nav class="f-nav">
       <a href="/">Home</a>
       <a href="/events">Events</a>
       <a href="/past-events">Past Events</a>
       <a href="/partners">Partners</a>
-      <a href="/careers">Careers</a>
-      <a href="/apply" class="sp-cta">Request Invite</a>
+      <a href="/media">Media</a>
+      <a href="/apply">Request Invite</a>
+      <a href="mailto:bill@willpowerhq.com">Contact</a>
     </nav>
-  </header>
+  </div>
+</footer>
 
-  <!-- HERO -->
-  <section class="sp-hero">
-    <div class="wrap">
-      <p class="eyebrow">Media</p>
-      <h1 class="headline">The conversations, in full. <em>And what they mean.</em></h1>
-      <p class="body-lg">Every Willpower panel, recorded and unpacked. Watch the room, then read the takeaways the operators actually wrote down. The strategy behind building a $10M to $1B+ consumer, wellness, and performance brand, straight from the people doing it.</p>
-    </div>
-  </section>
+<script>
+  var overlay = document.getElementById('drawerOverlay');
+  var drawer = document.getElementById('drawer');
+  var drawerContent = document.getElementById('drawerContent');
+  var drawerTitleShort = document.getElementById('drawerTitleShort');
+  var drawerFullLink = document.getElementById('drawerFullLink');
 
-  <!-- FEATURED SESSION -->
-  <section class="section">
-    <div class="wrap">
-      <p class="eyebrow">Featured</p>
-      <h2 class="section-title">Featured <em>session.</em></h2>
+  function toggle(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
 
-      <div class="session-feature">
-        <!-- LEFT: video -->
-        <div>
-          <div class="video-frame">
-            <!-- EDIT ME ▸ Replace this placeholder with the real embed, e.g.:
-                 <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Panel title"
-                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                         allowfullscreen loading="lazy"></iframe>
-            -->
-            <div class="placeholder">
-              <span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-              <div>Drop the panel recording here</div>
-              <code>&lt;iframe src="youtube.com/embed/…"&gt;</code>
-            </div>
-          </div>
-        </div>
+  function openDrawer(url, title, brands) {
+    var tmp = document.createElement('div');
+    tmp.innerHTML = title;
+    drawerTitleShort.textContent = tmp.textContent;
+    drawerFullLink.href = url;
+    drawerContent.innerHTML = '<div class="drawer-loading"><div class="drawer-spinner"></div><span>Loading…</span></div>';
+    overlay.classList.add('open');
+    drawer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    fetch(url)
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        ['nav', 'footer', '.nav', '.footer', '.sp-header', '.sp-footer'].forEach(function(sel) {
+          doc.querySelectorAll(sel).forEach(function(el) { el.remove(); });
+        });
+        var styles = Array.from(doc.querySelectorAll('style')).map(function(s) { return s.textContent; }).join('\n');
+        drawerContent.innerHTML = '<style>' + styles + '</style>' + doc.body.innerHTML;
+        drawerContent.scrollTop = 0;
+      })
+      .catch(function() {
+        drawerContent.innerHTML = '<div style="padding:48px 32px;text-align:center;color:rgba(255,255,255,.35);"><p style="margin-bottom:16px;font-size:14px;">Could not load content inline.</p><a href="' + url + '" style="color:var(--blue);font-size:13px;" target="_blank">Open full page →</a></div>';
+      });
+  }
 
-        <!-- RIGHT: the insight -->
-        <div>
-          <div class="insight-head">
-            <span class="pill">Insights</span>
-            <span class="session-meta">Wellness House 2026 · SXSW · March 13</span>
-          </div>
-          <h3>The Power of <em>Brand.</em></h3>
-          <!-- EDIT ME ▸ confirm the exact lineup / any co-panelists -->
-          <p class="speaker-line">Featuring <strong>Greg Lavecchia</strong>, CEO &amp; Co-Founder, Bloom Nutrition &nbsp;·&nbsp; moderated by Bill Murphy</p>
+  function closeDrawer() {
+    overlay.classList.remove('open');
+    drawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
 
-          <p style="color:rgba(255,255,255,0.8); line-height:1.7;">Recorded at Wellness House 2026 during SXSW in Austin. A conversation on building a brand that stands out in one of the most crowded categories in wellness.</p>
-
-          <!-- EDIT ME ▸ pull 3 real takeaways from the recording. Use real numbers and moments. No invented quotes. -->
-          <ul class="bullets" style="margin-top:1.25rem;">
-            <li>Takeaway one: the number, tactic, or lesson worth stealing.</li>
-            <li>Takeaway two: the move most brands in the category get wrong.</li>
-            <li>Takeaway three: the point that made the room lean in.</li>
-          </ul>
-
-          <!-- EDIT ME ▸ the single best real line from the talk -->
-          <blockquote class="pull-quote">
-            "Paste the best line from the recording here."
-            <cite>Greg Lavecchia, Bloom Nutrition</cite>
-          </blockquote>
-
-          <div class="btn-row">
-            <a href="#" class="btn btn-outline">Read the full breakdown</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SESSION ARCHIVE -->
-  <section class="section">
-    <div class="wrap">
-      <p class="eyebrow">The Archive</p>
-      <h2 class="section-title">Every <em>session.</em></h2>
-      <p class="lead" style="margin-top:0.5rem;">Browse the full library of panels and fireside conversations from Willpower events.</p>
-
-      <div class="session-grid">
-
-        <!-- EDIT ME ▸ one card per recording. Add the YouTube link (the two href="#") + a real teaser. -->
-        <article class="session-card">
-          <a href="#" class="thumb" aria-label="Watch session">
-            <div class="play-badge"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
-          </a>
-          <div class="body">
-            <span class="session-meta">The Wellness Lounge · NYC · May 2026</span>
-            <h4>The Wellness Lounge (inaugural)</h4>
-            <p>Remedy Place, Soho. Watch the full conversation and read the takeaways.</p>
-            <a href="#" class="card-link">Watch + Read →</a>
-          </div>
-        </article>
-
-        <article class="session-card">
-          <a href="#" class="thumb" aria-label="Watch session">
-            <div class="play-badge"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
-          </a>
-          <div class="body">
-            <span class="session-meta">Catalyst NYC · Nov 2025</span>
-            <h4>Capitalizing on the Future of Wellness</h4>
-            <p>Watch the full conversation and read the takeaways.</p>
-            <a href="#" class="card-link">Watch + Read →</a>
-          </div>
-        </article>
-
-        <article class="session-card">
-          <a href="#" class="thumb" aria-label="Watch session">
-            <div class="play-badge"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
-          </a>
-          <div class="body">
-            <span class="session-meta">Catalyst NYC · Jul 2025</span>
-            <h4>Cutting Through the Noise</h4>
-            <p>Watch the full conversation and read the takeaways.</p>
-            <a href="#" class="card-link">Watch + Read →</a>
-          </div>
-        </article>
-
-        <article class="session-card">
-          <a href="#" class="thumb" aria-label="Watch session">
-            <div class="play-badge"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></div>
-          </a>
-          <div class="body">
-            <span class="session-meta">Catalyst NYC · May 2025</span>
-            <h4>Brand Breakouts &amp; Buyouts</h4>
-            <p>HelloFresh &amp; Daily Harvest. Watch the full conversation and read the takeaways.</p>
-            <a href="#" class="card-link">Watch + Read →</a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="wrap">
-      <h2>Get the next one <em>in your inbox.</em></h2>
-      <p>New panels and breakdowns drop after every event. Join the leaders who get them first.</p>
-      <div class="btn-row">
-        <a href="/newsletter" class="btn btn-primary">Subscribe</a>
-        <a href="/apply" class="btn btn-outline">Request an Invite</a>
-      </div>
-    </div>
-  </section>
-
-  <footer class="sp-footer">
-    <div class="wrap">
-      <a href="/" class="fl">
-        <img src="https://starlit-crostata-9f186f.netlify.app/assets/logos/willpower-logo-white.png" alt="" loading="lazy" />
-      </a>
-      <nav class="f-nav">
-        <a href="/">Home</a>
-        <a href="/events">Events</a>
-        <a href="/past-events">Past Events</a>
-        <a href="/partners">Partners</a>
-        <a href="/careers">Careers</a>
-        <a href="/apply">Request Invite</a>
-        <a href="mailto:bill@willpowerhq.com">Contact</a>
-      </nav>
-    </div>
-  </footer>
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
+</script>
 </body>
 </html>

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / AEO -->
+  <title>Wellness at the Core of Community: How Shared Discomfort Builds Lasting Bonds | Willpower Panel Series</title>
+  <meta name="description" content="Leaders from Vivo Barefoot and Sweat Pals joined wellness community builder Eric Szilard to explore how physical experience, ritual, and radical authenticity forge the communities that brands and people actually want to be part of." />
+  <meta name="keywords" content="wellness community building, community marketing, Vivo Barefoot, Sweat Pals, social wellness, brand community strategy, in-person events, community rituals, performance marketing vs community, Willpower panel" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Wellness at the Core of Community" />
+  <meta property="og:description" content="How shared physical experience, ritual, and genuine belonging — not paid media — are the real engines of community growth for brands and individuals alike." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Willpower" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://willpowerhq.com/content/panel-4-wellness-at-the-core-of-community" />
+
+  <!-- Fonts: matches Willpower's clean sans-serif aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────────────────── */
+    :root {
+      --bg-primary:    #0a0a0a;
+      --bg-secondary:  #111111;
+      --bg-card:       #161616;
+      --bg-accent:     #1a1a1a;
+      --border:        rgba(255,255,255,0.08);
+      --border-accent: rgba(255,255,255,0.15);
+
+      --text-primary:   #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-muted:     #666666;
+
+      --gold:          #c9a84c;
+      --gold-light:    #e0c06a;
+
+      --font:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --max-w:         780px;
+      --max-w-wide:    1100px;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Nav (minimal top bar) ──────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav__logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+    .site-nav__links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .site-nav__links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .site-nav__links a:hover { color: var(--text-primary); }
+
+    /* ─── Hero ───────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 72px 32px 64px;
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero__title {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    .hero__subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .hero__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero__meta-item svg {
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* ─── Video ──────────────────────────────────────────────────────────────── */
+    .video-section {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .video-wrapper iframe,
+    .video-wrapper .video-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Placeholder shown until YouTube URL is added */
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+    .video-placeholder__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── Panelists ──────────────────────────────────────────────────────────── */
+    .panelists {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .panelists__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .panelists__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .panelist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .panelist-card:hover { border-color: var(--border-accent); }
+    .panelist-card__name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .panelist-card__title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .panelist-card__company {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ─── Key Takeaways ──────────────────────────────────────────────────────── */
+    .takeaways {
+      max-width: var(--max-w);
+      margin: 0 auto 80px;
+      padding: 0 32px;
+    }
+    .takeaways__box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 36px 40px;
+    }
+    .takeaways__heading {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .takeaways__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .takeaways__list li {
+      display: flex;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+    .takeaways__list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 8px;
+    }
+    .takeaways__list strong {
+      font-weight: 600;
+    }
+
+    /* ─── Article Body ───────────────────────────────────────────────────────── */
+    .article {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+    .article h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 64px 0 20px;
+      line-height: 1.25;
+    }
+    .article h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 40px 0 14px;
+    }
+    .article p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+    .article p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      margin: 48px 0;
+      padding: 36px 40px;
+      background: var(--bg-accent);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      left: 32px;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      opacity: 0.6;
+    }
+    .pull-quote__text {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .pull-quote__attribution {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .pull-quote__attribution span {
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 6px;
+    }
+
+    /* Stat callout */
+    .stat-callout {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin: 40px 0;
+    }
+    .stat-callout__item {
+      flex: 1;
+      min-width: 140px;
+    }
+    .stat-callout__number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-callout__label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 64px 0;
+    }
+
+    /* ─── CTA ────────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .cta-section__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .cta-section__title {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section__subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 440px;
+      margin: 0 auto 36px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-accent);
+    }
+    .btn--ghost:hover {
+      border-color: var(--text-secondary);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .site-footer__copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .site-footer__links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .site-footer__links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .site-footer__links a:hover { color: var(--text-secondary); }
+
+    /* ─── Responsive ─────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .site-nav__links { display: none; }
+      .hero { padding: 48px 20px 40px; }
+      .video-section,
+      .panelists,
+      .takeaways,
+      .article { padding-left: 20px; padding-right: 20px; }
+      .takeaways__box { padding: 28px 24px; }
+      .pull-quote { padding: 28px 24px; }
+      .stat-callout { padding: 24px 20px; gap: 24px; }
+      .cta-section { padding: 60px 20px; }
+      .site-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+  <nav class="site-nav">
+    <a href="https://willpowerhq.com" class="site-nav__logo">Willpower</a>
+    <ul class="site-nav__links">
+      <li><a href="https://willpowerhq.com/events">Events</a></li>
+      <li><a href="https://willpowerhq.com/past-events">Past Events</a></li>
+      <li><a href="#">Content</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__eyebrow">Willpower Panel Series &mdash; Session 4</div>
+    <h1 class="hero__title">Wellness at the Core of Community</h1>
+    <p class="hero__subtitle">
+      How shared physical experience, consistent ritual, and radical authenticity — not paid media —
+      are the real engines of community growth for brands and individuals building something that lasts.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <!-- Calendar icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 1v2M11 1v2M1 6h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Willpower Wellness House, Austin 2025
+      </div>
+      <div class="hero__meta-item">
+        <!-- People icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M1 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M11 12.5c1.333-.5 4-.5 4 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Moderated by Eric Szilard
+      </div>
+      <div class="hero__meta-item">
+        <!-- Clock icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        ~18 min read
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Video ────────────────────────────────────────────────────────────────── -->
+  <section class="video-section">
+    <div class="video-wrapper">
+      <!--
+        INSTRUCTIONS FOR WEB TEAM:
+        Replace the .video-placeholder div below with an iframe once the YouTube/Vimeo URL is ready.
+
+        YouTube embed example:
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="Willpower Panel 4 — Wellness at the Core of Community"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        Vimeo embed example:
+        <iframe
+          src="https://player.vimeo.com/video/YOUR_VIDEO_ID?badge=0&autopause=0&player_id=0&app_id=58479"
+          title="Willpower Panel 4"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="video-placeholder__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="5,3 19,12 5,21" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        <span>Video coming soon — embed URL goes here</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Panelists ─────────────────────────────────────────────────────────────── -->
+  <section class="panelists">
+    <div class="panelists__label">Featured Panelists</div>
+    <div class="panelists__grid">
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Eric Szilard</div>
+        <div class="panelist-card__title">Wellness Community Builder &amp; Host</div>
+        <div class="panelist-card__company">Muscle Mountain / Independent</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Nick (Vivo Barefoot)</div>
+        <div class="panelist-card__title">Head of Community &amp; Partnerships</div>
+        <div class="panelist-card__company">Vivo Barefoot</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Salar</div>
+        <div class="panelist-card__title">Co-Founder &amp; CEO</div>
+        <div class="panelist-card__company">Sweat Pals</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Key Takeaways ──────────────────────────────────────────────────────────── -->
+  <section class="takeaways">
+    <div class="takeaways__box">
+      <div class="takeaways__heading">Key Takeaways</div>
+      <ul class="takeaways__list">
+        <li><strong>Shared discomfort is the fastest trust accelerant.</strong> Whether it's a sauna, a cold plunge, or a hard workout, physical challenge creates a shortcut to vulnerability and earned respect that no brand campaign can replicate.</li>
+        <li><strong>Ritual is the infrastructure of belonging.</strong> The communities that endure — from weekly run clubs to monthly gym throwdowns — are built on predictable, recurring touchpoints. Showing up once is attendance; showing up consistently is membership.</li>
+        <li><strong>Authenticity isn't a value — it's a prerequisite.</strong> Audiences and community members can instantly detect when the motivation behind an event or partnership is transactional. The brands and builders that win are the ones who show up to give, not to extract.</li>
+        <li><strong>Community scales through leaders, not logistics.</strong> The secret to maintaining intimacy as you grow isn't doing fewer things — it's finding and developing more leaders who embody your values and can hold that same quality of connection inside their own circles.</li>
+        <li><strong>In-person is irreplaceable — but digital compounds it.</strong> Brands that wait to invest in grassroots, in-person experiences until they can measure direct ROI will always be too late. The trust and content and organic word-of-mouth that flow from real-world community cannot be manufactured retroactively.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Article Body ───────────────────────────────────────────────────────────── -->
+  <article class="article">
+
+    <h2>Why Wellness Became the On-Ramp to Community</h2>
+
+    <p>
+      There is a particular moment that anyone who has ever suffered through a hard workout alongside a stranger will recognize:
+      the point where you're both flat on your back, staring at the ceiling, and you start laughing. You don't know this person's
+      last name. You may never see them again. But for the next five minutes, you are bonded in a way that most polite social
+      interaction never produces.
+    </p>
+
+    <p>
+      That moment is not an accident. It's a feature — one that the panelists at Willpower's Session 4 have spent their careers
+      intentionally engineering. Eric Szilard, who has hosted over 1,200 people in his Austin home for contrast therapy sessions
+      since September alone, has arrived at a simple thesis: <strong>physical experience compresses the timeline to genuine connection</strong>.
+      The sauna, the cold plunge, the shared climb — these aren't wellness trends. They're social technology.
+    </p>
+
+    <p>
+      "In a hot sauna, you get vulnerable really quick," Szilard noted. "Your aperture is just really narrowed when you're in the heat,
+      similar to a workout. Your endorphins are racing. And then the curation of like-minded people — they're into wellness, they're into
+      pushing themselves, they're passionate about their life. The sum is greater than the parts."
+    </p>
+
+    <p>
+      For Salar, co-founder of Sweat Pals — a platform now hosting over 10,000 communities and more than a million active users —
+      this insight was the founding insight. Moving to the United States 12 years ago, he discovered that the country's default
+      social infrastructure pointed almost exclusively toward bars and nightclubs. The wellness-based gatherings he eventually found
+      — run clubs, rock climbing, pickup soccer — were the first environments where he felt genuine connection with strangers.
+      That gap between what was available and what people actually needed became the business.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">What did work was when I started using movement as a medium to connect with people. You have people of different ages, different generations, all in the same room, high-fiving complete strangers before even knowing each other's names.</p>
+      <div class="pull-quote__attribution">Salar <span>Co-Founder &amp; CEO, Sweat Pals</span></div>
+    </div>
+
+    <h2>The Architecture of Belonging: Identity, Ritual, and Consistency</h2>
+
+    <p>
+      Ask Salar what separates communities that thrive from communities that stall out, and he points to a framework drawn from
+      <em>The Art of Community</em>: belonging requires two things — shared identity and consistent ritual. Neither alone is sufficient.
+      A shared identity without ritual produces an affinity group. Ritual without shared identity produces a class.
+      Only when both are present does something that functions as a genuine community emerge.
+    </p>
+
+    <p>
+      The examples from the Sweat Pals platform bear this out. The events that generate the deepest community engagement on the
+      platform aren't the ones optimized purely for fitness output — they're the ones where wellness is the entry point and social
+      connection is the explicit design goal. Run-and-rave events. Coffee-and-chill meetups. A Taylor Swift-themed lift club in
+      Arizona that went viral entirely through participant word-of-mouth. <strong>The theme or format almost doesn't matter
+      — what matters is that the ritual is repeatable and the social component is intentional.</strong>
+    </p>
+
+    <p>
+      Squatch Fitness, one of the full-scale gym studios now powered entirely by Sweat Pals, holds a community workout on the
+      last Saturday of every month. That date has become a cultural anchor. Members plan around it. They bring friends.
+      The ritual creates an obligation — not a burdensome one, but the kind of positive obligation that makes belonging feel real.
+      "You're not necessarily part of a running club if you show up one time," Salar observed. "It's showing up, getting the
+      experience, meeting people — then you're growing, you know people, it's more familiar, it becomes a habit."
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">10,000+</div>
+        <div class="stat-callout__label">Communities hosted on the Sweat Pals platform</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">1M+</div>
+        <div class="stat-callout__label">Active users discovering social wellness experiences through Sweat Pals</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">1,200+</div>
+        <div class="stat-callout__label">People hosted by Eric Szilard in his Austin home in under five months</div>
+      </div>
+    </div>
+
+    <h2>What Community Marketing Actually Looks Like — and Why Most Brands Miss It</h2>
+
+    <p>
+      Nick, who leads community and partnerships at Vivo Barefoot after nine years with the brand, described the moment when the
+      company realized it had outgrown its own community infrastructure. Vivo had spent its first five years growing over 30 percent
+      year-on-year — extraordinary numbers. But they eventually hit a ceiling. Customers were self-organizing, finding each other
+      online, forming groups around shared values of natural movement and outdoor health. Vivo wasn't facilitating any of it.
+    </p>
+
+    <p>
+      The response was a deliberate investment in grassroots presence that the finance team couldn't easily underwrite with a
+      spreadsheet. The flagship example: a handmade wooden trailer stage that Vivo built — entirely by hand — and took to
+      16 festivals across one summer. No shoe sales at the events. That was a conscious decision. "We wanted to be very pure around
+      what we were trying to deliver and not muddy the waters," Nick explained. Instead, they brought ambassadors — educators,
+      coaches, practitioners — to run workshops and talks aligned with the values the brand stands for. By the end of the summer,
+      the cumulative effect on website traffic and brand trust was undeniable. But it required betting on the outcome before the
+      data was available to justify the bet.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">There was no direct sale associated with each event. So it was a push. You've just got to believe it's going to work. You go to the CFO: what's the ROI? It's like — we don't know yet. But we believe it's going to work. And then it does, and it pays off in a big way.</p>
+      <div class="pull-quote__attribution">Nick <span>Head of Community &amp; Partnerships, Vivo Barefoot</span></div>
+    </div>
+
+    <p>
+      This is the fundamental tension in community marketing: its compounding returns are real, but they are front-loaded with
+      investment and back-loaded with proof. Brands that demand immediate ROI from community efforts will consistently underinvest
+      and then conclude that community doesn't work — when in reality they never gave it the time horizon it requires.
+    </p>
+
+    <p>
+      The contrast with purely transactional approaches was made explicit across the panel. "When it's transactional, people can tell,"
+      Salar said flatly. Trying to sell as soon as someone walks in — before welcoming them, before facilitating a connection,
+      before letting them feel like they belong — is the most reliable way to ensure they don't come back. The transaction, when it
+      comes, should feel like a natural extension of the relationship, not the reason for it.
+    </p>
+
+    <hr class="divider" />
+
+    <h2>Scaling Without Losing the Thread: Culture, Leaders, and Local Nuance</h2>
+
+    <p>
+      Every brand that builds a genuine community eventually faces the same problem: how do you get bigger without getting worse?
+      The intimacy that made the community compelling — the six-to-ten person sauna sessions, the tight-knit run club, the founder
+      who knows everyone's name — can feel like it's in direct tension with growth. The panelists were frank about this difficulty
+      and consistent in their diagnosis: the answer is not to slow down growth, but to scale the people who carry the culture.
+    </p>
+
+    <p>
+      For Salar, the internal and external answer is the same: values. Sweat Pals operates on four clearly defined values that are
+      reviewed and reinforced every week — internally, in how the team shows up, and externally, in how the communities on the
+      platform are shaped and supported. "Culture is what's going to kind of tie it all together as the company scales," he said.
+      "That translates from the brand to the content to the events to the experience."
+    </p>
+
+    <p>
+      Nick described the challenge most acutely in the context of Vivo's global expansion. The brand has a growing business in Japan,
+      where community efforts center on climbing and hiking. In New York, the articulation is different. In the UK, different again.
+      The core values — natural movement, connection to the outdoors, health as a lived practice — remain constant. But how those
+      values show up in a specific city or subculture requires real local knowledge and real local relationships. "Each city has its
+      own articulation of how it delivers the brand," he said, "but its core is the values we're talking to."
+    </p>
+
+    <p>
+      This is the point that separates community-first brands from brands doing community as a campaign. Campaigns are designed
+      from the center out. Communities grow from the periphery in — from the local leader who knows the hill runners in Osaka,
+      from the studio owner in Austin who has earned the trust of her members over three years of showing up every Saturday.
+      <strong>Scaling community means finding and investing in those people, not replacing them with centrally managed activations.</strong>
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">Be comfortable targeting your groups that you feel are relevant and aligned to you — but also be comfortable making decisions on what you're not going to do. You can come to them eventually. But trying to target everyone means very little impact.</p>
+      <div class="pull-quote__attribution">Nick <span>Head of Community &amp; Partnerships, Vivo Barefoot</span></div>
+    </div>
+
+    <hr class="divider" />
+
+    <h2>What Works, What Doesn't, and How to Tell the Difference</h2>
+
+    <p>
+      Some of the panel's most useful content came in the rapid-fire exchange on failures — the events and activations that fell flat,
+      and what they revealed about what community actually requires.
+    </p>
+
+    <p>
+      Szilard's example: the expensive group dinner. It sounds like an investment in community. It's often a high-cost, low-compound
+      event. A great meal produces a memory but not much else. No content is generated. No product feedback is captured. No
+      ambassadors go home activated. Compare that to an ambassador summit where a brand takes fifteen people into the mountains for
+      two days of trail runs, cold water plunges, and live product testing — the kind of event that Szilard described from his
+      experience with athletic brand 10,000 (Ten Thousand). Everyone got content. Everyone felt genuinely part of something.
+      The brand got candid product feedback from the people who knew their gear best. <strong>The investment had compounding returns
+      in four directions at once.</strong>
+    </p>
+
+    <p>
+      Nick's Vivo example was even more instructive for its simplicity: they've run educational workshops with three attendees.
+      Not because the concept was wrong, but because they under-invested in the logistics of getting people there. Great content,
+      wrong focus. The lesson: don't compromise on any single variable in the event experience and assume the others will carry it.
+      Execution detail and concept quality are both non-negotiable.
+    </p>
+
+    <p>
+      Salar's observation from across 10,000 communities was the sharpest: the communities that fail to take root are the ones
+      where the organizer's real motivation is visible. When people sense that they're there to be converted or monetized —
+      when the community is a funnel dressed as a gathering — they leave and they don't come back.
+      The communities that endure are the ones where everyone in the room, including the organizer, is genuinely there to give.
+    </p>
+
+    <p>
+      For brands looking to enter a new market, the panelists converged on one piece of practical advice: <strong>don't try to build
+      community from scratch in a city you don't know.</strong> Partner with the people who already have it. The local run club, the
+      established gym, the community organizer who has been showing up every week for two years — these are the relationships worth
+      investing in. Attempting to import a brand community into a new city without local roots is almost always slower and shallower
+      than joining the community that already exists and earning a place in it.
+    </p>
+
+    <p>
+      The thread running through every example — successful and unsuccessful — was the same: community is not a marketing strategy
+      overlaid on a business. It is the business, or at least the connective tissue that makes the business worth caring about.
+      The brands and builders who understand this earliest accumulate an advantage that is genuinely difficult to catch up to —
+      because the trust and belonging they've built isn't stored on a platform or in a database. It lives in people.
+    </p>
+
+  </article>
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-section__eyebrow">Willpower Content Library</div>
+    <h2 class="cta-section__title">More from the Panel Series</h2>
+    <p class="cta-section__subtitle">
+      Access recaps, recordings, and insights from every Willpower panel —
+      or join us at the next event.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn--primary">View All Panels</a>
+      <a href="https://willpowerhq.com/events" class="btn btn--ghost">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span class="site-footer__copy">&copy; 2025 Willpower. All rights reserved.</span>
+    <ul class="site-footer__links">
+      <li><a href="https://willpowerhq.com">Home</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+      <li><a href="#">Content Library</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

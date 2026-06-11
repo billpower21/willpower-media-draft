@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO / AEO -->
+  <title>The Wellness Roast: What Comedians Got Right About the CPG Industry | Willpower Panel Series</title>
+  <meta name="description" content="Five wellness and CPG founders walked into a comedy roast at Willpower. What emerged — between the burns and the kava — was a surprisingly sharp autopsy of the wellness industry's best ideas, worst habits, and most honest origin stories." />
+  <meta name="keywords" content="wellness industry comedy, CPG founder roast, Super Coffee, Lofty sleep, Kaviva kava, Jevity wellness club, Kintsugi sales tax, Willpower panel, wellness brand insights" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Wellness Roast: What Comedians Got Right About the CPG Industry" />
+  <meta property="og:description" content="Five founders, three comedians, one decibel reader. The most honest 90 minutes in wellness — disguised as a roast." />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Willpower" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://willpowerhq.com/content/panel-5-comedy-panel-roast" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────────────────── */
+    :root {
+      --bg-primary:    #0a0a0a;
+      --bg-secondary:  #111111;
+      --bg-card:       #161616;
+      --bg-accent:     #1a1a1a;
+      --border:        rgba(255,255,255,0.08);
+      --border-accent: rgba(255,255,255,0.15);
+
+      --text-primary:   #f5f5f5;
+      --text-secondary: #a0a0a0;
+      --text-muted:     #666666;
+
+      --gold:          #c9a84c;
+      --gold-light:    #e0c06a;
+
+      --font:          'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --max-w:         780px;
+      --max-w-wide:    1100px;
+    }
+
+    /* ─── Reset ─────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── Nav ──────────────────────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav__logo {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+    .site-nav__links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .site-nav__links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .site-nav__links a:hover { color: var(--text-primary); }
+
+    /* ─── Hero ───────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 72px 32px 64px;
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero__title {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    .hero__subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      max-width: 580px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    .hero__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero__meta-item svg {
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* ─── Video ──────────────────────────────────────────────────────────────── */
+    .video-section {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .video-wrapper iframe,
+    .video-wrapper .video-placeholder {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+    .video-placeholder__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ─── Panelists ──────────────────────────────────────────────────────────── */
+    .panelists {
+      max-width: var(--max-w-wide);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+    .panelists__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+    .panelists__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .panelist-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .panelist-card:hover { border-color: var(--border-accent); }
+    .panelist-card__name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .panelist-card__title {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+    .panelist-card__company {
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ─── Key Takeaways ──────────────────────────────────────────────────────── */
+    .takeaways {
+      max-width: var(--max-w);
+      margin: 0 auto 80px;
+      padding: 0 32px;
+    }
+    .takeaways__box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 36px 40px;
+    }
+    .takeaways__heading {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .takeaways__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .takeaways__list li {
+      display: flex;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+    .takeaways__list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 8px;
+    }
+    .takeaways__list strong {
+      font-weight: 600;
+    }
+
+    /* ─── Article Body ───────────────────────────────────────────────────────── */
+    .article {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 100px;
+    }
+    .article h2 {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 64px 0 20px;
+      line-height: 1.25;
+    }
+    .article h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 40px 0 14px;
+    }
+    .article p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+    .article p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Pull Quote */
+    .pull-quote {
+      margin: 48px 0;
+      padding: 36px 40px;
+      background: var(--bg-accent);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .pull-quote::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px;
+      left: 32px;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      opacity: 0.6;
+    }
+    .pull-quote__text {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .pull-quote__attribution {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .pull-quote__attribution span {
+      font-weight: 400;
+      color: var(--text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 6px;
+    }
+
+    /* Stat callout */
+    .stat-callout {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 32px 36px;
+      margin: 40px 0;
+    }
+    .stat-callout__item {
+      flex: 1;
+      min-width: 140px;
+    }
+    .stat-callout__number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-callout__label {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 64px 0;
+    }
+
+    /* ─── CTA ────────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 80px 32px;
+      text-align: center;
+    }
+    .cta-section__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .cta-section__title {
+      font-size: clamp(24px, 4vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-section__subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 440px;
+      margin: 0 auto 36px;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--gold);
+      color: #0a0a0a;
+    }
+    .btn--primary:hover {
+      background: var(--gold-light);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-accent);
+    }
+    .btn--ghost:hover {
+      border-color: var(--text-secondary);
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--bg-primary);
+      border-top: 1px solid var(--border);
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .site-footer__copy {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .site-footer__links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    .site-footer__links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .site-footer__links a:hover { color: var(--text-secondary); }
+
+    /* ─── Responsive ─────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .site-nav__links { display: none; }
+      .hero { padding: 48px 20px 40px; }
+      .video-section,
+      .panelists,
+      .takeaways,
+      .article { padding-left: 20px; padding-right: 20px; }
+      .takeaways__box { padding: 28px 24px; }
+      .pull-quote { padding: 28px 24px; }
+      .stat-callout { padding: 24px 20px; gap: 24px; }
+      .cta-section { padding: 60px 20px; }
+      .site-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ─────────────────────────────────────────────────────────────────── -->
+  <nav class="site-nav">
+    <a href="https://willpowerhq.com" class="site-nav__logo">Willpower</a>
+    <ul class="site-nav__links">
+      <li><a href="https://willpowerhq.com/events">Events</a></li>
+      <li><a href="https://willpowerhq.com/past-events">Past Events</a></li>
+      <li><a href="#">Content</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__eyebrow">Willpower Panel Series &mdash; Session 5</div>
+    <h1 class="hero__title">The Wellness Roast: Truth Told Sideways</h1>
+    <p class="hero__subtitle">
+      Five CPG and wellness founders walked into a comedy roast. What emerged — between the burns,
+      the kava cans, and the decibel reader — was a surprisingly sharp autopsy of where the wellness
+      industry is genuinely winning, where it's running on vibes, and why the most honest origin
+      stories tend to start with someone getting embarrassed.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">
+        <!-- Calendar icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="2" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M5 1v2M11 1v2M1 6h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Willpower Wellness House, 2025
+      </div>
+      <div class="hero__meta-item">
+        <!-- People icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M1 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.3"/>
+          <path d="M11 12.5c1.333-.5 4-.5 4 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Hosted by Noah (Pitch Roast Live) &amp; Ryan Springer, Midnight Venture Partners
+      </div>
+      <div class="hero__meta-item">
+        <!-- Clock icon -->
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 5v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        ~15 min read
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Video ────────────────────────────────────────────────────────────────── -->
+  <section class="video-section">
+    <div class="video-wrapper">
+      <!--
+        INSTRUCTIONS FOR WEB TEAM:
+        Replace the .video-placeholder div below with an iframe once the YouTube/Vimeo URL is ready.
+
+        YouTube embed example:
+        <iframe
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          title="Willpower Panel 5 — The Wellness Roast"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        Vimeo embed example:
+        <iframe
+          src="https://player.vimeo.com/video/YOUR_VIDEO_ID?badge=0&autopause=0&player_id=0&app_id=58479"
+          title="Willpower Panel 5 — The Wellness Roast"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="video-placeholder__icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="5,3 19,12 5,21" fill="currentColor" opacity="0.5"/>
+          </svg>
+        </div>
+        <span>Video coming soon — embed URL goes here</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Panelists ─────────────────────────────────────────────────────────────── -->
+  <section class="panelists">
+    <div class="panelists__label">Founders &amp; Participants</div>
+    <div class="panelists__grid">
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Jake DeCicco</div>
+        <div class="panelist-card__title">Founder &amp; CRO</div>
+        <div class="panelist-card__company">Super Coffee</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Matt Hassett</div>
+        <div class="panelist-card__title">Founder &amp; CEO</div>
+        <div class="panelist-card__company">Lofty</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Sam Harper</div>
+        <div class="panelist-card__title">Director of Go-To-Market</div>
+        <div class="panelist-card__company">Kintsugi</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Connor McAleck</div>
+        <div class="panelist-card__title">Founder &amp; CEO</div>
+        <div class="panelist-card__company">Jevity Club</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Spencer McMain</div>
+        <div class="panelist-card__title">Founder</div>
+        <div class="panelist-card__company">Kaviva</div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Ryan Springer</div>
+        <div class="panelist-card__title">Founding Partner</div>
+        <div class="panelist-card__company">Midnight Venture Partners <span style="color:var(--text-muted);font-weight:400;">(Investor)</span></div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Mike Eaton &amp; Sam Minney</div>
+        <div class="panelist-card__title">Comedians, Cutting Fat Podcast</div>
+        <div class="panelist-card__company">Pitch Roast Live <span style="color:var(--text-muted);font-weight:400;">(Roasters)</span></div>
+      </div>
+
+      <div class="panelist-card">
+        <div class="panelist-card__name">Pete Lee</div>
+        <div class="panelist-card__title">Comedian, Tonight Show Alumnus</div>
+        <div class="panelist-card__company">Pitch Roast Live <span style="color:var(--text-muted);font-weight:400;">(Roaster)</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Key Takeaways ──────────────────────────────────────────────────────────── -->
+  <section class="takeaways">
+    <div class="takeaways__box">
+      <div class="takeaways__heading">Key Takeaways</div>
+      <ul class="takeaways__list">
+        <li><strong>Profitability is the new punk.</strong> In a room full of wellness founders, the most surprising flex wasn't a fancy product — it was Super Coffee posting 12% EBITDA margins after burning $40M at its peak. Turning a high-cash-burn brand into a profitable one is the unglamorous work nobody talks about enough.</li>
+        <li><strong>The best products solve a problem the founder personally had.</strong> Every founder on stage built something because they hit a wall: Jake couldn't find a healthy coffee, Matt couldn't put his phone down, Connor got told there was no Wi-Fi at a cold plunge. The most credible pitches in wellness are built from genuine frustration, not market research.</li>
+        <li><strong>Behavior change is harder to sell than a supplement.</strong> Lofty's "biggest competitor is people with self-control" is a funny line — and also a real strategic challenge. Products that ask users to change habits face a fundamentally different retention curve than products that slot into existing ones.</li>
+        <li><strong>Category education is table stakes in functional beverages.</strong> Kaviva's challenge — distinguishing kava from kratom in consumer minds — is a preview of every emerging-ingredient brand's education burden. You're not just marketing your product; you're marketing the category, the plant, and the distinction between safe and sketchy.</li>
+        <li><strong>Authentic communities beat manufactured hype.</strong> Connor from Jevity won the decibel-reader competition by a landslide — not through a polished pitch but because his members were genuinely in the room cheering. The crowd noise you can't fake is the signal investors should be paying attention to.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Article Body ───────────────────────────────────────────────────────────── -->
+  <article class="article">
+
+    <h2>Why a Roast Is Actually the Most Honest Format in Wellness</h2>
+
+    <p>
+      There is a certain kind of wellness panel where everyone agrees that community is important,
+      that authenticity matters, and that the future is personalized. These panels are fine. They
+      produce good quotes and decent LinkedIn posts. They are also, fairly often, a little bit
+      dishonest — curated versions of business reality delivered by people who have been coached
+      on messaging.
+    </p>
+
+    <p>
+      The Willpower Comedy Roast is not that panel. Hosted by comedian and Pitch Roast Live
+      founder Noah, with roasters Mike Eaton, Sam Minney, and Tonight Show veteran Pete Lee —
+      and a venture investor, Ryan Springer of Midnight Venture Partners, sitting in an
+      ostentatiously taller chair — this format does something unique: it strips away the
+      prepared messaging and forces founders to respond in real time to questions they definitely
+      did not rehearse.
+    </p>
+
+    <p>
+      What comes out is surprisingly valuable. When Jake DeCicco of Super Coffee is asked point-blank
+      when his older brother Jimmy left the company — and when things started getting better — his
+      unscripted answer ("We fired him two years ago. The day after Jimmy left, we got profitable")
+      is more revealing about the dynamics of family-founded CPG companies than any case study.
+      Comedy creates permission to say true things that decorum usually suppresses.
+    </p>
+
+    <p>
+      This is what the best roasts do. The jokes are the delivery mechanism. The payload is honesty.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">Your product's biggest competitor is just people with self-control. I love that.</p>
+      <div class="pull-quote__attribution">Mike Eaton <span>Comedian, Cutting Fat Podcast — to Matt Hassett of Lofty</span></div>
+    </div>
+
+    <h2>The "Strategic Reset" and Other Things Nobody Says Out Loud</h2>
+
+    <p>
+      Super Coffee's Jake DeCicco gave the most structurally interesting pitch of the session —
+      not because the current numbers are impressive (though they are), but because he included
+      the part most founders cut from their deck. There is a slide, tucked between the awards and
+      the growth trajectory, labeled "Strategic Reset." It represents a period when Super Coffee,
+      then ranked America's fastest-growing food and beverage business, was burning $40 million
+      a year.
+    </p>
+
+    <p>
+      "We've raised $200 million all time," DeCicco said matter-of-factly. Then, gesturing to the
+      right side of the slide: "And then you see growth and profitability." The pivot from
+      high-cash-burn to a business running 12% EBITDA margins within the notoriously thin-margin
+      beverage category is a genuine operational achievement — and it's the kind of story that
+      rarely gets told because the industry's reward systems favor fast growth narratives over
+      hard-won efficiency stories.
+    </p>
+
+    <p>
+      The comedians, to their credit, actually surfaced the business insight here. Ryan Springer's
+      question — when did Jimmy leave, and when did things start getting better — wasn't a throwaway
+      joke. It was, in a roast format, the sharpest due-diligence question in the room. The honest
+      answer DeCicco gave was more useful to any CPG founder watching than a hundred sanitized
+      founder interviews: sometimes the reset is the story. Sometimes the strategy is letting go
+      of something — or someone — that isn't working.
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">$200M</div>
+        <div class="stat-callout__label">Total capital raised by Super Coffee across its lifetime</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">12%</div>
+        <div class="stat-callout__label">Super Coffee EBITDA margins — strong for the beverage category</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">106%</div>
+        <div class="stat-callout__label">Volume growth for Super Coffee in the latest four-week period</div>
+      </div>
+    </div>
+
+    <p>
+      DeCicco also made an underappreciated macro point: one in eight Americans are currently on
+      GLP-1 medications, and one in four households has at least one GLP-1 user. When a household
+      adopts GLP-1, the shopping habits of the entire household change. For a better-for-you coffee
+      brand built around low sugar and high protein, that is a powerful secular tailwind — one
+      that has very little to do with brand marketing and everything to do with demographic timing.
+      The companies that positioned early for this shift are going to look very smart in retrospect.
+    </p>
+
+    <h2>The Friction Problem: Selling Behavior Change in a Low-Willpower World</h2>
+
+    <p>
+      Matt Hassett founded Lofty in 2018 after recognizing that his phone addiction had a specific
+      worst-case location: the bedroom. The insight was clean. The solution was elegant. And the
+      roasters identified the central strategic challenge of his entire business in one sentence:
+      <em>your biggest competitor is people with self-control.</em>
+    </p>
+
+    <p>
+      That is, improbably, both a great joke and a genuinely hard business problem. Lofty makes a
+      premium alarm clock designed to replace your phone on your nightstand, and a physical NFC card
+      that blocks your most distracting apps with a single tap. These are well-designed products solving
+      a real problem. They are also products that require the user to want to change — and to want it
+      consistently enough to actually use the card, buy the clock, and leave the phone outside.
+    </p>
+
+    <p>
+      Hassett acknowledged this openly: most interventions people try — grayscale screens, deleting
+      and reinstalling Instagram, screen time widgets — aren't enough. What Lofty bets on is friction.
+      Not blocking, not surveillance, not shame — just enough physical inconvenience that you open
+      Instagram slightly less often. It's a minimal-viable-willpower play: not asking users to be
+      better people, just asking them to put one more obstacle between themselves and the scroll.
+    </p>
+
+    <p>
+      The early data suggests it's working. Lofty has shipped over 200,000 alarm clocks worldwide
+      and held Wirecutter's pick for best alarm clock for six consecutive years. But the more
+      interesting number is behavioral: users who adopt the Lofty card report more presence, more
+      focus, and a subjective sense of feeling healthier. <strong>The product that wins the behavior
+      change market isn't the one that demands the most from users — it's the one that lowers the
+      activation energy just enough.</strong>
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">Why are work and wellness separate? That's the question. I hopped in a cold plunge, and they told me there was no Wi-Fi allowed. That was the ice bath epiphany.</p>
+      <div class="pull-quote__attribution">Connor McAleck <span>Founder &amp; CEO, Jevity Club</span></div>
+    </div>
+
+    <h2>Building the Category You Want to Win: Lessons from Kava, Cold Plunges, and Sales Tax</h2>
+
+    <p>
+      Three of the five founders in this session are doing something harder than selling a product —
+      they are building the conceptual category their product lives in. This is a different kind of
+      work, and the roast format surfaced how each of them is navigating it.
+    </p>
+
+    <p>
+      Spencer McMain's Kaviva kava seltzer faces the most acute version of this challenge. Kava is a
+      legitimate, well-studied plant from the South Pacific with a genuine pharmacological effect:
+      it calms the central nervous system, creates mild social energy, and produces no hangover and
+      no inebriation. It is, on paper, an ideal alcohol alternative for a moment when 40% of Americans
+      identify as "sober curious" and 54% report actively reducing alcohol consumption.
+    </p>
+
+    <p>
+      But kava shares a category shelf — and, in consumer minds, near-identical branding — with
+      kratom, a different plant that is addictive, poorly regulated, and genuinely problematic. The
+      two products are frequently displayed side by side. Consumers who have read about kratom's risks
+      often dismiss kava by association. McMain's go-to-market challenge is not just distribution
+      or taste. It is education at scale: teaching a mass consumer audience that two plants starting
+      with K are actually as different as tequila and NyQuil.
+    </p>
+
+    <p>
+      Connor McAleck's Jevity Club faces a softer version of the same problem. His concept —
+      a private wellness workspace and social club where you can cold plunge between Zoom calls —
+      requires customers to understand and value a product category that didn't exist until very
+      recently. The comedians tried to reduce it to "a standing desk in a sauna," which is funny
+      and also not entirely wrong. What McAleck is actually selling is the permission to integrate
+      recovery into the workday — a mindset shift that still requires explaining to most people
+      in professional environments. The fact that Jevity already had 250 members within weeks of
+      opening, with 60% of them founders and entrepreneurs, suggests the early adopter segment
+      is real. The question is always: how large is the mainstream?
+    </p>
+
+    <p>
+      Sam Harper's Kintsugi occupies the most unsexy corner of the founder experience — sales tax
+      compliance — and spent its panel time being roasted for being boring. Which is accurate. It
+      is boring. It is also, as Harper noted, the kind of problem that lands people in handcuffs
+      if they ignore it. The gap between "this is fascinating" and "this is important" is where
+      B2B software companies live, and Kintsugi is making a credible run at $150M in valuation
+      with 6,000 active customers by being the company that handles the thing no founder wants to
+      think about. Sometimes the unglamorous category is the defensible one.
+    </p>
+
+    <div class="stat-callout">
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">200K+</div>
+        <div class="stat-callout__label">Lofty alarm clocks shipped globally; Wirecutter's pick for 6 consecutive years</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">250</div>
+        <div class="stat-callout__label">Jevity Club members at launch, 60% founders and entrepreneurs</div>
+      </div>
+      <div class="stat-callout__item">
+        <div class="stat-callout__number">$150M</div>
+        <div class="stat-callout__label">Kintsugi's last valuation, with 6,000 active platform customers</div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <h2>What the Crowd Noise Tells You</h2>
+
+    <p>
+      The Willpower Roast ends with a decibel reader. Each founder gets thirty seconds of crowd
+      applause, measured objectively. It is the most democratic possible verdict: no slides,
+      no polished metrics, no follow-up questions — just how loud the room gets when your name
+      is called.
+    </p>
+
+    <p>
+      Lofty scored 96.6 decibels. Kintsugi hit 101.3 on a second attempt. Then Connor McAleck
+      of Jevity took his turn, and the room erupted with the kind of sustained noise that made
+      measuring it somewhat redundant. A clear winner.
+    </p>
+
+    <p>
+      What does it mean that a wellness workspace and social club won a roomful of wellness
+      founders and operators? It is worth thinking about for a moment. Jevity is not the
+      most scalable business in the room. It is not the one with the highest margins or the
+      biggest TAM. It is the one where, when the founder walks on stage, his actual members
+      are in the audience cheering. The product has created real community — not a community
+      as a marketing strategy, but actual people who feel something about the place they
+      go to work and recover.
+    </p>
+
+    <p>
+      This is the thing that is very difficult to fake and very difficult to build deliberately.
+      It either exists or it doesn't. And when it exists, the crowd noise is unmistakable.
+    </p>
+
+    <div class="pull-quote">
+      <p class="pull-quote__text">You won't text your ex unless you want to. That's the Kaviva guarantee.</p>
+      <div class="pull-quote__attribution">Spencer McMain <span>Founder, Kaviva</span></div>
+    </div>
+
+    <p>
+      The broader lesson from this session is one that the roast format actually enforces rather
+      than undermines: <strong>the founders who hold up best under unscripted pressure are the ones
+      who know their business cold.</strong> Jake DeCicco can rattle off his repurchase rate, his
+      latest four-week volume growth, his EBITDA margin, and his GLP-1 tailwind thesis without
+      a single slide. Matt Hassett can articulate in one sentence why the alarm clock market
+      needed him. Connor McAleck can describe his square footage, his membership tiers, and his
+      expansion plans off the top of his head. That kind of operational fluency doesn't happen
+      by accident. It happens when a founder has thought about nothing else for years.
+    </p>
+
+    <p>
+      Comedy panels surface this quality in a way that polished panel formats often don't.
+      When the roasters are asking whether your alarm clock comes with a fleshlight attachment,
+      you find out pretty quickly who knows their product and who knows their pitch deck.
+      They are not always the same thing. At this event, they mostly were — which is the
+      highest possible compliment, disguised as a burn.
+    </p>
+
+  </article>
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-section__eyebrow">Willpower Content Library</div>
+    <h2 class="cta-section__title">More from the Panel Series</h2>
+    <p class="cta-section__subtitle">
+      Access recaps, recordings, and insights from every Willpower panel —
+      or join us at the next event.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn--primary">View All Panels</a>
+      <a href="https://willpowerhq.com/events" class="btn btn--ghost">Upcoming Events</a>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <span class="site-footer__copy">&copy; 2025 Willpower. All rights reserved.</span>
+    <ul class="site-footer__links">
+      <li><a href="https://willpowerhq.com">Home</a></li>
+      <li><a href="https://willpowerhq.com/newsletter">Newsletter</a></li>
+      <li><a href="#">Content Library</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>
