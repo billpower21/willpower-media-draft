@@ -22,40 +22,31 @@
 
     body { overflow-x: hidden; }
 
-    /* ── Filter bar ── */
-    .filter-bar {
-      position: sticky; top: 0; z-index: 10;
-      background: var(--bg, #08090e);
+    /* ── Legend bar ── */
+    .legend-bar {
+      background: rgba(255,255,255,0.02);
       border-bottom: 1px solid var(--border);
       padding: 0 40px;
     }
-    .filter-inner {
+    .legend-inner {
       max-width: 1280px; margin: 0 auto;
-      display: flex; align-items: center; gap: 10px;
-      padding: 14px 0; overflow-x: auto;
-      scrollbar-width: none;
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+      padding: 12px 0;
     }
-    .filter-inner::-webkit-scrollbar { display: none; }
-
-    .fp {
+    .legend-label {
       font-family: 'Space Mono', monospace;
-      font-size: 10px; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; white-space: nowrap;
-      padding: 6px 14px; border-radius: 99px;
-      border: 1px solid var(--border);
-      color: var(--muted); background: none;
-      cursor: pointer; transition: all .15s;
+      font-size: 9px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted);
+      white-space: nowrap; flex-shrink: 0;
     }
-    .fp:hover { color: var(--white); border-color: rgba(255,255,255,.2); }
-    .fp.active {
-      background: var(--white); color: #08090e;
-      border-color: var(--white);
+    .legend-items { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .legend-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--muted); white-space: nowrap;
     }
-    .fp[data-series="wh"].active    { background: var(--wh);     border-color: var(--wh);     color: #08090e; }
-    .fp[data-series="cat"].active   { background: var(--cat);    border-color: var(--cat);    color: #08090e; }
-    .fp[data-series="lounge"].active{ background: var(--lounge); border-color: var(--lounge); color: #08090e; }
-    .fp[data-series="wos"].active   { background: var(--wos);    border-color: var(--wos);    color: #08090e; }
-    .fp[data-series="hps"].active   { background: var(--hps);    border-color: var(--hps);    color: #08090e; }
+    .legend-dot {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
 
     /* ── Grid ── */
     .grid-wrap {
@@ -237,15 +228,17 @@
   </div>
 </section>
 
-<!-- ── Filter bar ── -->
-<div class="filter-bar">
-  <div class="filter-inner">
-    <button class="fp active" data-series="all" onclick="filter('all')">All</button>
-    <button class="fp" data-series="wh" onclick="filter('wh')">Wellness House</button>
-    <button class="fp" data-series="cat" onclick="filter('cat')">Catalyst</button>
-    <button class="fp" data-series="lounge" onclick="filter('lounge')">Wellness Lounge</button>
-    <button class="fp" data-series="wos" onclick="filter('wos')">World of Sports</button>
-    <button class="fp" data-series="hps" onclick="filter('hps')">Human Performance</button>
+<!-- ── Legend ── -->
+<div class="legend-bar">
+  <div class="legend-inner">
+    <span class="legend-label">Series</span>
+    <div class="legend-items">
+      <div class="legend-item"><span class="legend-dot" style="background:var(--wh)"></span>Wellness House</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--cat)"></span>Catalyst</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--lounge)"></span>Wellness Lounge</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--wos)"></span>World of Sports</div>
+      <div class="legend-item"><span class="legend-dot" style="background:var(--hps)"></span>Human Performance</div>
+    </div>
   </div>
 </div>
 
@@ -409,15 +402,6 @@
 </footer>
 
 <script>
-  function filter(series) {
-    document.querySelectorAll('.fp').forEach(function(b) {
-      b.classList.toggle('active', b.dataset.series === series);
-    });
-    document.querySelectorAll('.vc').forEach(function(c) {
-      c.classList.toggle('hidden', series !== 'all' && c.dataset.series !== series);
-    });
-  }
-
   var overlay = document.getElementById('modalOverlay');
   var modalTitle = document.getElementById('modalTitle');
   var modalVideo = document.getElementById('modalVideo');
