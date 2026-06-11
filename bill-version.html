@@ -317,20 +317,6 @@
     .drawer__content .sp-header,
     .drawer__content .sp-footer { display: none !important; }
 
-    /* ─── Video frame ───────────────────────────────────────── */
-    .video-frame {
-      position: relative; width: 100%; aspect-ratio: 16 / 9;
-      border-radius: 10px; overflow: hidden;
-      border: 1px solid var(--border); background: var(--card2);
-    }
-    .video-frame iframe, .video-frame video {
-      position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
-    }
-    .vf-placeholder {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-    }
-
     /* ─── Responsive ────────────────────────────────────────── */
     @media (max-width: 768px) {
       .drawer { width: 100vw; }
@@ -438,281 +424,317 @@
 <!-- ── Archive ────────────────────────────────────────────────── -->
 <div class="series-wrap">
 
-  <!-- Wellness House 2025 · Session 07 -->
-  <div class="sc" id="sc-wh-07">
-    <div class="sc__head" onclick="toggle('sc-wh-07')">
+  <!-- ── Wellness House 2025 ──────────────────────────────────── -->
+  <div class="sc open" id="sc-wh">
+    <div class="sc__head" onclick="toggle('sc-wh')">
       <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </div>
       <div class="sc__info">
-        <div class="sc__name">The future of commerce: <em>brand, community &amp; AI</em></div>
-        <div class="sc__sub">Wellness House 2025 · Austin, TX · Session 07</div>
+        <div class="sc__name">Wellness House <em>2025</em></div>
+        <div class="sc__sub">Annual flagship · Austin, TX · SXSW Week</div>
       </div>
       <div class="sc__right">
-        <div class="sc__badge live">New</div>
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
+        <div class="sc__count"><strong>8</strong> sessions</div>
+        <div class="sc__badge live">Flagship · Sold Out</div>
         <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
       </div>
     </div>
     <div class="sc__body">
       <div class="sc__inner">
-        <!-- EDIT ME ▸ replace placeholder with: <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="..." allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe> -->
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(123,170,212,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">Tecovas · YETI · Estée Lauder · Shopify</p>
+
+        <div class="kn-row" onclick="openDrawer('keynote-founder-mode-in-health-and-wellness.html','Founder Mode in Health &amp; Wellness','Greg LaVecchia · Bloom Nutrition')">
+          <div class="kn-mark" style="background:var(--wh)"></div>
+          <div class="kn-body">
+            <div class="kn-label">Opening Keynote</div>
+            <div class="kn-title">Founder mode in <em>health &amp; wellness</em></div>
+            <div class="kn-speaker">Greg LaVecchia · Bloom Nutrition</div>
+          </div>
+          <div class="kn-arrow">Read &amp; watch →</div>
+          <div class="kn-bird">
+            <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true">
+              <path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="session-list">
+
+          <div class="session-row" onclick="openDrawer('panel-7-the-future-of-commerce-brand-community-and-ai.html','The Future of Commerce: Brand, Community &amp; AI','Tecovas · YETI · Estée Lauder · Shopify')">
+            <div class="sr__num">Session 07</div>
+            <div><div class="sr__title">The future of commerce: <em>brand, community &amp; AI</em></div><div class="sr__brands">Tecovas · YETI · Estée Lauder · Shopify</div></div>
+            <span class="sr__tag sr__tag--new">New</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-6-building-worlds-through-sports.html','Building Worlds Through Sports','San Antonio Spurs · MLP · Tyler Eifert')">
+            <div class="sr__num">Session 06</div>
+            <div><div class="sr__title">Building worlds <em>through sports</em></div><div class="sr__brands">San Antonio Spurs · MLP · Tyler Eifert</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-5-comedy-panel-roast.html','Comedy Panel: The Roast','Super Coffee · Lofty · Kaviva · Jevity · Kintsugi')">
+            <div class="sr__num">Session 05</div>
+            <div><div class="sr__title">Comedy panel: <em>the roast</em></div><div class="sr__brands">Super Coffee · Lofty · Kaviva · Jevity · Kintsugi</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-4-wellness-at-the-core-of-community.html','Wellness at the Core of Community','Vivo Barefoot · Sweat Pals')">
+            <div class="sr__num">Session 04</div>
+            <div><div class="sr__title">Wellness at <em>the core of community</em></div><div class="sr__brands">Vivo Barefoot · Sweat Pals</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-3-founder-mode-getting-scrappy.html','Founder Mode: Getting Scrappy','437 Swimwear · Good Wipes · It\'s That Simple')">
+            <div class="sr__num">Session 03</div>
+            <div><div class="sr__title">Founder mode: <em>getting scrappy</em></div><div class="sr__brands">437 Swimwear · Good Wipes · It's That Simple</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-2-the-power-of-routine.html','The Power of Routine','WHOOP · HigherDOSE · Wellworthy')">
+            <div class="sr__num">Session 02</div>
+            <div><div class="sr__title">The power <em>of routine</em></div><div class="sr__brands">WHOOP · HigherDOSE · Wellworthy</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+          <div class="session-row" onclick="openDrawer('panel-1-founders-rebuilding-health-and-the-future-of-wellness.html','Founders Rebuilding Health &amp; Wellness','Tiny Health · Function · Throne Science')">
+            <div class="sr__num">Session 01</div>
+            <div><div class="sr__title">Founders rebuilding <em>health &amp; wellness</em></div><div class="sr__brands">Tiny Health · Function · Throne Science</div></div>
+            <span class="sr__tag sr__tag--recap">Recap</span>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+
+        </div>
+
+        <div class="body-cta">
+          <div class="body-cta__text"><strong>WH26 sold out.</strong> WH27 is next. March 2027, Austin, SXSW week.</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="/apply?intent=wh27" class="btn btn-primary">Request Invite</a>
+            <a href="/past-events" class="btn btn-outline">View event details</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 
-  <!-- Wellness House 2025 · Session 06 -->
-  <div class="sc" id="sc-wh-06">
-    <div class="sc__head" onclick="toggle('sc-wh-06')">
+  <!-- ── Catalyst NYC ─────────────────────────────────────────── -->
+  <div class="sc" id="sc-cat-nyc">
+    <div class="sc__head" onclick="toggle('sc-cat-nyc')">
       <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
       </div>
       <div class="sc__info">
-        <div class="sc__name">Building worlds <em>through sports</em></div>
-        <div class="sc__sub">Wellness House 2025 · Austin, TX · Session 06</div>
+        <div class="sc__name">Catalyst <em>NYC</em></div>
+        <div class="sc__sub">Intimate dinner series · New York City · 3 events</div>
       </div>
       <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
+        <div class="sc__count"><strong>3</strong> dinners</div>
+        <div class="sc__badge">Dinner Series</div>
         <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
       </div>
     </div>
     <div class="sc__body">
       <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(123,170,212,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">San Antonio Spurs · MLP · Tyler Eifert</p>
+        <div class="dinner-list">
+          <div class="dinner-row">
+            <div class="dr__date">Nov 10, 2025</div>
+            <div><div class="dr__title">Capitalizing on the future of <em>wellness</em></div><div class="dr__brands">Masa Chips · Caulipower · HYROX · Soho House NYC</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Jul 29, 2025</div>
+            <div><div class="dr__title">Cutting through <em>the noise</em></div><div class="dr__brands">Slate Milk · Othership · WHOOP</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">May 27, 2025</div>
+            <div><div class="dr__title">Brand breakouts &amp; buyouts w/ <em>HelloFresh &amp; Daily Harvest</em></div><div class="dr__brands">HelloFresh · Daily Harvest · Poppi · Padel Haus</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+        </div>
+        <div class="body-cta">
+          <div class="body-cta__text">Catalyst NYC continues in 2026. Invite-only. 25 to 40 people, one table.</div>
+          <a href="/apply" class="btn btn-primary">Request Invite</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Wellness House 2025 · Session 05 -->
-  <div class="sc" id="sc-wh-05">
-    <div class="sc__head" onclick="toggle('sc-wh-05')">
+  <!-- ── Catalyst Austin ──────────────────────────────────────── -->
+  <div class="sc" id="sc-cat-aus">
+    <div class="sc__head" onclick="toggle('sc-cat-aus')">
       <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
       </div>
       <div class="sc__info">
-        <div class="sc__name">Comedy panel: <em>the roast</em></div>
-        <div class="sc__sub">Wellness House 2025 · Austin, TX · Session 05</div>
+        <div class="sc__name">Catalyst <em>Austin</em></div>
+        <div class="sc__sub">Intimate dinner series · Austin, TX · 5 events</div>
       </div>
       <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
+        <div class="sc__count"><strong>5</strong> dinners</div>
+        <div class="sc__badge">Dinner Series</div>
         <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
       </div>
     </div>
     <div class="sc__body">
       <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(123,170,212,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">Super Coffee · Lofty · Kaviva · Jevity · Kintsugi</p>
+        <div class="dinner-list">
+          <div class="dinner-row">
+            <div class="dr__date">Oct 14, 2025</div>
+            <div><div class="dr__title">Winning cultural tentpoles, <em>F1 Edition</em></div><div class="dr__brands">Caraway · LALO Tequila · Kendra Scott</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Aug 19, 2025</div>
+            <div><div class="dr__title">Partnerships for <em>growth</em></div><div class="dr__brands">SoulCycle · Howler Brothers · JP Morgan · Austin FC</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Jun 18, 2025</div>
+            <div><div class="dr__title">Customer-centric <em>scaling</em></div><div class="dr__brands">Promix Nutrition</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Apr 16, 2025</div>
+            <div><div class="dr__title">Innovation <em>playbook</em></div><div class="dr__brands">Super Coffee · GoodPop · Kin Euphorics</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Feb 5, 2025</div>
+            <div><div class="dr__title">Inflection point w/ <em>Paulie Dery</em></div><div class="dr__brands">AG1 · It's Skinny</div></div>
+            <div class="dr__link">Coming soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+        </div>
+        <div class="body-cta">
+          <div class="body-cta__text">Catalyst Austin continues in 2026. Invite-only.</div>
+          <a href="/apply" class="btn btn-primary">Request Invite</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Wellness House 2025 · Session 04 -->
-  <div class="sc" id="sc-wh-04">
-    <div class="sc__head" onclick="toggle('sc-wh-04')">
+  <!-- ── Wellness Lounge ──────────────────────────────────────── -->
+  <div class="sc" id="sc-lounge">
+    <div class="sc__head" onclick="toggle('sc-lounge')">
       <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
       </div>
       <div class="sc__info">
-        <div class="sc__name">Wellness at <em>the core of community</em></div>
-        <div class="sc__sub">Wellness House 2025 · Austin, TX · Session 04</div>
+        <div class="sc__name">The Wellness <em>Lounge</em></div>
+        <div class="sc__sub">New series · NYC &amp; Austin · Remedy Place &amp; Gevity · 4 events in 2026</div>
       </div>
       <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
-        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
-      </div>
-    </div>
-    <div class="sc__body">
-      <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(123,170,212,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">Vivo Barefoot · Sweat Pals</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Wellness House 2025 · Session 03 -->
-  <div class="sc" id="sc-wh-03">
-    <div class="sc__head" onclick="toggle('sc-wh-03')">
-      <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="sc__info">
-        <div class="sc__name">Founder mode: <em>getting scrappy</em></div>
-        <div class="sc__sub">Wellness House 2025 · Austin, TX · Session 03</div>
-      </div>
-      <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
-        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
-      </div>
-    </div>
-    <div class="sc__body">
-      <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(123,170,212,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">437 Swimwear · Good Wipes · It's That Simple</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Wellness House 2025 · Session 02 -->
-  <div class="sc" id="sc-wh-02">
-    <div class="sc__head" onclick="toggle('sc-wh-02')">
-      <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="sc__info">
-        <div class="sc__name">The power <em>of routine</em></div>
-        <div class="sc__sub">Wellness House 2025 · Austin, TX · Session 02</div>
-      </div>
-      <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
-        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
-      </div>
-    </div>
-    <div class="sc__body">
-      <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(123,170,212,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">WHOOP · HigherDOSE · Wellworthy</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Wellness House 2025 · Session 01 -->
-  <div class="sc" id="sc-wh-01">
-    <div class="sc__head" onclick="toggle('sc-wh-01')">
-      <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="sc__info">
-        <div class="sc__name">Founders rebuilding <em>health &amp; wellness</em></div>
-        <div class="sc__sub">Wellness House 2025 · Austin, TX · Session 01</div>
-      </div>
-      <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
-        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
-      </div>
-    </div>
-    <div class="sc__body">
-      <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(123,170,212,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">Tiny Health · Function · Throne Science</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Wellness House 2025 · Keynote -->
-  <div class="sc" id="sc-wh-kn">
-    <div class="sc__head" onclick="toggle('sc-wh-kn')">
-      <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="sc__info">
-        <div class="sc__name">Founder mode in <em>health &amp; wellness</em></div>
-        <div class="sc__sub">Wellness House 2025 · Opening Keynote · Greg LaVecchia, Bloom Nutrition</div>
-      </div>
-      <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--wh)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
-        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
-      </div>
-    </div>
-    <div class="sc__body">
-      <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(123,170,212,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">Greg LaVecchia · Bloom Nutrition</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Catalyst NYC · Nov 2025 -->
-  <div class="sc" id="sc-cat-1">
-    <div class="sc__head" onclick="toggle('sc-cat-1')">
-      <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="sc__info">
-        <div class="sc__name">Capitalizing on the future of <em>wellness</em></div>
-        <div class="sc__sub">Catalyst NYC · Nov 10, 2025 · Soho House NYC</div>
-      </div>
-      <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
-        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
-      </div>
-    </div>
-    <div class="sc__body">
-      <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(212,149,106,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">Masa Chips · Caulipower · HYROX · Soho House NYC</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Catalyst NYC · Jul 2025 -->
-  <div class="sc" id="sc-cat-2">
-    <div class="sc__head" onclick="toggle('sc-cat-2')">
-      <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="sc__info">
-        <div class="sc__name">Cutting through <em>the noise</em></div>
-        <div class="sc__sub">Catalyst NYC · Jul 29, 2025</div>
-      </div>
-      <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
-        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
-      </div>
-    </div>
-    <div class="sc__body">
-      <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(212,149,106,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">Slate Milk · Othership · WHOOP</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Catalyst NYC · May 2025 -->
-  <div class="sc" id="sc-cat-3">
-    <div class="sc__head" onclick="toggle('sc-cat-3')">
-      <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="sc__info">
-        <div class="sc__name">Brand breakouts &amp; buyouts w/ <em>HelloFresh &amp; Daily Harvest</em></div>
-        <div class="sc__sub">Catalyst NYC · May 27, 2025</div>
-      </div>
-      <div class="sc__right">
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--cat)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
-        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
-      </div>
-    </div>
-    <div class="sc__body">
-      <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(212,149,106,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">HelloFresh · Daily Harvest · Poppi · Padel Haus</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Wellness Lounge · May 2026 -->
-  <div class="sc" id="sc-lounge-1">
-    <div class="sc__head" onclick="toggle('sc-lounge-1')">
-      <div class="sc__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </div>
-      <div class="sc__info">
-        <div class="sc__name">The first <em>Wellness Lounge</em></div>
-        <div class="sc__sub">The Wellness Lounge · May 20, 2026 · Remedy Place Soho, NYC</div>
-      </div>
-      <div class="sc__right">
+        <div class="sc__count"><strong>4</strong> lounges</div>
         <div class="sc__badge live">New series</div>
-        <svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" aria-hidden="true" style="width:20px;height:14px;flex-shrink:0;"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg>
         <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
       </div>
     </div>
     <div class="sc__body">
       <div class="sc__inner">
-        <div class="video-frame"><div class="vf-placeholder"><svg width="40" height="40" viewBox="0 0 24 24" fill="rgba(114,184,154,0.4)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div></div>
-        <p style="margin-top:1rem;font-size:0.88rem;color:rgba(255,255,255,0.55);">AG1 · Beekman 1802 · Evolv · Remedy Place Soho · 80+ brands</p>
+        <div class="sub-label">Completed</div>
+        <div class="dinner-list">
+          <div class="dinner-row">
+            <div class="dr__date">May 20, 2026 · NYC</div>
+            <div><div class="dr__title">The first <em>Wellness Lounge</em></div><div class="dr__brands">AG1 · Beekman 1802 · Evolv · Remedy Place Soho · 80+ brands</div></div>
+            <div class="dr__link">Recap soon</div>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+        </div>
+        <div class="sub-label">Upcoming</div>
+        <div class="dinner-list">
+          <div class="dinner-row">
+            <div class="dr__date">Aug 19 · NYC</div>
+            <div><div class="dr__title">DTC, retail &amp; everything <em>in between</em></div><div class="dr__brands">Remedy Place Flatiron · 60+ brand leaders</div></div>
+            <a href="/events/catalyst-nyc-august-2026" class="dr__link">Join →</a>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Nov · NYC</div>
+            <div><div class="dr__title">The Wellness <em>Lounge</em></div><div class="dr__brands">Remedy Place · 80+ brand leaders</div></div>
+            <a href="/apply" class="dr__link">Request Invite →</a>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" style="opacity:.4" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+          <div class="dinner-row">
+            <div class="dr__date">Dec · Austin</div>
+            <div><div class="dr__title">The Wellness <em>Lounge</em></div><div class="dr__brands">Gevity Austin · First Texas Lounge</div></div>
+            <a href="/apply" class="dr__link">Request Invite →</a>
+            <div class="sr__bird"><svg class="bird" viewBox="0 0 24 16" fill="var(--lounge)" style="opacity:.4" aria-hidden="true"><path d="M12 2C10 2 7.5 3 5.5 5.5C3.5 8 2.5 10.5 3 12.5C4.5 10.5 7 9 9.5 8.5C11 8 12 7.5 12 9C12 7.5 13 8 14.5 8.5C17 9 19.5 10.5 21 12.5C21.5 10.5 20.5 8 18.5 5.5C16.5 3 14 2 12 2Z"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── World of Sports ─────────────────────────────────────── -->
+  <div class="sc" id="sc-wos">
+    <div class="sc__head" onclick="toggle('sc-wos')">
+      <div class="sc__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20M2 12h20"/></svg>
+      </div>
+      <div class="sc__info">
+        <div class="sc__name">World of <em>Sports</em></div>
+        <div class="sc__sub">Human Performance Summit · Austin, TX</div>
+      </div>
+      <div class="sc__right">
+        <div class="sc__count"><strong>1</strong> event</div>
+        <div class="sc__badge">Summit</div>
+        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+    </div>
+    <div class="sc__body">
+      <div class="sc__inner">
+        <div class="empty">
+          <div class="empty__title">Panel recaps <em>in production</em></div>
+          <div class="empty__sub">Vollebak · FloSports · Williams Racing · Houston Texans · Nutrabolt</div>
+        </div>
+        <div class="body-cta">
+          <div class="body-cta__text">Full event details on the past events page.</div>
+          <a href="/past-events" class="btn btn-outline">View event</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Human Performance ───────────────────────────────────── -->
+  <div class="sc" id="sc-hps">
+    <div class="sc__head" onclick="toggle('sc-hps')">
+      <div class="sc__icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div class="sc__info">
+        <div class="sc__name">Human Performance <em>Summit</em></div>
+        <div class="sc__sub">March 9, 2025 · Austin, TX · 102 attendees · NASA &amp; DoD partners</div>
+      </div>
+      <div class="sc__right">
+        <div class="sc__count"><strong>5</strong> panels</div>
+        <div class="sc__badge">Summit</div>
+        <svg class="sc__chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8l5 5 5-5"/></svg>
+      </div>
+    </div>
+    <div class="sc__body">
+      <div class="sc__inner">
+        <div class="empty">
+          <div class="empty__title">Content <em>coming soon</em></div>
+          <div class="empty__sub">NASA · DIU · Sweetgreen · True Food Kitchen · Memphis Grizzlies · HumanCo</div>
+        </div>
+        <div class="body-cta">
+          <div class="body-cta__text">Full event details on the past events page.</div>
+          <a href="/past-events" class="btn btn-outline">View event</a>
+        </div>
       </div>
     </div>
   </div>
