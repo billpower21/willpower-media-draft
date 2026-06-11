@@ -47,13 +47,26 @@
       max-width: 520px; line-height: 1.6;
     }
 
-    /* ─── Filter bar ───────────────────────────────────────── */
-    .filter-bar {
-      display: flex; align-items: center;
-      gap: 8px; flex-wrap: wrap;
-      margin-bottom: 32px;
-      padding-bottom: 24px;
+    /* ─── Key box ──────────────────────────────────────────── */
+    .key-box {
+      display: inline-flex; flex-direction: column;
+      gap: 0;
+      margin-bottom: 36px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--card);
+      overflow: hidden;
+    }
+    .key-box__label {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--muted);
+      padding: 10px 16px 8px;
       border-bottom: 1px solid var(--border);
+    }
+    .key-box__pills {
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 8px; padding: 12px 16px;
     }
     .filter-pill {
       font-family: 'Space Mono', monospace;
@@ -312,24 +325,27 @@
     <p>Watch and read every Willpower session. Tap a card to pull it up right here, or open the full page to share it.</p>
   </div>
 
-  <!-- Filter pills -->
-  <div class="filter-bar">
-    <button class="filter-pill active" onclick="filter('all')">All</button>
-    <button class="filter-pill" onclick="filter('wh')" style="--series-color:var(--wh)">
-      <span class="dot" style="background:var(--wh)"></span>Wellness House
-    </button>
-    <button class="filter-pill" onclick="filter('cat')" style="--series-color:var(--cat)">
-      <span class="dot" style="background:var(--cat)"></span>Catalyst
-    </button>
-    <button class="filter-pill" onclick="filter('lounge')" style="--series-color:var(--lounge)">
-      <span class="dot" style="background:var(--lounge)"></span>Wellness Lounge
-    </button>
-    <button class="filter-pill" onclick="filter('wos')" style="--series-color:var(--wos)">
-      <span class="dot" style="background:var(--wos)"></span>World of Sports
-    </button>
-    <button class="filter-pill" onclick="filter('hps')" style="--series-color:var(--hps)">
-      <span class="dot" style="background:var(--hps)"></span>Human Performance
-    </button>
+  <!-- Key -->
+  <div class="key-box">
+    <div class="key-box__label">Key</div>
+    <div class="key-box__pills">
+      <button class="filter-pill active" onclick="filter('all')">All</button>
+      <button class="filter-pill" onclick="filter('wh')">
+        <span class="dot" style="background:var(--wh)"></span>Wellness House
+      </button>
+      <button class="filter-pill" onclick="filter('cat')">
+        <span class="dot" style="background:var(--cat)"></span>Catalyst
+      </button>
+      <button class="filter-pill" onclick="filter('lounge')">
+        <span class="dot" style="background:var(--lounge)"></span>Wellness Lounge
+      </button>
+      <button class="filter-pill" onclick="filter('wos')">
+        <span class="dot" style="background:var(--wos)"></span>World of Sports
+      </button>
+      <button class="filter-pill" onclick="filter('hps')">
+        <span class="dot" style="background:var(--hps)"></span>Human Performance
+      </button>
+    </div>
   </div>
 
   <!-- Grid -->
