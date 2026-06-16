@@ -124,6 +124,17 @@
     .vc__brands {
       font-size: 11px; color: var(--muted); line-height: 1.4;
     }
+    .vc__read {
+      display: inline-flex; align-items: center; gap: 5px;
+      margin-top: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--wh); text-decoration: none;
+      opacity: 0; transition: opacity .2s;
+    }
+    .vc[data-series="wh"] .vc__read { color: var(--wh); }
+    .vc[data-series="cat"] .vc__read { color: var(--cat); }
+    .vc:hover .vc__read { opacity: 1; }
 
     /* ── Modal ── */
     .modal-overlay {
@@ -256,6 +267,7 @@
       <div class="vc__meta">Wellness House 2025 · Opening Keynote</div>
       <div class="vc__title">Founder mode in <em>health &amp; wellness</em></div>
       <div class="vc__brands">Greg LaVecchia · Bloom Nutrition</div>
+      <a class="vc__read" href="articles/keynote.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
     </div>
 
     <!-- Wellness House 2025 · Panel 1 -->
@@ -267,6 +279,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 01</div>
       <div class="vc__title">Founders rebuilding <em>health &amp; wellness</em></div>
       <div class="vc__brands">Tiny Health · Function · Throne Science</div>
+      <a class="vc__read" href="articles/panel-1.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
     </div>
 
     <!-- Wellness House 2025 · Panel 2 -->
@@ -278,6 +291,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 02</div>
       <div class="vc__title">The power <em>of routine</em></div>
       <div class="vc__brands">WHOOP · HigherDOSE · Wellworthy</div>
+      <a class="vc__read" href="articles/panel-2.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
     </div>
 
     <!-- Wellness House 2025 · Panel 3 -->
@@ -289,6 +303,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 03</div>
       <div class="vc__title">Founder mode: <em>getting scrappy</em></div>
       <div class="vc__brands">437 Swimwear · Good Wipes · It's That Simple</div>
+      <a class="vc__read" href="articles/panel-3.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
     </div>
 
     <!-- Wellness House 2025 · Panel 4 -->
@@ -300,6 +315,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 04</div>
       <div class="vc__title">Wellness at <em>the core of community</em></div>
       <div class="vc__brands">Vivo Barefoot · Sweat Pals</div>
+      <a class="vc__read" href="articles/panel-4.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
     </div>
 
     <!-- Wellness House 2025 · Panel 6 -->
@@ -311,6 +327,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 06</div>
       <div class="vc__title">Building worlds <em>through sports</em></div>
       <div class="vc__brands">San Antonio Spurs · MLP · Tyler Eifert</div>
+      <a class="vc__read" href="articles/panel-6.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
     </div>
 
     <!-- Wellness House 2025 · Panel 7 -->
@@ -322,6 +339,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 07</div>
       <div class="vc__title">The future of commerce: <em>brand, community &amp; AI</em></div>
       <div class="vc__brands">Tecovas · YETI · Estée Lauder · Shopify</div>
+      <a class="vc__read" href="articles/panel-7.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
     </div>
 
     <!-- Catalyst NYC · Nov 2025 -->

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel 3: Founder Mode Getting Scrappy — Willpower</title>
+  <link rel="stylesheet" href="https://starlit-crostata-9f186f.netlify.app/assets/subpage.css" />
+  <style>
+    :root { --accent: #7baad4; --accent-light: rgba(123,170,212,0.12); }
+    body { background: var(--color-bg, #fff); }
+    .article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); text-decoration: none; margin: 32px 0 0 0; }
+    .article-back:hover { opacity: .7; }
+    .article-hero { padding: 48px 0 0; border-bottom: 1px solid rgba(0,0,0,.08); margin-bottom: 0; }
+    .article-series-tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; }
+    .article-hero h1 { font-size: clamp(28px, 4vw, 52px); line-height: 1.1; font-weight: 800; margin: 0 0 16px; max-width: 800px; }
+    .article-hero .deck { font-size: 18px; color: #555; line-height: 1.6; max-width: 680px; margin: 0 0 40px; }
+    .metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: rgba(0,0,0,.08); border-top: 1px solid rgba(0,0,0,.08); border-bottom: 3px solid var(--accent); margin-bottom: 48px; }
+    .metric { background: #fff; padding: 28px 24px; }
+    .metric-num { font-size: 36px; font-weight: 800; line-height: 1; color: var(--accent); margin-bottom: 6px; }
+    .metric-label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #666; }
+    .article-layout { display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: start; padding-bottom: 80px; }
+    @media (max-width: 860px) { .article-layout { grid-template-columns: 1fr; } .article-sticky { position: static !important; } }
+    .article-body h2 { font-size: 22px; font-weight: 800; margin: 48px 0 16px; letter-spacing: -.01em; }
+    .article-body p { font-size: 16px; line-height: 1.75; color: #333; margin: 0 0 20px; }
+    .pull-quote { border-left: 4px solid var(--accent); padding: 16px 24px; margin: 32px 0; background: var(--accent-light); }
+    .pull-quote p { font-size: 18px; font-weight: 600; font-style: italic; color: #222; margin: 0 0 8px; }
+    .pull-quote cite { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); font-style: normal; }
+    .article-sticky { position: sticky; top: 24px; }
+    .video-wrap { aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.18); }
+    .video-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .speaker-list { margin-top: 28px; padding: 20px 24px; border: 1px solid rgba(0,0,0,.1); border-radius: 10px; }
+    .speaker-list h4 { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #888; margin: 0 0 14px; }
+    .speaker-item { font-size: 14px; line-height: 1.4; margin-bottom: 12px; color: #333; }
+    .speaker-item strong { display: block; font-weight: 700; color: #111; }
+    .takeaway-list { list-style: none; padding: 0; margin: 0; }
+    .takeaway-list li { padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,.07); font-size: 15px; line-height: 1.5; color: #333; display: flex; gap: 12px; }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before { content: ""; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); display: block; margin-top: 2px; }
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="../grid-version.html" class="article-back">&#8592; Back to Media</a>
+
+    <div class="article-hero">
+      <span class="article-series-tag">Wellness House — Panel 3</span>
+      <h1>The Real Stuff: How Scrappy Founders Survive IP Lawsuits, Near-Bankruptcy, and the Math That Doesn't Math</h1>
+      <p class="deck">Hila of 437 Activewear, Sam Nebel of Good Wipes, and Brian of It's That Simple cut through the panel circuit noise to talk about what actually happens when things go wrong, and what kept them moving.</p>
+    </div>
+
+    <div class="metrics-strip">
+      <div class="metric"><div class="metric-num">12.5</div><div class="metric-label">Years Good Wipes has been operating</div></div>
+      <div class="metric"><div class="metric-num">10K</div><div class="metric-label">Grocery stores for It's That Simple</div></div>
+      <div class="metric"><div class="metric-num">3 yrs</div><div class="metric-label">437's four-day work week, running since near-bankruptcy</div></div>
+      <div class="metric"><div class="metric-num">15–20</div><div class="metric-label">Events per year for the Good Wipes Porta Palace</div></div>
+    </div>
+
+    <div class="article-layout">
+      <div class="article-body">
+
+        <h2>The problems never change. Only the scale does.</h2>
+        <p>Brian co-founded It's That Simple, a low-carb meal solution brand, in early 2020. COVID was actually a blessing: they were in stock, launched D2C, and built quickly. Then, less than six months in, they got hit with an IP lawsuit. A major retailer's purchase order came through shortly after. Then the retailer found out about the lawsuit and pulled the PO. Three years of fighting later, the brand is in every one of that retailer's stores.</p>
+        <p>"The problems we face now are the same as the problems we face when we started the brand. You always have cash issues. Legal stuff happens. People stuff happens." His answer to the audience: "Situationally, it's about how you respond."</p>
+
+        <div class="pull-quote">
+          <p>"The hardest part for me was always: what do you do when you've got a million dollars in payables but a hundred grand in the account?"</p>
+          <cite>Brian, Co-founder, It's That Simple</cite>
+        </div>
+
+        <h2>The Sri Lanka call</h2>
+        <p>Hila built 437 from a swimwear side project started at Queens University with her best friend, named after their house number, into an eight-figure activewear brand with Kendall Jenner wearing their product. She was also burning out and in a relationship she was too exhausted to properly evaluate. She went to a retreat in Sri Lanka to reset. While she was there, her COO called: "Hila, we're about to go bankrupt."</p>
+        <p>On the surface, everything looked fine. Major retailer entry. Social traction. Revenue coming in. But the advisors and replacement CEO they had desperately hired because they were so burned out were costing more than the business could support. "Nothing good comes from making decisions in a place of desperation."</p>
+        <p>What she did: removed her own salary and her co-founder's salary for a year and a half. Cut every agency (email, SMS, ad agency). Took back social media, email, and all creative herself and her co-founder. Found that their email flows still had swimwear from four years prior in them. Fixed everything. And gave the team a four-day work week instead of raises. That was three years ago. They have not gone back.</p>
+
+        <div class="pull-quote">
+          <p>"When the founders get back into the parts of the business they've outsourced for five years, you find out how off-brand everything has become. That was such a blessing."</p>
+          <cite>Hila, Co-founder, 437 Activewear</cite>
+        </div>
+
+        <h2>The Porta Palace</h2>
+        <p>Sam Nebel and his co-founder started Good Wipes 12.5 years ago, bonding over baby wipes in a fraternity house bathroom at Florida State. The first seven years were, by his own admission, scrappy and ineffective. Now the brand is in Walmart, Kroger, Target, Safeway, and HEB.</p>
+        <p>The tactic that became their signature: when their marketing budget got cut, they found an event in Atlanta where they could outfit a porta-potty as luxuriously as possible. The line was two ways out the door all day. They passed out wipes, got content, and internally agreed: let's make this a real thing. They found a triple-wide used porta-potty, outfitted it in all gold, and built the Golden Porta Palace.</p>
+        <p>The economics: brands beg them to come for free. Events invite them to Coachella, Revolve Fest, Stagecoach, and Kilby. They do 15 to 20 events per year. They hired brand ambassadors but the whole team usually shows up. People use the product in real time and get interviewed walking out. A photo with Diplo (who set a 5K PR at Good Wipes' own run club) became a T-shirt. They trademarked the Porta Palace concept so competitors cannot copy it.</p>
+
+        <h2>Know what your business is actually built for</h2>
+        <p>Hila made the most actionable point of the panel when asked about influencer marketing. 437's influencer approach (seeding and gifting, 99% of budget, no paid posts) works for activewear because a sports bra and legging is a walking billboard. You cannot tell where jewelry comes from when someone wears it. The same strategy in a jewelry brand does not work.</p>
+        <p>"Think about what your business is built for, what you guys are really good at, and scale that." Her team is a group of aesthetic, creative women. They are not an events team. When she sees competitors doing incredible pop-ups, she knows that is not her moment yet. Her moment is scaling influencer marketing threefold in the next quarter.</p>
+        <p>Sam added the corollary: you cannot build a consumer brand behind a computer screen. Social is huge, influencer is huge, but something IRL has to tie in. "Go to run clubs. Get as much face-to-face time as possible. Then infuse that IRL moment into content."</p>
+
+        <h2>What gets you through the lowest points</h2>
+        <p>The audience asked directly: when you hit rock bottom, what actually saved you? Brian's answer was a notepad. He was lying in bed struggling, and his wife threw one on his chest and said: write a list of everyone who believes in you. "That hit hard." His other moment: a close friend who had invested in Good Wipes heard him say he was thinking about quitting. His friend said, "I care more about you than I do about the money." That was enough to keep going.</p>
+        <p>Sam shared that Sam Nebel told a close friend and investor he was thinking about quitting. That investor said he cared more about Sam than the money. "You got people like that in your life? You can keep going."</p>
+        <p>Hila said the lowest point, when her and her co-founder removed their salaries and came close to selling their homes, became the foundation of 437's current culture. "We can still provide value to people even outside of cash."</p>
+
+        <h2>Key takeaways</h2>
+        <ul class="takeaway-list">
+          <li>Brian's IP lawsuit hit 6 months after launch. The same retailer that pulled the PO over the lawsuit is now one of their top accounts, three years later. Outlasting the problem is a strategy.</li>
+          <li>Hila cut every agency and took back creative control during the near-bankruptcy. The brand grew explosively after because founders know the brand better than anyone they can hire.</li>
+          <li>Good Wipes' Porta Palace costs almost nothing per event because brands pay to participate and events invite them for free. Low budget, high visibility, and it gets content that a traditional activation cannot generate.</li>
+          <li>437's 99% of influencer marketing budget goes to seeding, not paid posts. Organic love shows in content. A paid post for a product someone doesn't genuinely use shows in the content too.</li>
+          <li>General advice is typically not the best advice for solving specific problems. Find someone who has solved the exact problem you are dealing with, not someone who has succeeded broadly.</li>
+        </ul>
+
+      </div>
+
+      <div class="article-sticky">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/tfcpY9Z9qYI"
+            title="Panel 3: Founder Mode Getting Scrappy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="speaker-list">
+          <h4>Speakers</h4>
+          <div class="speaker-item"><strong>Hila</strong>Co-founder, 437 Activewear</div>
+          <div class="speaker-item"><strong>Sam Nebel</strong>Co-founder, Good Wipes</div>
+          <div class="speaker-item"><strong>Brian</strong>Co-founder, It's That Simple</div>
+          <div class="speaker-item"><strong>Brett</strong>Moderator, Postpilot</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

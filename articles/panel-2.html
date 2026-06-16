@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel 2: The Power of Routine — Willpower</title>
+  <link rel="stylesheet" href="https://starlit-crostata-9f186f.netlify.app/assets/subpage.css" />
+  <style>
+    :root { --accent: #7baad4; --accent-light: rgba(123,170,212,0.12); }
+    body { background: var(--color-bg, #fff); }
+    .article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); text-decoration: none; margin: 32px 0 0 0; }
+    .article-back:hover { opacity: .7; }
+    .article-hero { padding: 48px 0 0; border-bottom: 1px solid rgba(0,0,0,.08); margin-bottom: 0; }
+    .article-series-tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; }
+    .article-hero h1 { font-size: clamp(28px, 4vw, 52px); line-height: 1.1; font-weight: 800; margin: 0 0 16px; max-width: 800px; }
+    .article-hero .deck { font-size: 18px; color: #555; line-height: 1.6; max-width: 680px; margin: 0 0 40px; }
+    .metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: rgba(0,0,0,.08); border-top: 1px solid rgba(0,0,0,.08); border-bottom: 3px solid var(--accent); margin-bottom: 48px; }
+    .metric { background: #fff; padding: 28px 24px; }
+    .metric-num { font-size: 36px; font-weight: 800; line-height: 1; color: var(--accent); margin-bottom: 6px; }
+    .metric-label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #666; }
+    .article-layout { display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: start; padding-bottom: 80px; }
+    @media (max-width: 860px) { .article-layout { grid-template-columns: 1fr; } .article-sticky { position: static !important; } }
+    .article-body h2 { font-size: 22px; font-weight: 800; margin: 48px 0 16px; letter-spacing: -.01em; }
+    .article-body p { font-size: 16px; line-height: 1.75; color: #333; margin: 0 0 20px; }
+    .pull-quote { border-left: 4px solid var(--accent); padding: 16px 24px; margin: 32px 0; background: var(--accent-light); }
+    .pull-quote p { font-size: 18px; font-weight: 600; font-style: italic; color: #222; margin: 0 0 8px; }
+    .pull-quote cite { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); font-style: normal; }
+    .article-sticky { position: sticky; top: 24px; }
+    .video-wrap { aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.18); }
+    .video-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .speaker-list { margin-top: 28px; padding: 20px 24px; border: 1px solid rgba(0,0,0,.1); border-radius: 10px; }
+    .speaker-list h4 { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #888; margin: 0 0 14px; }
+    .speaker-item { font-size: 14px; line-height: 1.4; margin-bottom: 12px; color: #333; }
+    .speaker-item strong { display: block; font-weight: 700; color: #111; }
+    .takeaway-list { list-style: none; padding: 0; margin: 0; }
+    .takeaway-list li { padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,.07); font-size: 15px; line-height: 1.5; color: #333; display: flex; gap: 12px; }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before { content: ""; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); display: block; margin-top: 2px; }
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="../grid-version.html" class="article-back">&#8592; Back to Media</a>
+
+    <div class="article-hero">
+      <span class="article-series-tag">Wellness House — Panel 2</span>
+      <h1>What Makes a Product Actually Stick: Lessons from the CMOs of Whoop and Higher Dose</h1>
+      <p class="deck">John Sullivan (Whoop, 9 years) and Ingrid Millman-Cordy (Higher Dose) broke down how to design products that become habits, how to market them without overpromising, and why data is a weather forecast for your body, not a report card.</p>
+    </div>
+
+    <div class="metrics-strip">
+      <div class="metric"><div class="metric-num">30%</div><div class="metric-label">Higher Dose return rate (repeat device buyers)</div></div>
+      <div class="metric"><div class="metric-num">9 yrs</div><div class="metric-label">John Sullivan's tenure at Whoop</div></div>
+      <div class="metric"><div class="metric-num">V4</div><div class="metric-label">Sauna blanket generation (while competitors copy V1)</div></div>
+      <div class="metric"><div class="metric-num">#1</div><div class="metric-label">Most shared Whoop screenshot: HealthSpan, within one week of launch</div></div>
+    </div>
+
+    <div class="article-layout">
+      <div class="article-body">
+
+        <h2>What you measure, you manage</h2>
+        <p>John Sullivan has been at Whoop for nine years. On his first day, Whoop was on Shopify and sold eight straps. The company at the time was being written off: Apple Watch was already on the market, and friends told him he should have read the news before accepting the offer.</p>
+        <p>The principle that has guided Whoop's product and marketing ever since: what you can measure, you can manage. In the earliest days, Whoop ran a test-control experiment with the Department of Defense bomb squad. They put Whoop on 50 people and exposed half to their data with zero coaching. The group with data access improved on every single measurable KPI in the Whoop ecosystem and on every internal DOD performance metric. No intervention. Just seeing the numbers.</p>
+
+        <div class="pull-quote">
+          <p>"The data is an input to your lifestyle. It's not a report card for your lifestyle. It's almost like a weather forecast for your body."</p>
+          <cite>John Sullivan, CMO, Whoop</cite>
+        </div>
+
+        <h2>Higher Dose: designing the spa out of the spa experience</h2>
+        <p>Ingrid Millman-Cordy joined Higher Dose after a decade in fashion and beauty (Estee Lauder, MAC Cosmetics, John Varvatos) and leading Nuun Hydration through its Nestlé acquisition in 2020. She took the call announcing the acquisition from a hospital bed after giving birth to her first son.</p>
+        <p>Higher Dose started as an infrared sauna spa in New York City with locations inside Equinox. When Bella Hadid posted herself in the sauna, people in Chicago, Memphis, and Ohio started asking when they were coming to their city. The answer became the sauna blanket: everything the spa offered, accessible at home, whenever you want. COVID closed all 20-plus spa locations overnight. The sauna blanket business exploded as wellness moved into the home. That momentum funded V2, V3, and now V4.</p>
+        <p>Higher Dose now has a 30% return rate because customers buy a second piece of equipment. They prove out one benefit, see their sleep score improve after 10 minutes of PEMF before bed, and come back for the red light mat or the microcurrent device. "We start with the one manageable thing, market to that, earn their trust, and then come back and explain the ritual."</p>
+
+        <h2>The campaign that worked too well</h2>
+        <p>Sullivan shared the most instructive marketing mistake of his career. Three years ago, Whoop produced a campaign called "Be Obsessed" featuring Alex Honnold and Michael Phelps. He was prouder of it than anything he had ever made. The campaign stuck. So well that every press outreach and partnership conversation immediately landed on the word "athletes." Whoop became associated with apex performers only.</p>
+        <p>"As marketers, you run around repeating the same thing over and over again trying to get it to stick. And then every once in a while, it sticks so much." The lesson: you have to meet people with what they are hearing, not just what you are saying. That campaign said "serious." People heard "only for elite athletes." Not the same thing.</p>
+
+        <div class="pull-quote">
+          <p>"You can't run out and be like, what do I want to say? You have to meet people with what they're hearing."</p>
+          <cite>John Sullivan, CMO, Whoop</cite>
+        </div>
+
+        <h2>Simplicity and the value proposition problem</h2>
+        <p>In Whoop's early days, the marketing team debated the tagline endlessly. Recovery, strain, sleep, health, stress. All in equal parts. All in the marketing. Sullivan admitted that "the harmony is everything" approach set them back. Whoop now communicates one thing: insights that help you live better for longer, closer to your human potential. Simple. Then multiple expressions of it for parents, professionals, performers, and athletes.</p>
+        <p>Higher Dose uses the same discipline. Ingrid's rule: prove you can improve one thing in someone's life first. Pick the specific outcome (detox, sleep, stress, skin), earn the trust, then layer in the larger ritual. "Wellness is this big, broad, complicated thing. Start small. Start very specific."</p>
+
+        <h2>Product signals and social listening</h2>
+        <p>When Whoop launched its HealthSpan feature (which assigns a Whoop Age and Pace of Aging), it became the most shared screenshot across every screen in the app within one week. That is the leading indicator Sullivan watches: social shareability before any engagement metrics. "If we hit a nerve, we'll see it in content first."</p>
+        <p>Higher Dose tracks their adoption curve differently. They have two distinct buyer personas: the optimizer (wears a Whoop, Oura, and everything else, data is identity) and the regulator (coming off burnout, mold detox, autoimmune issues, trying to get back to baseline). The messaging, language, and on-ramp for each are completely different. A product that claims to do everything appeals to neither.</p>
+
+        <h2>Data anxiety and the blinding feature</h2>
+        <p>Moderator Jake shared that he stopped wearing Whoop for a period because waking up to a red recovery score made him feel like his day was already lost. Sullivan acknowledged this is one of the most common questions they get. Whoop has a blinding feature built in: you can black out your recovery score in the morning, a feature requested by professional sports coaches who didn't want scores affecting a player's mindset before a game.</p>
+        <p>Sullivan's own data moment: he used Whoop's advanced labs feature on an early alpha and discovered his APOB (a cardiovascular risk marker) was five times the outer limit of what a doctor would consider healthy. Totally genetic. Not modifiable by behavior. "If I didn't know, I wouldn't have been able to do anything about it." That is the case for continuous monitoring.</p>
+
+        <h2>What wellness brands need in 2026</h2>
+        <p>Both CMOs landed on the same answer when stripped of everything else: prove you solve a specific problem, very specifically. Add real value. Don't do everything. "More is more is not true" were their nearly simultaneous answers when asked about marketing myths founders should ignore.</p>
+
+        <h2>Key takeaways</h2>
+        <ul class="takeaway-list">
+          <li>John Sullivan: Whoop's DOD experiment showed that data exposure alone (no coaching) improved performance on every measurable dimension. Measurement is the intervention.</li>
+          <li>Ingrid Millman-Cordy: Higher Dose earns a 30% return rate by starting small, proving one benefit, and then building the habit stack. Customers come back for the second device because the first one worked.</li>
+          <li>Sullivan's "Be Obsessed" campaign taught him the hardest marketing lesson: you cannot control what sticks. You can only control whether what you put out reflects what your audience is actually ready to hear.</li>
+          <li>Higher Dose's sauna blanket is on V4 while competitors are copying V1. Building the product category correctly from the start creates compounding advantages.</li>
+          <li>Ingrid's rapid-fire: one wellness behavior people should stop is too much cardio, and for women specifically, cold plunging at the wrong point in the cycle.</li>
+        </ul>
+
+      </div>
+
+      <div class="article-sticky">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/XTjBW8ZCuLQ"
+            title="Panel 2: The Power of Routine"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="speaker-list">
+          <h4>Speakers</h4>
+          <div class="speaker-item"><strong>John Sullivan</strong>CMO, Whoop (9 years)</div>
+          <div class="speaker-item"><strong>Ingrid Millman-Cordy</strong>CMO, Higher Dose</div>
+          <div class="speaker-item"><strong>Jake Hyen</strong>Moderator, Wellworthy Media</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

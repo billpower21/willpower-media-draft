@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel 1: Founders Rebuilding Health — Willpower</title>
+  <link rel="stylesheet" href="https://starlit-crostata-9f186f.netlify.app/assets/subpage.css" />
+  <style>
+    :root { --accent: #7baad4; --accent-light: rgba(123,170,212,0.12); }
+    body { background: var(--color-bg, #fff); }
+    .article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); text-decoration: none; margin: 32px 0 0 0; }
+    .article-back:hover { opacity: .7; }
+    .article-hero { padding: 48px 0 0; border-bottom: 1px solid rgba(0,0,0,.08); margin-bottom: 0; }
+    .article-series-tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; }
+    .article-hero h1 { font-size: clamp(28px, 4vw, 52px); line-height: 1.1; font-weight: 800; margin: 0 0 16px; max-width: 800px; }
+    .article-hero .deck { font-size: 18px; color: #555; line-height: 1.6; max-width: 680px; margin: 0 0 40px; }
+    .metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: rgba(0,0,0,.08); border-top: 1px solid rgba(0,0,0,.08); border-bottom: 3px solid var(--accent); margin-bottom: 48px; }
+    .metric { background: #fff; padding: 28px 24px; }
+    .metric-num { font-size: 36px; font-weight: 800; line-height: 1; color: var(--accent); margin-bottom: 6px; }
+    .metric-label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #666; }
+    .article-layout { display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: start; padding-bottom: 80px; }
+    @media (max-width: 860px) { .article-layout { grid-template-columns: 1fr; } .article-sticky { position: static !important; } }
+    .article-body h2 { font-size: 22px; font-weight: 800; margin: 48px 0 16px; letter-spacing: -.01em; }
+    .article-body p { font-size: 16px; line-height: 1.75; color: #333; margin: 0 0 20px; }
+    .pull-quote { border-left: 4px solid var(--accent); padding: 16px 24px; margin: 32px 0; background: var(--accent-light); }
+    .pull-quote p { font-size: 18px; font-weight: 600; font-style: italic; color: #222; margin: 0 0 8px; }
+    .pull-quote cite { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); font-style: normal; }
+    .article-sticky { position: sticky; top: 24px; }
+    .video-wrap { aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.18); }
+    .video-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .speaker-list { margin-top: 28px; padding: 20px 24px; border: 1px solid rgba(0,0,0,.1); border-radius: 10px; }
+    .speaker-list h4 { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #888; margin: 0 0 14px; }
+    .speaker-item { font-size: 14px; line-height: 1.4; margin-bottom: 12px; color: #333; }
+    .speaker-item strong { display: block; font-weight: 700; color: #111; }
+    .takeaway-list { list-style: none; padding: 0; margin: 0; }
+    .takeaway-list li { padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,.07); font-size: 15px; line-height: 1.5; color: #333; display: flex; gap: 12px; }
+    .takeaway-list li:last-child { border-bottom: none; }
+    .takeaway-list li::before { content: ""; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); display: block; margin-top: 2px; }
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a href="../grid-version.html" class="article-back">&#8592; Back to Media</a>
+
+    <div class="article-hero">
+      <span class="article-series-tag">Wellness House — Panel 1</span>
+      <h1>Test, Don't Guess: Founders Building the Infrastructure for Preventative Health</h1>
+      <p class="deck">Founders of Tiny Health, Throne, and Function Health talked through why gut health, waste analysis, and comprehensive biomarker testing are moving from biohacker niche to mainstream medicine, and what it took to build consumer trust in an industry where the doctor is now the second opinion.</p>
+    </div>
+
+    <div class="metrics-strip">
+      <div class="metric"><div class="metric-num">125K</div><div class="metric-label">Gut samples sequenced by Tiny Health</div></div>
+      <div class="metric"><div class="metric-num">160</div><div class="metric-label">Biomarkers tested at Function Health</div></div>
+      <div class="metric"><div class="metric-num">50M</div><div class="metric-label">Americans with chronic digestive disease</div></div>
+      <div class="metric"><div class="metric-num">17 yrs</div><div class="metric-label">Avg time for research to reach medical practice</div></div>
+    </div>
+
+    <div class="article-layout">
+      <div class="article-body">
+
+        <h2>The case for gut health now</h2>
+        <p>Cheryl Sihoi founded Tiny Health after having two children via different birth methods and watching one develop eczema, allergies, and food sensitivities while the other had none. The research was clear: C-section babies are at four times higher risk for asthma, allergies, and eczema compared to vaginally-born babies. But when she asked her pediatrician, OB-GYN, and specialists, none of them knew anything about gut microbiome intervention.</p>
+        <p>"It takes an average 17 years for groundbreaking research to get into medical practice. This is the first 1,000 days we are talking about. I do not want my kid to have to wait."</p>
+        <p>Tiny Health now has sequenced close to 125,000 samples. Their finding: 90% of chronic conditions today can be linked back to gut imbalances, and most of those imbalances are deficiencies in beneficial functions, not overgrowths of bad bacteria. The field has spent decades trying to kill things. The real problem is the absence of what should be there.</p>
+
+        <div class="pull-quote">
+          <p>"80% of our immune system lives in our gut. It is formed in the first 1,000 days of life. And 90% of chronic conditions can be linked back to gut imbalances."</p>
+          <cite>Cheryl Sihoi, Founder and CEO, Tiny Health</cite>
+        </div>
+
+        <h2>The smoke detector for colon cancer</h2>
+        <p>Scott Hinkle started Throne after a conversation with his mother, a geriatrician, who told him that in her practice, patients constantly sent her photos of their stool because they knew it mattered. You have 30 devices to track your sleep, cardio, and metabolic health. Nothing tracks your GI or urinary health daily, despite the toilet being somewhere every person goes multiple times a day.</p>
+        <p>The numbers behind why this matters: 50 million Americans have a chronic digestive disease. Another 60 million have a diagnosed urinary tract condition. Every person has a 10% lifetime risk of being diagnosed with a cancer of the lower GI or urinary tract. The earliest signs of those cancers are microscopic blood. Throne is building the device that detects it before it becomes visible.</p>
+
+        <h2>Gut health is having its sleep moment</h2>
+        <p>Ten years ago, Oura was a niche product for biohackers. Sleep is now viewed as foundational. Sihoi made the case that gut health is following the same trajectory: searches for gut health have overtaken searches for sleep improvement in recent years. The supplement aisle created consumer awareness. Now people want to know if they can test, not just guess.</p>
+        <p>Colorectal cancer is the leading cancer death in people under 50. The awareness is there. The diagnostic infrastructure is catching up.</p>
+
+        <h2>Function Health: 160 biomarkers, one test</h2>
+        <p>Pranitha, co-founder and chief business officer of Function Health, spent her 20s dealing with PCOS, prediabetes, and high cholesterol. She was managing it manually, doing what Function now does at scale, on a spreadsheet. The American healthcare system was not going to solve it. She and her co-founder Jonathan built Function because it had to exist, and the timing of COVID-era distrust of institutions made it possible.</p>
+        <p>Function runs 160 biomarker tests across all organ systems through blood, urine, and imaging. The company partnered with Quest Diagnostics for labs and built its brand around physician credibility from day one by leading with Dr. Mark Hyman as a trusted functional health voice.</p>
+
+        <div class="pull-quote">
+          <p>"We are living in a time where we're never going to go back. Our kids are never going to have to be in a place where they don't know more information about themselves."</p>
+          <cite>Pranitha, Co-founder and CBO, Function Health</cite>
+        </div>
+
+        <h2>Brand trust is built internally, not externally</h2>
+        <p>When moderator Sam from Flex pushed on what brand actually means in a health data company, Pranitha's answer was operational. It is the decisions made inside the room: the philosophical standpoint on how data is used, the transparency in member conversations, the willingness to admit when part of the product experience is not good enough. Every member support agent, every person on a panel, reflects those internal decisions.</p>
+        <p>Sihoi built Tiny Health's early trust by personally consulting the first 1,000 micro-influencers she brought on, paying them nothing but giving them tests and reading every single message sent to hello@tinyhealth.com. She read the first 10,000 emails herself and would call customers directly. "The trust comes from that," she said. "Even though we were so small back then."</p>
+
+        <h2>AI is already changing how people navigate their health</h2>
+        <p>Scott noted that by 2026, showing up to a doctor's appointment without an informed opinion is unthinkable. People are uploading screenshots of their Function and Tiny Health results into ChatGPT and Claude before their appointments. The doctor has become the second opinion.</p>
+        <p>Sihoi shared a personal story: her son was found unresponsive on a Monday morning. She called 911, uploaded his labs to Claude, and had a diagnosis within half an hour. A human physician confirmed it that evening. She already knew everything would be okay by noon.</p>
+        <p>Her caution: Tiny Health's super users test an average of 5.6 times per year. They have longitudinal data showing that AI trained on generic data gets specific gut microbiome questions wrong. A general model told a user they could increase Akkermansia (important for metabolic health) with a supplement. Tiny Health's data shows that if you don't have Akkermansia, it is very hard to engraft. The company is building its own AI trained on proprietary data before they release it.</p>
+
+        <h2>Key takeaways</h2>
+        <ul class="takeaway-list">
+          <li>Cheryl Sihoi onboarded the first 1,000 micro-influencers for Tiny Health with no payment, only a test. Personally consulting each one built both product feedback and authentic word-of-mouth.</li>
+          <li>Function Health led with physician credibility (Dr. Mark Hyman) from launch, giving 2 million potential customers an immediate trust signal before any marketing spend.</li>
+          <li>Throne's core positioning: there are 30 devices for the things people already track, and nothing for what the toilet reveals every single day. The category doesn't exist yet at consumer scale, which is the opportunity.</li>
+          <li>The distrust of institutions created during COVID is the single biggest tailwind for consumer health companies. People want control over their own data.</li>
+          <li>In 10 years, Sihoi's prediction: 50% of kids currently have at least one chronic condition, 75% of adults do. The companies in this room will bring that number down.</li>
+        </ul>
+
+      </div>
+
+      <div class="article-sticky">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/vLqJHfTcjdw"
+            title="Panel 1: Founders Rebuilding Health and the Future of Wellness"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="speaker-list">
+          <h4>Speakers</h4>
+          <div class="speaker-item"><strong>Cheryl Sihoi</strong>Founder and CEO, Tiny Health</div>
+          <div class="speaker-item"><strong>Scott Hinkle</strong>Co-founder, Throne Science</div>
+          <div class="speaker-item"><strong>Pranitha</strong>Co-founder and CBO, Function Health</div>
+          <div class="speaker-item"><strong>Sam O'Kee</strong>Moderator, Flex</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
