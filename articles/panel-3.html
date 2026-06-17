@@ -6,34 +6,34 @@
   <title>Panel 3: Founders on Surviving and Scaling — Willpower</title>
   <link rel="stylesheet" href="https://starlit-crostata-9f186f.netlify.app/assets/subpage.css" />
   <style>
-    :root { --accent: #7baad4; --accent-light: rgba(123,170,212,0.12); }
-    body { background: var(--color-bg, #fff); }
+    :root { --accent: #7baad4; --accent-light: rgba(123,170,212,0.10); }
+    body { background: var(--color-bg); }
     .article-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); text-decoration: none; margin: 32px 0 0 0; }
     .article-back:hover { opacity: .7; }
-    .article-hero { padding: 48px 0 0; border-bottom: 1px solid rgba(0,0,0,.08); margin-bottom: 0; }
+    .article-hero { padding: 48px 0 0; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 0; }
     .article-series-tag { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 20px; }
-    .article-hero h1 { font-size: clamp(28px, 4vw, 52px); line-height: 1.1; font-weight: 800; margin: 0 0 16px; max-width: 800px; }
-    .article-hero .deck { font-size: 18px; color: #555; line-height: 1.6; max-width: 680px; margin: 0 0 40px; }
-    .metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: rgba(0,0,0,.08); border-top: 1px solid rgba(0,0,0,.08); border-bottom: 3px solid var(--accent); margin-bottom: 48px; }
-    .metric { background: #fff; padding: 28px 24px; }
+    .article-hero h1 { font-size: clamp(28px, 4vw, 52px); line-height: 1.1; font-weight: 800; margin: 0 0 16px; max-width: 800px; color: var(--white, #f0f0f0); }
+    .article-hero .deck { font-size: 18px; color: var(--muted, #888); line-height: 1.6; max-width: 680px; margin: 0 0 40px; }
+    .metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: rgba(255,255,255,.06); border-top: 1px solid rgba(255,255,255,.06); border-bottom: 3px solid var(--accent); margin-bottom: 48px; }
+    .metric { background: var(--card, #13141a); padding: 28px 24px; }
     .metric-num { font-size: 36px; font-weight: 800; line-height: 1; color: var(--accent); margin-bottom: 6px; }
-    .metric-label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #666; }
+    .metric-label { font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted, #888); }
     .article-layout { display: grid; grid-template-columns: 1fr 360px; gap: 60px; align-items: start; padding-bottom: 80px; }
     @media (max-width: 860px) { .article-layout { grid-template-columns: 1fr; } .article-sticky { position: static !important; } }
-    .article-body h2 { font-size: 22px; font-weight: 800; margin: 48px 0 16px; letter-spacing: -.01em; }
-    .article-body p { font-size: 16px; line-height: 1.75; color: #333; margin: 0 0 20px; }
+    .article-body h2 { font-size: 22px; font-weight: 800; margin: 48px 0 16px; letter-spacing: -.01em; color: var(--white, #f0f0f0); }
+    .article-body p { font-size: 16px; line-height: 1.75; color: var(--muted, #aaa); margin: 0 0 20px; }
     .pull-quote { border-left: 4px solid var(--accent); padding: 16px 24px; margin: 32px 0; background: var(--accent-light); }
-    .pull-quote p { font-size: 18px; font-weight: 600; font-style: italic; color: #222; margin: 0 0 8px; }
+    .pull-quote p { font-size: 18px; font-weight: 600; font-style: italic; color: var(--white, #eee); margin: 0 0 8px; }
     .pull-quote cite { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); font-style: normal; }
     .article-sticky { position: sticky; top: 24px; }
-    .video-wrap { aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.18); }
+    .video-wrap { aspect-ratio: 16/9; background: #000; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.4); }
     .video-wrap iframe { width: 100%; height: 100%; border: 0; display: block; }
-    .speaker-list { margin-top: 28px; padding: 20px 24px; border: 1px solid rgba(0,0,0,.1); border-radius: 10px; }
-    .speaker-list h4 { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #888; margin: 0 0 14px; }
-    .speaker-item { font-size: 14px; line-height: 1.4; margin-bottom: 12px; color: #333; }
-    .speaker-item strong { display: block; font-weight: 700; color: #111; }
+    .speaker-list { margin-top: 28px; padding: 20px 24px; border: 1px solid rgba(255,255,255,.1); border-radius: 10px; }
+    .speaker-list h4 { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted, #888); margin: 0 0 14px; }
+    .speaker-item { font-size: 14px; line-height: 1.4; margin-bottom: 12px; color: var(--muted, #aaa); }
+    .speaker-item strong { display: block; font-weight: 700; color: var(--white, #eee); }
     .takeaway-list { list-style: none; padding: 0; margin: 0; }
-    .takeaway-list li { padding: 14px 0; border-bottom: 1px solid rgba(0,0,0,.07); font-size: 15px; line-height: 1.5; color: #333; display: flex; gap: 12px; }
+    .takeaway-list li { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.07); font-size: 15px; line-height: 1.5; color: var(--muted, #aaa); display: flex; gap: 12px; }
     .takeaway-list li:last-child { border-bottom: none; }
     .takeaway-list li::before { content: ""; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); display: block; margin-top: 2px; }
     .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
