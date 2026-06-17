@@ -130,11 +130,87 @@
       font-family: 'Space Mono', monospace;
       font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
       color: var(--wh); text-decoration: none;
-      opacity: 0; transition: opacity .2s;
+      opacity: 1;
     }
     .vc[data-series="wh"] .vc__read { color: var(--wh); }
     .vc[data-series="cat"] .vc__read { color: var(--cat); }
-    .vc:hover .vc__read { opacity: 1; }
+    .vc__read:hover { opacity: .7; }
+
+    /* ── Article modal ── */
+    .article-modal-overlay {
+      position: fixed; inset: 0; z-index: 400;
+      background: rgba(0,0,0,0); pointer-events: none;
+      transition: background .25s;
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 40px 24px;
+      overflow-y: auto;
+    }
+    .article-modal-overlay.open {
+      background: rgba(0,0,0,.9); pointer-events: all;
+    }
+    .article-modal {
+      width: 100%; max-width: 860px;
+      background: #fff;
+      border-radius: 12px; overflow: hidden;
+      transform: translateY(12px); opacity: 0;
+      transition: transform .25s, opacity .25s;
+      flex-shrink: 0;
+    }
+    .article-modal-overlay.open .article-modal { transform: translateY(0); opacity: 1; }
+    .article-modal__bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 24px; border-bottom: 1px solid rgba(0,0,0,.1);
+      background: #fff; position: sticky; top: 0; z-index: 1;
+    }
+    .article-modal__tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: #999;
+    }
+    .article-modal__close {
+      width: 32px; height: 32px; border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.15); background: none;
+      color: #666; cursor: pointer; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: color .15s, border-color .15s;
+    }
+    .article-modal__close:hover { color: #111; border-color: rgba(0,0,0,.3); }
+    .article-modal__body {
+      padding: 40px 48px 60px;
+      color: #333; font-family: 'Inter', sans-serif;
+    }
+    .article-modal__body h1 {
+      font-size: clamp(22px, 3vw, 38px); line-height: 1.15; font-weight: 800;
+      color: #111; margin: 0 0 16px;
+    }
+    .article-modal__body .deck {
+      font-size: 17px; color: #555; line-height: 1.6; margin: 0 0 32px;
+      border-bottom: 1px solid rgba(0,0,0,.08); padding-bottom: 32px;
+    }
+    .article-modal__body h2 {
+      font-size: 18px; font-weight: 800; margin: 40px 0 12px; color: #111;
+    }
+    .article-modal__body p { font-size: 15px; line-height: 1.75; margin: 0 0 18px; color: #333; }
+    .article-modal__body .pull-quote {
+      border-left: 4px solid; padding: 14px 20px; margin: 28px 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .article-modal__body .pull-quote p { font-size: 17px; font-weight: 600; font-style: italic; color: #222; margin: 0 0 6px; }
+    .article-modal__body .pull-quote cite { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-style: normal; }
+    .article-modal__body .takeaway-list { list-style: none; padding: 0; margin: 0; }
+    .article-modal__body .takeaway-list li {
+      padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.07);
+      font-size: 14px; line-height: 1.5; color: #333;
+      display: flex; gap: 12px;
+    }
+    .article-modal__body .takeaway-list li:last-child { border-bottom: none; }
+    .article-modal__body .takeaway-list li::before {
+      content: ""; flex-shrink: 0; width: 18px; height: 18px;
+      border-radius: 50%; display: block; margin-top: 2px;
+    }
+    @media (max-width: 600px) {
+      .article-modal__body { padding: 24px 20px 48px; }
+    }
 
     /* ── Modal ── */
     .modal-overlay {
@@ -200,6 +276,19 @@
   </style>
 </head>
 <body>
+
+<!-- ── Article Modal ── -->
+<div class="article-modal-overlay" id="articleModalOverlay" onclick="closeArticleModal(event)">
+  <div class="article-modal" id="articleModal">
+    <div class="article-modal__bar">
+      <span class="article-modal__tag" id="articleModalTag"></span>
+      <button class="article-modal__close" onclick="closeArticleModal()" aria-label="Close">✕</button>
+    </div>
+    <div class="article-modal__body" id="articleModalBody">
+      <p style="color:#999;text-align:center;padding:40px 0;">Loading...</p>
+    </div>
+  </div>
+</div>
 
 <!-- ── Modal ── -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
@@ -267,7 +356,7 @@
       <div class="vc__meta">Wellness House 2025 · Opening Keynote</div>
       <div class="vc__title">Founder mode in <em>health &amp; wellness</em></div>
       <div class="vc__brands">Greg LaVecchia · Bloom Nutrition</div>
-      <a class="vc__read" href="articles/keynote.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
+      <span class="vc__read" onclick="event.stopPropagation(); openArticle('articles/keynote.html', 'Wellness House · Opening Keynote')">Read the breakdown &#8594;</span>
     </div>
 
     <!-- Wellness House 2025 · Panel 1 -->
@@ -279,7 +368,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 01</div>
       <div class="vc__title">Founders rebuilding <em>health &amp; wellness</em></div>
       <div class="vc__brands">Tiny Health · Function · Throne Science</div>
-      <a class="vc__read" href="articles/panel-1.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
+      <span class="vc__read" onclick="event.stopPropagation(); openArticle('articles/panel-1.html', 'Wellness House · Session 01')">Read the breakdown &#8594;</span>
     </div>
 
     <!-- Wellness House 2025 · Panel 2 -->
@@ -291,7 +380,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 02</div>
       <div class="vc__title">The power <em>of routine</em></div>
       <div class="vc__brands">WHOOP · HigherDOSE · Wellworthy</div>
-      <a class="vc__read" href="articles/panel-2.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
+      <span class="vc__read" onclick="event.stopPropagation(); openArticle('articles/panel-2.html', 'Wellness House · Session 02')">Read the breakdown &#8594;</span>
     </div>
 
     <!-- Wellness House 2025 · Panel 3 -->
@@ -303,7 +392,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 03</div>
       <div class="vc__title">Founder mode: <em>getting scrappy</em></div>
       <div class="vc__brands">437 Swimwear · Good Wipes · It's That Simple</div>
-      <a class="vc__read" href="articles/panel-3.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
+      <span class="vc__read" onclick="event.stopPropagation(); openArticle('articles/panel-3.html', 'Wellness House · Session 03')">Read the breakdown &#8594;</span>
     </div>
 
     <!-- Wellness House 2025 · Panel 4 -->
@@ -315,7 +404,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 04</div>
       <div class="vc__title">Wellness at <em>the core of community</em></div>
       <div class="vc__brands">Vivo Barefoot · Sweat Pals</div>
-      <a class="vc__read" href="articles/panel-4.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
+      <span class="vc__read" onclick="event.stopPropagation(); openArticle('articles/panel-4.html', 'Wellness House · Session 04')">Read the breakdown &#8594;</span>
     </div>
 
     <!-- Wellness House 2025 · Panel 6 -->
@@ -327,7 +416,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 06</div>
       <div class="vc__title">Building worlds <em>through sports</em></div>
       <div class="vc__brands">San Antonio Spurs · MLP · Tyler Eifert</div>
-      <a class="vc__read" href="articles/panel-6.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
+      <span class="vc__read" onclick="event.stopPropagation(); openArticle('articles/panel-6.html', 'Wellness House · Session 06')">Read the breakdown &#8594;</span>
     </div>
 
     <!-- Wellness House 2025 · Panel 7 -->
@@ -339,7 +428,7 @@
       <div class="vc__meta">Wellness House 2025 · Session 07</div>
       <div class="vc__title">The future of commerce: <em>brand, community &amp; AI</em></div>
       <div class="vc__brands">Tecovas · YETI · Estée Lauder · Shopify</div>
-      <a class="vc__read" href="articles/panel-7.html" onclick="event.stopPropagation()">Read the breakdown &#8594;</a>
+      <span class="vc__read" onclick="event.stopPropagation(); openArticle('articles/panel-7.html', 'Wellness House · Session 07')">Read the breakdown &#8594;</span>
     </div>
 
     <!-- Catalyst NYC · Nov 2025 -->
@@ -420,6 +509,62 @@
 </footer>
 
 <script>
+  /* ── Article modal ── */
+  var articleOverlay = document.getElementById('articleModalOverlay');
+  var articleBody    = document.getElementById('articleModalBody');
+  var articleTag     = document.getElementById('articleModalTag');
+
+  function openArticle(url, tag) {
+    articleTag.textContent = tag;
+    articleBody.innerHTML  = '<p style="color:#999;text-align:center;padding:40px 0;">Loading…</p>';
+    articleOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    fetch(url)
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var doc  = new DOMParser().parseFromString(html, 'text/html');
+        var h1   = doc.querySelector('.article-hero h1');
+        var deck = doc.querySelector('.article-hero .deck');
+        var body = doc.querySelector('.article-body');
+        var accent = getComputedStyle(document.documentElement)
+          .getPropertyValue(
+            tag.toLowerCase().includes('catalyst') ? '--cat' : '--wh'
+          ).trim();
+
+        var out = '';
+        if (h1)   out += '<h1>' + h1.innerHTML + '</h1>';
+        if (deck) out += '<p class="deck">' + deck.innerHTML + '</p>';
+        if (body) {
+          /* inject accent color into pull-quotes */
+          var clone = body.cloneNode(true);
+          clone.querySelectorAll('.pull-quote').forEach(function(q) {
+            q.style.borderLeftColor = accent;
+            q.style.background = accent.replace(')', ',0.08)').replace('rgb', 'rgba');
+            var cite = q.querySelector('cite');
+            if (cite) cite.style.color = accent;
+          });
+          clone.querySelectorAll('.takeaway-list li::before');
+          /* color the bullet dots via a style tag */
+          out += '<style>.article-modal__body .takeaway-list li::before{background:' + accent + '}</style>';
+          out += clone.innerHTML;
+        }
+        articleBody.innerHTML = out;
+        document.getElementById('articleModal').scrollTop = 0;
+        articleOverlay.scrollTop = 0;
+      })
+      .catch(function() {
+        articleBody.innerHTML = '<p style="color:#999;text-align:center;padding:40px 0;">Could not load article.</p>';
+      });
+  }
+
+  function closeArticleModal(e) {
+    if (e && e.target !== articleOverlay) return;
+    articleOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Video modal ── */
   var overlay = document.getElementById('modalOverlay');
   var modalTitle = document.getElementById('modalTitle');
   var modalVideo = document.getElementById('modalVideo');
@@ -445,7 +590,11 @@
   }
 
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+    if (e.key === 'Escape') {
+      overlay.classList.remove('open');
+      articleOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
   });
 </script>
 </body>
